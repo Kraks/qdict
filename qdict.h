@@ -1,3 +1,8 @@
+// qdict
+// Filename: qdict.h
+// Version: 0.01
+// Author: Kraks <kiss.kraks@gmail.com>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

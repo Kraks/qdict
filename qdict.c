@@ -1,3 +1,8 @@
+// qdict
+// Filename: qdict.c
+// Version: 0.01
+// Author: Kraks <kiss.kraks@gmail.com>
+
 #include "qdict.h"
 
 #define WORD_LENGTH 64
