@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[retire]]></return-phrase>
+  
+                            <phonetic-symbol>ri'taiə</phonetic-symbol>
+                  <dictcn-speach>retire</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 退休；退隐；退兵信号]]></content></translation>
+                  <translation><content><![CDATA[vi. 退休；撤退；退却]]></content></translation>
+                  <translation><content><![CDATA[vt. 退休；离开；收回]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[retire]]></key>
+                          <trans><value><![CDATA[退休]]></value></trans>
+                  <trans><value><![CDATA[退下]]></value></trans>
+                  <trans><value><![CDATA[就寝]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Retire office]]></key>
+                          <trans><value><![CDATA[离退休办公室]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[retire on]]></key>
+                          <trans><value><![CDATA[维持退休生活]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

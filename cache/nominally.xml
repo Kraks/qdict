@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[nominally]]></return-phrase>
+  
+                            <phonetic-symbol>'nɔminəli</phonetic-symbol>
+                  <dictcn-speach>nominally</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[adv. 名义上地；有名无实地]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[nominally]]></key>
+                          <trans><value><![CDATA[标称]]></value></trans>
+                  <trans><value><![CDATA[名义上地]]></value></trans>
+                  <trans><value><![CDATA[名称上]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[nominally titularly]]></key>
+                          <trans><value><![CDATA[有名无实地]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Only Nominally]]></key>
+                          <trans><value><![CDATA[空有其名]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[rightly]]></return-phrase>
+  
+                            <phonetic-symbol>'raitli</phonetic-symbol>
+                  <dictcn-speach>rightly</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[adv. 正确地；恰当地；公正地；合适地]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[rightly]]></key>
+                          <trans><value><![CDATA[正确地]]></value></trans>
+                  <trans><value><![CDATA[端正地]]></value></trans>
+                  <trans><value><![CDATA[正当地]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Rightly So]]></key>
+                          <trans><value><![CDATA[理所当然地]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Rightly said]]></key>
+                          <trans><value><![CDATA[不错]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

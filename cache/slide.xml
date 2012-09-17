@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[slide]]></return-phrase>
+  
+                            <phonetic-symbol>slaid</phonetic-symbol>
+                  <dictcn-speach>slide</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 滑动；幻灯片；滑梯；雪崩]]></content></translation>
+                  <translation><content><![CDATA[vt. 滑动；使滑动；悄悄地迅速放置]]></content></translation>
+                  <translation><content><![CDATA[vi. 滑动；滑落；不知不觉陷入]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[slide]]></key>
+                          <trans><value><![CDATA[滑动]]></value></trans>
+                  <trans><value><![CDATA[幻灯片]]></value></trans>
+                  <trans><value><![CDATA[滑音]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[slide bar]]></key>
+                          <trans><value><![CDATA[导杆]]></value></trans>
+                  <trans><value><![CDATA[滑杆]]></value></trans>
+                  <trans><value><![CDATA[桌面导航]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[slide balancer]]></key>
+                          <trans><value><![CDATA[滑动平衡器]]></value></trans>
+                  <trans><value><![CDATA[滑动均衡器]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

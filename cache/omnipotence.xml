@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[omnipotence]]></return-phrase>
+  
+                            <phonetic-symbol>ɔm'nipətəns</phonetic-symbol>
+                  <dictcn-speach>omnipotence</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 全能；无限力量]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[omnipotence]]></key>
+                          <trans><value><![CDATA[全能]]></value></trans>
+                  <trans><value><![CDATA[万能理由]]></value></trans>
+                  <trans><value><![CDATA[无所不能]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[almightiness omnipotence]]></key>
+                          <trans><value><![CDATA[全能]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[omnipotence paradox]]></key>
+                          <trans><value><![CDATA[全能悖论]]></value></trans>
+                  <trans><value><![CDATA[上帝悖论的]]></value></trans>
+                  <trans><value><![CDATA[全能上帝悖论]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

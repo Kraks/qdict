@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[affinity]]></return-phrase>
+  
+                            <phonetic-symbol>ə'finəti</phonetic-symbol>
+                  <dictcn-speach>affinity</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 密切关系；吸引力；姻亲关系；类同]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[affinity]]></key>
+                          <trans><value><![CDATA[亲和力]]></value></trans>
+                  <trans><value><![CDATA[姻亲关系]]></value></trans>
+                  <trans><value><![CDATA[亲合力]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[affinity chromatography]]></key>
+                          <trans><value><![CDATA[亲和层析]]></value></trans>
+                  <trans><value><![CDATA[亲和色谱]]></value></trans>
+                  <trans><value><![CDATA[亲和色谱法]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[chemical affinity]]></key>
+                          <trans><value><![CDATA[化学亲合势]]></value></trans>
+                  <trans><value><![CDATA[化学亲和力]]></value></trans>
+                  <trans><value><![CDATA[化学亲合力]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

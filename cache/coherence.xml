@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[coherence]]></return-phrase>
+  
+                            <phonetic-symbol>kəu'hiərəns</phonetic-symbol>
+                  <dictcn-speach>coherence</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 一致；连贯性；凝聚]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[Coherence]]></key>
+                          <trans><value><![CDATA[相干性]]></value></trans>
+                  <trans><value><![CDATA[连贯性]]></value></trans>
+                  <trans><value><![CDATA[相参性]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[coherence function]]></key>
+                          <trans><value><![CDATA[相干函数]]></value></trans>
+                  <trans><value><![CDATA[连贯函数]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[The Coherence]]></key>
+                          <trans><value><![CDATA[连贯性]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

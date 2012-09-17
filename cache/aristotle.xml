@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[Aristotle]]></return-phrase>
+  
+                            <phonetic-symbol>'æristɔtl</phonetic-symbol>
+                  <dictcn-speach>Aristotle</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 亚里士多德]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[Aristotle]]></key>
+                          <trans><value><![CDATA[亚里士多德]]></value></trans>
+                  <trans><value><![CDATA[亚里斯多德]]></value></trans>
+                  <trans><value><![CDATA[亚理斯多德]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Aristotle lantern]]></key>
+                          <trans><value><![CDATA[称为亚里斯多德提灯]]></value></trans>
+                  <trans><value><![CDATA[亚里斯多德提灯]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Aristotle politics]]></key>
+                          <trans><value><![CDATA[政治学]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

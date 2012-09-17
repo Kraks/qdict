@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[Parsifal]]></return-phrase>
+  
+                            <phonetic-symbol>'pɑ:si,fɔl</phonetic-symbol>
+                  <dictcn-speach>Parsifal</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 帕西发尔（亚瑟王传奇中寻找圣杯的英雄人物）]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[Parsifal]]></key>
+                          <trans><value><![CDATA[帕西法尔]]></value></trans>
+                  <trans><value><![CDATA[帕西弗]]></value></trans>
+                  <trans><value><![CDATA[帕西发尔]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Parsifal III]]></key>
+                          <trans><value><![CDATA[抽象派艺术家的最爱]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Wagner Parsifal]]></key>
+                          <trans><value><![CDATA[帕西法尔]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

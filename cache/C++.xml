@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[C]]></return-phrase>
+  
+                            <phonetic-symbol>si:</phonetic-symbol>
+                  <dictcn-speach>C</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 字母C]]></content></translation>
+                  <translation><content><![CDATA[symb. 碳（carbon）]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[CTRL C]]></key>
+                          <trans><value><![CDATA[复制]]></value></trans>
+                  <trans><value><![CDATA[复制当前选中内容]]></value></trans>
+                  <trans><value><![CDATA[复制所选文本或对象]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[C grade]]></key>
+                          <trans><value><![CDATA[丙级]]></value></trans>
+                  <trans><value><![CDATA[货价]]></value></trans>
+                  <trans><value><![CDATA[货价及运费价格]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Part C]]></key>
+                          <trans><value><![CDATA[英译汉]]></value></trans>
+                  <trans><value><![CDATA[真皮单人沙发椅]]></value></trans>
+                  <trans><value><![CDATA[桃花朵朵开]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

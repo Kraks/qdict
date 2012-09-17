@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[omit]]></return-phrase>
+  
+                            <phonetic-symbol>əu'mit</phonetic-symbol>
+                  <dictcn-speach>omit</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[vt. 省略；遗漏；删除；疏忽]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[omit]]></key>
+                          <trans><value><![CDATA[省略]]></value></trans>
+                  <trans><value><![CDATA[忽略]]></value></trans>
+                  <trans><value><![CDATA[遗漏]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[omit work]]></key>
+                          <trans><value><![CDATA[省略工作]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Omit code]]></key>
+                          <trans><value><![CDATA[可省略]]></value></trans>
+                  <trans><value><![CDATA[省略编码]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

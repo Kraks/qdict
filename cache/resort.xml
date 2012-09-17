@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[resort]]></return-phrase>
+  
+                            <phonetic-symbol>ri'zɔ:t</phonetic-symbol>
+                  <dictcn-speach>resort</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 凭借，手段；度假胜地；常去之地]]></content></translation>
+                  <translation><content><![CDATA[vi. 求助，诉诸；常去；采取某手段或方法]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[Resort]]></key>
+                          <trans><value><![CDATA[度假酒店]]></value></trans>
+                  <trans><value><![CDATA[度假村]]></value></trans>
+                  <trans><value><![CDATA[求助]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[resort to]]></key>
+                          <trans><value><![CDATA[诉诸于]]></value></trans>
+                  <trans><value><![CDATA[采取]]></value></trans>
+                  <trans><value><![CDATA[速诸于]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[holiday resort]]></key>
+                          <trans><value><![CDATA[度假区]]></value></trans>
+                  <trans><value><![CDATA[度假胜地]]></value></trans>
+                  <trans><value><![CDATA[度假村]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

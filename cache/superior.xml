@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[superior]]></return-phrase>
+  
+                            <phonetic-symbol>sju:'piriə, sju:pə-</phonetic-symbol>
+                  <dictcn-speach>superior</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 上级，长官；优胜者，高手；长者]]></content></translation>
+                  <translation><content><![CDATA[adj. 上级的；优秀的，出众的；高傲的]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[superior]]></key>
+                          <trans><value><![CDATA[上级]]></value></trans>
+                  <trans><value><![CDATA[优越的]]></value></trans>
+                  <trans><value><![CDATA[上好的]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Superior Room]]></key>
+                          <trans><value><![CDATA[高级房]]></value></trans>
+                  <trans><value><![CDATA[高级客房]]></value></trans>
+                  <trans><value><![CDATA[高级间]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Lake Superior]]></key>
+                          <trans><value><![CDATA[苏必利尔湖]]></value></trans>
+                  <trans><value><![CDATA[苏必略湖]]></value></trans>
+                  <trans><value><![CDATA[苏比利尔湖]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

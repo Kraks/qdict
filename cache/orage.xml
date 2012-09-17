@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[Orage]]></return-phrase>
+  
+                                              
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[Orage]]></key>
+                          <trans><value><![CDATA[怪物猎人]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[orage peel]]></key>
+                          <trans><value><![CDATA[桔釉]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[orage velvet]]></key>
+                          <trans><value><![CDATA[蓝丝绒]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

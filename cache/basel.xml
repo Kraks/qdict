@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[Basel]]></return-phrase>
+  
+                            <phonetic-symbol>'bɑ:zəl</phonetic-symbol>
+                  <dictcn-speach>Basel</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 巴塞尔（瑞士西北部城市，在莱茵河畔）]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[Basel]]></key>
+                          <trans><value><![CDATA[巴塞尔]]></value></trans>
+                  <trans><value><![CDATA[瑞士巴塞尔]]></value></trans>
+                  <trans><value><![CDATA[巴赛尔]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Basel Committee]]></key>
+                          <trans><value><![CDATA[巴塞尔委员会]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Basel Accords]]></key>
+                          <trans><value><![CDATA[巴塞尔协议]]></value></trans>
+                  <trans><value><![CDATA[巴塞尔协定]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

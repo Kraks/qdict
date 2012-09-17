@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[help]]></return-phrase>
+  
+                            <phonetic-symbol>help</phonetic-symbol>
+                  <dictcn-speach>help</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 帮助；补救办法；帮忙者；有益的东西]]></content></translation>
+                  <translation><content><![CDATA[vt. 帮助；促进；治疗；补救]]></content></translation>
+                  <translation><content><![CDATA[vi. 帮助；有用；招待]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[Help]]></key>
+                          <trans><value><![CDATA[帮助]]></value></trans>
+                  <trans><value><![CDATA[帮忙]]></value></trans>
+                  <trans><value><![CDATA[支付宝帮助]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Help Line]]></key>
+                          <trans><value><![CDATA[帮助行]]></value></trans>
+                  <trans><value><![CDATA[求助行]]></value></trans>
+                  <trans><value><![CDATA[帮助栏]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Help Yourself]]></key>
+                          <trans><value><![CDATA[自便]]></value></trans>
+                  <trans><value><![CDATA[请自便]]></value></trans>
+                  <trans><value><![CDATA[别客气]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

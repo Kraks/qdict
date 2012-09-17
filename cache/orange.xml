@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[orange]]></return-phrase>
+  
+                            <phonetic-symbol>'ɔrindʒ, 'ɔ:-</phonetic-symbol>
+                  <dictcn-speach>orange</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 橙；橙色；桔子]]></content></translation>
+                  <translation><content><![CDATA[adj. 橙色的；橘色的]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[Orange]]></key>
+                          <trans><value><![CDATA[橙色]]></value></trans>
+                  <trans><value><![CDATA[橙子]]></value></trans>
+                  <trans><value><![CDATA[桔子]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Orange Blossom]]></key>
+                          <trans><value><![CDATA[橙花]]></value></trans>
+                  <trans><value><![CDATA[香橙花]]></value></trans>
+                  <trans><value><![CDATA[橘花]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Luminous orange]]></key>
+                          <trans><value><![CDATA[亮橙]]></value></trans>
+                  <trans><value><![CDATA[表演者]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

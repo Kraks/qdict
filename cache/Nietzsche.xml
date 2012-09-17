@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[Nietzsche]]></return-phrase>
+  
+                            <phonetic-symbol>'ni:tʃə</phonetic-symbol>
+                  <dictcn-speach>Nietzsche</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 尼采（德国哲学家）]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[Nietzsche]]></key>
+                          <trans><value><![CDATA[尼采]]></value></trans>
+                  <trans><value><![CDATA[哲学家尼采]]></value></trans>
+                  <trans><value><![CDATA[尼]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Ecce Nietzsche]]></key>
+                          <trans><value><![CDATA[书名]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Kaiser Nietzsche]]></key>
+                          <trans><value><![CDATA[表演者]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

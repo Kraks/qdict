@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[quarrel]]></return-phrase>
+  
+                            <phonetic-symbol>'kwɔ:rəl</phonetic-symbol>
+                  <dictcn-speach>quarrel</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 吵架；反目；怨言；争吵的原因；方头凿]]></content></translation>
+                  <translation><content><![CDATA[vi. 吵架；争论；挑剔]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[quarrel]]></key>
+                          <trans><value><![CDATA[争吵]]></value></trans>
+                  <trans><value><![CDATA[吵架]]></value></trans>
+                  <trans><value><![CDATA[口角]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Quarrel Reload]]></key>
+                          <trans><value><![CDATA[加速补给]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[quarrel over]]></key>
+                          <trans><value><![CDATA[争论]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

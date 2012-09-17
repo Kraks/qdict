@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[consciously]]></return-phrase>
+  
+                            <phonetic-symbol>'kɔnʃəsli</phonetic-symbol>
+                  <dictcn-speach>consciously</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[adv. 自觉地；有意识地]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[consciously]]></key>
+                          <trans><value><![CDATA[有意识地]]></value></trans>
+                  <trans><value><![CDATA[清醒]]></value></trans>
+                  <trans><value><![CDATA[自觉地]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Vaguely Consciously]]></key>
+                          <trans><value><![CDATA[恍惚中去]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Consciously Burning]]></key>
+                          <trans><value><![CDATA[自觉灼痛]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

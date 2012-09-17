@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[奋斗]]></return-phrase>
+  
+                            <phonetic-symbol></phonetic-symbol>
+                        <custom-translation>
+        <type>ce</type>
+                  <translation><content><![CDATA[struggle]]></content></translation>
+                  <translation><content><![CDATA[strive]]></content></translation>
+                  <translation><content><![CDATA[fight]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[奋斗]]></key>
+                          <trans><value><![CDATA[struggle]]></value></trans>
+                  <trans><value><![CDATA[Striving]]></value></trans>
+                  <trans><value><![CDATA[strive]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[努力奋斗]]></key>
+                          <trans><value><![CDATA[go at it]]></value></trans>
+                  <trans><value><![CDATA[strive]]></value></trans>
+                  <trans><value><![CDATA[make arduous efforts]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[奋斗呐]]></key>
+                          <trans><value><![CDATA[Fendona]]></value></trans>
+                  <trans><value><![CDATA[Fenolona]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

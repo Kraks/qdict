@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[YOYO]]></return-phrase>
+  
+                            <phonetic-symbol>'jəu,jəu</phonetic-symbol>
+                  <dictcn-speach>YOYO</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 摇摇乐；溜溜球]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[YoYo]]></key>
+                          <trans><value><![CDATA[蒙嘉慧]]></value></trans>
+                  <trans><value><![CDATA[陈自瑶]]></value></trans>
+                  <trans><value><![CDATA[蒋宏杰]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[chinese yoyo]]></key>
+                          <trans><value><![CDATA[空竹]]></value></trans>
+                  <trans><value><![CDATA[扯铃课]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[YOYO MUSIC]]></key>
+                          <trans><value><![CDATA[悠友音乐]]></value></trans>
+                  <trans><value><![CDATA[出版者]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

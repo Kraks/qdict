@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[professorship]]></return-phrase>
+  
+                            <phonetic-symbol>prəu'fesəʃip</phonetic-symbol>
+                  <dictcn-speach>professorship</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. [劳经] 教授职位]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[professorship]]></key>
+                          <trans><value><![CDATA[教授之职]]></value></trans>
+                  <trans><value><![CDATA[教授职位]]></value></trans>
+                  <trans><value><![CDATA[教授席位]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Professorship Teachers]]></key>
+                          <trans><value><![CDATA[高职教师]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[associate professorship]]></key>
+                          <trans><value><![CDATA[副教授职务]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

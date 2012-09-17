@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[Pythagoras]]></return-phrase>
+  
+                            <phonetic-symbol>pai'θæɡəræs; pi-</phonetic-symbol>
+                  <dictcn-speach>Pythagoras</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 毕达哥拉斯（古希腊哲学家，数学家）]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[PYTHAGORAS]]></key>
+                          <trans><value><![CDATA[毕达哥拉斯]]></value></trans>
+                  <trans><value><![CDATA[毕达歌拉斯]]></value></trans>
+                  <trans><value><![CDATA[准则的切分]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[pythagoras ware]]></key>
+                          <trans><value><![CDATA[派赛高拉斯瓷]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Pythagoras Industrimuséet]]></key>
+                          <trans><value><![CDATA[博物馆]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

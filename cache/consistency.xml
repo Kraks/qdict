@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[consistency]]></return-phrase>
+  
+                            <phonetic-symbol>kən'sistənsi</phonetic-symbol>
+                  <dictcn-speach>consistency</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. [计] 一致性；稠度；相容性]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[Consistency]]></key>
+                          <trans><value><![CDATA[一致性]]></value></trans>
+                  <trans><value><![CDATA[稳定性]]></value></trans>
+                  <trans><value><![CDATA[稠厚度]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[consistency condition]]></key>
+                          <trans><value><![CDATA[相容条件]]></value></trans>
+                  <trans><value><![CDATA[一致性条件]]></value></trans>
+                  <trans><value><![CDATA[相容前提]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[consistency principle]]></key>
+                          <trans><value><![CDATA[一贯性原则]]></value></trans>
+                  <trans><value><![CDATA[一致性]]></value></trans>
+                  <trans><value><![CDATA[一致原则]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

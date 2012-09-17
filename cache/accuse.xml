@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[accuse]]></return-phrase>
+  
+                            <phonetic-symbol>ə'kju:z</phonetic-symbol>
+                  <dictcn-speach>accuse</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[vt. 控告，指控；谴责；归咎于]]></content></translation>
+                  <translation><content><![CDATA[vi. 指责；控告]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[accuse]]></key>
+                          <trans><value><![CDATA[指责]]></value></trans>
+                  <trans><value><![CDATA[控告]]></value></trans>
+                  <trans><value><![CDATA[指控]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[accuse vt]]></key>
+                          <trans><value><![CDATA[控诉]]></value></trans>
+                  <trans><value><![CDATA[指责]]></value></trans>
+                  <trans><value><![CDATA[指控]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[I Accuse]]></key>
+                          <trans><value><![CDATA[控诉]]></value></trans>
+                  <trans><value><![CDATA[我控诉]]></value></trans>
+                  <trans><value><![CDATA[你死我活]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

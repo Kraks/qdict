@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[odd]]></return-phrase>
+  
+                            <phonetic-symbol>ɔd</phonetic-symbol>
+                  <dictcn-speach>odd</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 奇数；怪人；奇特的事物]]></content></translation>
+                  <translation><content><![CDATA[adj. 奇数的；古怪的；剩余的；临时的；零散的]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[odd]]></key>
+                          <trans><value><![CDATA[余的]]></value></trans>
+                  <trans><value><![CDATA[奇数]]></value></trans>
+                  <trans><value><![CDATA[古怪的]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[odd function]]></key>
+                          <trans><value><![CDATA[奇函数]]></value></trans>
+                  <trans><value><![CDATA[正弦函数是奇函数]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[odd pricing]]></key>
+                          <trans><value><![CDATA[奇]]></value></trans>
+                  <trans><value><![CDATA[余数定价法]]></value></trans>
+                  <trans><value><![CDATA[奇数定价法]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

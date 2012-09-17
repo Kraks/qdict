@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[ethic]]></return-phrase>
+  
+                            <phonetic-symbol>'eθik</phonetic-symbol>
+                  <dictcn-speach>ethic</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 伦理；道德规范]]></content></translation>
+                  <translation><content><![CDATA[adj. 伦理的；道德的（等于ethical）]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[ethic]]></key>
+                          <trans><value><![CDATA[伦理]]></value></trans>
+                  <trans><value><![CDATA[道德标准]]></value></trans>
+                  <trans><value><![CDATA[道德规范]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[land ethic]]></key>
+                          <trans><value><![CDATA[土地伦理]]></value></trans>
+                  <trans><value><![CDATA[大地伦理]]></value></trans>
+                  <trans><value><![CDATA[土地倫理]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[business ethic]]></key>
+                          <trans><value><![CDATA[企业伦理]]></value></trans>
+                  <trans><value><![CDATA[商业伦理]]></value></trans>
+                  <trans><value><![CDATA[商业道德]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

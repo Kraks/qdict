@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[religion]]></return-phrase>
+  
+                            <phonetic-symbol>ri'lidʒən</phonetic-symbol>
+                  <dictcn-speach>religion</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 宗教；宗教信仰]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[Religion]]></key>
+                          <trans><value><![CDATA[宗教]]></value></trans>
+                  <trans><value><![CDATA[宗教信仰]]></value></trans>
+                  <trans><value><![CDATA[信仰]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[True Religion]]></key>
+                          <trans><value><![CDATA[真实信仰]]></value></trans>
+                  <trans><value><![CDATA[他们真的为我疯狂]]></value></trans>
+                  <trans><value><![CDATA[真实信仰牛仔]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[organized religion]]></key>
+                          <trans><value><![CDATA[有组织的宗教]]></value></trans>
+                  <trans><value><![CDATA[组织宗教]]></value></trans>
+                  <trans><value><![CDATA[宗教组织]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

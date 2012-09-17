@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[passionate]]></return-phrase>
+  
+                            <phonetic-symbol>'pæʃənit</phonetic-symbol>
+                  <dictcn-speach>passionate</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[adj. 热情的；热烈的，激昂的；易怒的]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[passionate]]></key>
+                          <trans><value><![CDATA[热情的]]></value></trans>
+                  <trans><value><![CDATA[充满热情的]]></value></trans>
+                  <trans><value><![CDATA[热忱]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Passionate Mission]]></key>
+                          <trans><value><![CDATA[激情任务]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Then Passionate]]></key>
+                          <trans><value><![CDATA[而后澎湃]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

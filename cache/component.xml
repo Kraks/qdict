@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[component]]></return-phrase>
+  
+                            <phonetic-symbol>kəm'pəunənt</phonetic-symbol>
+                  <dictcn-speach>component</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 成分；组件；[电子] 元件]]></content></translation>
+                  <translation><content><![CDATA[adj. 组成的，构成的]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[Component]]></key>
+                          <trans><value><![CDATA[组件]]></value></trans>
+                  <trans><value><![CDATA[成分]]></value></trans>
+                  <trans><value><![CDATA[零部件]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[reactive component]]></key>
+                          <trans><value><![CDATA[无功分量]]></value></trans>
+                  <trans><value><![CDATA[抗性分量]]></value></trans>
+                  <trans><value><![CDATA[无功斤两]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[standard component]]></key>
+                          <trans><value><![CDATA[标准件]]></value></trans>
+                  <trans><value><![CDATA[标准构件法]]></value></trans>
+                  <trans><value><![CDATA[尺度件]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

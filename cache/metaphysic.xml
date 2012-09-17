@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[metaphysic]]></return-phrase>
+  
+                            <phonetic-symbol>,metə'fizik</phonetic-symbol>
+                  <dictcn-speach>metaphysic</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 形而上学；玄学]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[Metaphysic]]></key>
+                          <trans><value><![CDATA[形而上学]]></value></trans>
+                  <trans><value><![CDATA[物理学之后]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Include Metaphysic]]></key>
+                          <trans><value><![CDATA[其中包括玄学]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Herbartian metaphysic]]></key>
+                          <trans><value><![CDATA[致了赫尔巴特形而上学]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

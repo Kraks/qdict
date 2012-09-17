@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[Java]]></return-phrase>
+  
+                            <phonetic-symbol>'dʒa:və</phonetic-symbol>
+                  <dictcn-speach>Java</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 爪哇岛（位于印尼）；Sun公司推出的一种应用程序开发语言]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[Java]]></key>
+                          <trans><value><![CDATA[爪哇]]></value></trans>
+                  <trans><value><![CDATA[软件工程师]]></value></trans>
+                  <trans><value><![CDATA[扩展]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Java 平台]]></key>
+                          <trans><value><![CDATA[java]]></value></trans>
+                  <trans><value><![CDATA[Sun Java]]></value></trans>
+                  <trans><value><![CDATA[Java Platform]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[East Java]]></key>
+                          <trans><value><![CDATA[东爪哇省]]></value></trans>
+                  <trans><value><![CDATA[东爪哇]]></value></trans>
+                  <trans><value><![CDATA[印度尼西亚]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

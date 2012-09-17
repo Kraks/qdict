@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[hellenic]]></return-phrase>
+  
+                            <phonetic-symbol>he'lenik, -'li:-</phonetic-symbol>
+                  <dictcn-speach>hellenic</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[adj. 希腊的；希腊人的；希腊语的]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[Hellenic]]></key>
+                          <trans><value><![CDATA[希腊]]></value></trans>
+                  <trans><value><![CDATA[化时间]]></value></trans>
+                  <trans><value><![CDATA[希腊语族]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Hellenic Telecommunications]]></key>
+                          <trans><value><![CDATA[希腊电信]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Hellenic Hound]]></key>
+                          <trans><value><![CDATA[希腊猎犬]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>

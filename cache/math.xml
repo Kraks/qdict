@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<yodaodict>
+  <return-phrase><![CDATA[math]]></return-phrase>
+  
+                            <phonetic-symbol>mæθ</phonetic-symbol>
+                  <dictcn-speach>math</dictcn-speach>
+                          <custom-translation>
+        <type>ec</type>
+                  <translation><content><![CDATA[n. 数学（等于mathematics）]]></content></translation>
+                </custom-translation>
+          
+              <yodao-web-dict>
+                    <web-translation>
+                <key><![CDATA[Math]]></key>
+                          <trans><value><![CDATA[数学]]></value></trans>
+                  <trans><value><![CDATA[数学函数对象]]></value></trans>
+                  <trans><value><![CDATA[公式]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Math Notebook]]></key>
+                          <trans><value><![CDATA[数学备忘录]]></value></trans>
+                </web-translation>
+              <web-translation>
+                <key><![CDATA[Math Operations]]></key>
+                          <trans><value><![CDATA[数学运算]]></value></trans>
+                  <trans><value><![CDATA[数学运算模块库]]></value></trans>
+                  <trans><value><![CDATA[数学模块]]></value></trans>
+                </web-translation>
+            </yodao-web-dict>
+    
+          <sexp>0</sexp>
+</yodaodict>
