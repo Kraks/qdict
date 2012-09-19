@@ -1,11 +1,12 @@
 // qdict
 // Filename: qdict.c
-// Version: 0.01
+// Version: 0.02
 // Author: Kraks <kiss.kraks@gmail.com>
 
 #include "qdict.h"
 
 #define WORD_LENGTH 64
+#define UNDERLINE "_"
 
 int main(int argc, char **argv)
 {
@@ -13,7 +14,7 @@ int main(int argc, char **argv)
 	char c;
 	char *buf;
 	if (argc != 2) {
-		print_help();
+		
 		exit(0);
 	}
 	
@@ -99,6 +100,11 @@ int get_xml(char *word)
 		fprintf(stderr, "Error: can not write the file\n");
 		exit(-1);
 	}
+}
+
+char *catenate_phrase(int phrase_num, char **phrases)
+{
+	
 }
 
 char *construct_url(char *word)
