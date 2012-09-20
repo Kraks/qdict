@@ -1,6 +1,6 @@
 // qdict
 // Filename: qdict.h
-// Version: 0.01
+// Version: 0.02
 // Author: Kraks <kiss.kraks@gmail.com>
 
 #include <stdio.h>
@@ -18,15 +18,19 @@
 
 void query_word(char *word);
 
+void query_phrases(int argc, char **argv);
+
 int check_cache(char *word);
 
-int get_xml(char *word);
+int get_xml(char *word, char *filename);
+
+char *catenate_phrase(int phrase_num, char **phrases, char *connector);
 
 char *construct_url(char *word);
 
 char *construct_filename(char *word);
 
-int print_trans(char *xml_file_name);
+int print_trans(char *word, int is_phrase);
 
 void print_word(char *word);
 
