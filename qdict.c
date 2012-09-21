@@ -45,7 +45,6 @@ int main(int argc, char **argv)
 				} else
 					query_word(buf);
 				printf("> ");
-				free(phrases);
 			}
 			exit(0);
 		}
