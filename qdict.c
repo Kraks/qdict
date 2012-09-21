@@ -15,8 +15,10 @@
 int main(int argc, char **argv)
 {
 	int i;
+	int ws_num;			// whitespace number
 	char c;
 	char *buf;
+	char **phrases;
 	if (argc != 2) {
 		query_phrases(argc-1, argv+1);
 		exit(0);
@@ -34,10 +36,12 @@ int main(int argc, char **argv)
 				while ((c = getchar()) != '\n' && i < WORD_LENGTH)
 					buf[i++] = c;
 				buf[i] = '\0';
-				//printf("debug %s\n", buf);
+				buf = trim(buf);
 				// judge buf is phrase or not
 				if (strstr(buf, WHITESPACE)) {
-					
+					ws_num = get_ws_num(buf);
+					phrases = split_phrases(ws_num + 1, buf);
+					query_phrases(ws_num + 1, phrases);
 				} else
 					query_word(buf);
 				printf("> ");
@@ -52,6 +56,47 @@ int main(int argc, char **argv)
 	
 	query_word(argv[1]);
 	return 0;
+}
+
+// return whitespace number in str
+int get_ws_num(char *str)
+{
+	int i, n = 0, str_len = strlen(str);
+	for (i = 0; i < str_len; i++, str++)
+		if (*str == 0x20)
+			n++;
+	return n;	
+}
+
+char *trim(char *str)
+{
+	char *str_last, *str_cur;
+	if (str != NULL) {
+		for ( ; *str == 0x20; ++str);
+		for (str_last = str_cur = str; *str_cur != '\0'; ++str_cur)
+			if (*str_cur != 0x20)
+				str_last = str_cur;
+		*++str_last = '\0';
+		return str;
+	}
+	return NULL;
+}
+
+// change str to argv form
+char **split_phrases(int n, char *str)
+{
+	char **t;
+	int i, j, len = strlen(str);
+	t = (char **) malloc ((len + 1) * sizeof(char));
+	for (i = 0; i < n; i++) { 
+		t[i] = (char *) malloc(WORD_LENGTH * sizeof(char));
+		for (j = 0; *str != '\0' && *str != 0x20; str++) {
+			t[i][j++] = *str;
+		}
+		t[i][j] = '\0';
+		str++;
+	}
+	return t;
 }
 
 void query_phrases(int phrase_num, char **phrases)
@@ -122,7 +167,7 @@ char *construct_filename(char *word)
 
 void print_help()
 {
-	fprintf(stdout, "Useage: qdict <query word>\n");
+	fprintf(stdout, "Usage: qdict <query word>\n");
 }
 
 int get_xml(char *word, char *filename)
@@ -178,7 +223,7 @@ int print_trans(char *word, int is_phrase)
 	xml_fp = fopen(filename, "r");
 	tree = mxmlLoadFile(NULL, xml_fp, type_callback);
 	
-	if (!is_phrase) {
+	if (! is_phrase) {
 		//print phonetic
 		node = mxmlFindElement(tree, tree, "phonetic-symbol", NULL, NULL, MXML_DESCEND);
 		if (node != NULL)

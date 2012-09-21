@@ -42,3 +42,8 @@ char *process_cdata(char *cdata);
 
 mxml_type_t type_callback(mxml_node_t *node);
 
+int get_ws_num(char *str);
+
+char *trim(char *str);
+
+char **split_phrases(int n, char *str);
