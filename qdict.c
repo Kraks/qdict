@@ -185,15 +185,15 @@ int get_xml(char *word, char *filename)
 	//printf("debug %s\n", url);
 	
 	//debug output
-  curl_easy_setopt(curl_handle, CURLOPT_VERBOSE, 0L);
-  //disable progress meter, set to 0L to enable and disable debug output
-  curl_easy_setopt(curl_handle, CURLOPT_NOPROGRESS, 1L);
-  
-  //send all data to this function
-  curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, write_xml_file);
-  
-  xml_file = fopen(filename, "w+");
-  if (xml_file) {
+	curl_easy_setopt(curl_handle, CURLOPT_VERBOSE, 0L);
+	//disable progress meter, set to 0L to enable and disable debug output
+	curl_easy_setopt(curl_handle, CURLOPT_NOPROGRESS, 1L);
+	
+	//send all data to this function
+	curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, write_xml_file);
+	
+	xml_file = fopen(filename, "w+");
+	if (xml_file) {
 		curl_easy_setopt(curl_handle, CURLOPT_FILE, xml_file);
 		curl_easy_perform(curl_handle);
 		fclose(xml_file);
@@ -208,8 +208,8 @@ int get_xml(char *word, char *filename)
 
 static size_t write_xml_file(void *ptr, size_t size, size_t nmemb, void *stream)
 {
-  size_t written = fwrite(ptr, size, nmemb, (FILE *)stream);
-  return written;
+	size_t written = fwrite(ptr, size, nmemb, (FILE *)stream);
+	return written;
 }
 
 int print_trans(char *word, int is_phrase)
