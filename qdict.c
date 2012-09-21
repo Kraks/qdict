@@ -45,6 +45,7 @@ int main(int argc, char **argv)
 				} else
 					query_word(buf);
 				printf("> ");
+				free(phrases);
 			}
 			exit(0);
 		}
@@ -105,7 +106,9 @@ void query_phrases(int phrase_num, char **phrases)
 	original_phrases = catenate_phrase(phrase_num, phrases, WHITESPACE);
 	phrases_underline = catenate_phrase(phrase_num, phrases, UNDERLINE);
 	phrases_url = catenate_phrase(phrase_num, phrases, URL_WHITESPACE);
-
+	
+	//printf("debug: %s %s %s\n", original_phrases, phrases_underline, phrases_url);
+	
 	//query word translation
 	if (check_cache(phrases_underline)) {
 		print_word(original_phrases);
@@ -138,7 +141,7 @@ char *catenate_phrase(int phrase_num, char **phrases, char *connector)
 	for (i = 0; i < phrase_num; i++)
 		phrase_whole_len += strlen(phrases[i]);
 	p = (char *) malloc((phrase_whole_len + phrase_num) * sizeof(char));
-	strncpy(p, phrases[0], strlen(phrases[0]));
+	strncpy(p, phrases[0], strlen(phrases[0])+1);
 	for (i = 1; i < phrase_num; i++) {
 		strncat(p, connector, strlen(connector));
 		strncat(p, phrases[i], strlen(phrases[i]));
@@ -151,6 +154,7 @@ char *construct_url(char *word)
 {
 	char base[] = "http://dict.youdao.com/fsearch?q=";
 	char *url = malloc((strlen(base) + strlen(word) + 1) * sizeof(char));
+	memset(url, 0, strlen(base) + strlen(word) + 1);
 	strncpy(url, base, strlen(base));
 	strncat(url, word, strlen(word));
 	return url;
@@ -159,6 +163,7 @@ char *construct_url(char *word)
 char *construct_filename(char *word)
 {
 	char *filename = malloc((strlen(word) + 11) * sizeof(char));
+	memset(filename, 0, strlen(word) + 11);
 	strncpy(filename, "cache/", 6);
 	strncat(filename, word, strlen(word));
 	strncat(filename, ".xml", 4);
@@ -172,8 +177,6 @@ void print_help()
 
 int get_xml(char *word, char *filename)
 {
-	//printf("debug get_xml\n");
-	
 	char *url = construct_url(word);
 	CURL *curl_handle;
 	FILE *xml_file;
@@ -181,7 +184,7 @@ int get_xml(char *word, char *filename)
 	curl_global_init(CURL_GLOBAL_ALL);
 	curl_handle = curl_easy_init();
 	curl_easy_setopt(curl_handle, CURLOPT_URL, url);
-	
+	//printf("debug %s\n", word);
 	//printf("debug %s\n", url);
 	
 	//debug output
