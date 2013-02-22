@@ -23,17 +23,12 @@ void show_wordbook()
 	print_db_error(ret);
 	
 	init_DBT(&key, &data);
-	key.data = word_str;
-	key.size = MAX_WORD_LENGTH;
-	key.flags = DB_DBT_USERMEM;
-	
-	data.data = w;
-	data.ulen = sizeof(word_t);
-	data.flags = DB_DBT_USERMEM;
 	
 	while((ret = cur->get(cur, &key, &data, DB_NEXT)) == 0)
 	{
+		w = data.data;
 		print_result(w);
+		printf("\n");
 	}
 	
 	cur->close(cur);
