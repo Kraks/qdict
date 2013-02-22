@@ -1,34 +1,34 @@
 qdict
 =====
 
-version 0.02
+version 0.1
 
-A simple network English-Chinese dictionary and named from "quick dict".
+A fast, simple English-Chinese dictionary.
 
-Need network connection and then qdict get xml data file from Youdao webdict service.
+Need network and Youdao dictionary web service for query, and then will save the translation to local db.
 
-Thanks for libcurl and mini-xml.
+Use Berkeley DB, libcurl and mini-XML library.
 
 Usage
 -----
+qdict [word] [+]  
+add [+] at the end of query content, will add the translation into wordbook  
+-i, --interactive  
+-w, --wordbook  
+-h, --help  
 
-	./qdict [word]
-
-	interactive mode:
-		./qdict -i
-		
-		
-history
+History
 -----
+version 0.1  
+new code construction  
+add local berkeley db cache  
+psersonal wordbook  
+fixed the phrases query function  
 
-version 0.02:
+version 0.02  
+could query phrases and its translation  
+local xml file cache
 
-	could query phrases translation.
-	
-	fix bugs.
-	
-version 0.01:
+version 0.01  
+could query basic word translation from youdao dict web service.
 
-	could query word translation from youdao webdict service.
-	
-	with interactive mode.
