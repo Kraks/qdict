@@ -61,11 +61,14 @@ void query(char *word_str, int save_to_wordbook)
 
 	if (save_to_wordbook)
 		save_to_db(w, DB_WORDBOOK);
-		
+
+#ifdef DEBUG		
 	if (is_in_db(trimed_word, DB_WORDBOOK))
 		printf("DEBUG: query() %s is in %s\n", trimed_word, DB_WORDBOOK);
 	else 
 		printf("DEBUG: query() %s is NOT %s\n", trimed_word, DB_WORDBOOK);
+#endif
+
 	print_result(w);
 	
 	// XXX
@@ -74,6 +77,12 @@ void query(char *word_str, int save_to_wordbook)
 
 void print_help()
 {
+	printf("Usage: qdict [word] [+]\n");
+	printf("add [+] at the end of query content, could add the word and its translation into wordbook\n");
+	printf("\
+-w, --wordbook       Show word book\n\
+-i, --interactive    Enter interactive to query work or phrases\n\
+-h, --help           Print this help information\n");
 	
 }
 
