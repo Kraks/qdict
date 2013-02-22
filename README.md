@@ -19,11 +19,17 @@ qdict [word] [+]
 
 History
 -----
-version 0.02
-  could query phrases and its translation
+version 0.1
+new code construction  
+add local berkeley db cache  
+psersonal wordbook  
 
-version 0.01
-  could query basic word translation from youdao dict web service.
+version 0.02  
+could query phrases and its translation  
+local xml cache
+
+version 0.01  
+could query basic word translation from youdao dict web service.
 
 
 
