@@ -2,6 +2,7 @@
  * Filename: qdict.c
  * Author: Kraks <kiss.kraks@gmail.com>
  */
+
 #include "global.h"
 #include "qdict.h"
 #include "utils.h"
