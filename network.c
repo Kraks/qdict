@@ -1,3 +1,8 @@
+/*
+ * Filename: network.c
+ * Author: Kraks <kiss.kraks@gmail.com>
+ */
+
 #include "global.h"
 #include "network.h"
 #include "utils.h"

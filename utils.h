@@ -1,3 +1,8 @@
+/*
+ * Filename: utils.h
+ * Author: Kraks <kiss.kraks@gmail.com>
+ */
+
 int get_ws_count(char *str);
 char *trim(char *str);
 char *k_strcat(char *dest, char *src);

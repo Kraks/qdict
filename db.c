@@ -1,3 +1,7 @@
+/*
+ * Filename: db.c
+ * Author: Kraks <kiss.kraks@gmail.com>
+ */
 
 #include "global.h"
 #include "db.h"

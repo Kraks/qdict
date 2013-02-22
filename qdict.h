@@ -1,3 +1,7 @@
+/*
+ * Filename: qdict.h
+ * Author: Kraks <kiss.kraks@gmail.com>
+ */
 #define SAVE_TO_WORDBOOK 1
 #define NOT_SAVE_TO_WORDBOOK 0
 

@@ -1,3 +1,8 @@
+/*
+ * Filename: utils.c
+ * Author: Kraks <kiss.kraks@gmail.com>
+ */
+
 #include "utils.h"
 #include "global.h"
 int get_ws_count(char *str)

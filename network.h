@@ -1,3 +1,8 @@
+/*
+ * Filename: network.h
+ * Author: Kraks <kiss.kraks@gmail.com>
+ */
+
 struct MemoryStruct {
   char *memory;
   size_t size;
