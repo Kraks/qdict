@@ -83,7 +83,7 @@ void interactive()
 	int whitespace_count;
 	char c;
 	char *buf;
-	char **phrases;
+	char **phrases = NULL;
 	
 	buf = malloc(MAX_WORD_LENGTH * sizeof(char));
 	printf(">> ");

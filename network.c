@@ -41,10 +41,10 @@ word_t *query_from_network(char *word_str, word_t *w)
 	
 	w = resolve_youdao_xml((char *)chunk.memory, w);
 
-	//curl_global_cleanup();
 	if(chunk.memory)
 		free(chunk.memory);
 
+	curl_global_cleanup();
 	return w;
 }
 
@@ -63,7 +63,7 @@ word_t *resolve_youdao_xml(char *xml, word_t *w)
 	mxml_node_t *tree;
 	mxml_node_t *node;
 	
-	if (w == NULL)
+	if (w == NULL || xml == NULL)
 		return NULL;
 
 	tree = mxmlLoadString(NULL, xml, youdao_callback);
