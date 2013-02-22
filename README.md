@@ -12,10 +12,10 @@ Use Berkeley DB, libcurl and mini-XML library.
 Usage
 -----
 
-qdict [word] [+]
--i, --interactive
--w, --wordbook
--h, --help
+qdict [word] [+]  
+-i, --interactive  
+-w, --wordbook  
+-h, --help  
 
 History
 -----
