@@ -24,10 +24,11 @@ version 0.1
 new code construction  
 add local berkeley db cache  
 psersonal wordbook  
+fixed the phrases query function  
 
 version 0.02  
 could query phrases and its translation  
-local xml cache
+local xml file cache
 
 version 0.01  
 could query basic word translation from youdao dict web service.
