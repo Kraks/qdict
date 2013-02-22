@@ -13,13 +13,14 @@ Usage
 -----
 
 qdict [word] [+]  
+add [+] at the end of query content, will add the translation into wordbook  
 -i, --interactive  
 -w, --wordbook  
 -h, --help  
 
 History
 -----
-version 0.1
+version 0.1  
 new code construction  
 add local berkeley db cache  
 psersonal wordbook  
