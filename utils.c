@@ -74,6 +74,7 @@ char *join(int num, char **phrases, char *separator)
 char *process_cdata(char *cdata)
 {
 	char *dest = malloc((strlen(cdata) - 9) * sizeof(char));
+	memset(dest, 0, strlen(cdata)-9);
 	int i, j = 0; 
 	for (i = 8; i < strlen(cdata)-2; i++)
 		dest[j++] = cdata[i];

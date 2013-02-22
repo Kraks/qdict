@@ -95,7 +95,9 @@ void interactive()
 			buf[i++] = c;
 		buf[i] = '\0';
 		buf = trim(buf);
-
+#ifdef DEBUG
+		printf("DEBUG: interactive() query %s\n", buf);
+#endif
 		if (strstr(buf, WHITESPACE)) {
 			whitespace_count = get_ws_count(buf);
 			phrases = split(whitespace_count + 1, buf);
