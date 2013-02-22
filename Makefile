@@ -1,5 +1,4 @@
 qdict:main.o utils.o network.o db.o
-	rm -r -f *.db
 	gcc -o qdict main.o utils.o network.o db.o -g -I/usr/local/include -L/usr/local/lib -lcurl -D_THREAD_SAFE -D_REENTRANT -I/usr/local/include -L/usr/local/lib -lmxml -ldb -lpthread -Wall
 
 main.o:qdict.c qdict.h
