@@ -120,6 +120,9 @@ void save_to_db(word_t *w, char *db_name)
  
 	data.data = w;
 	data.size = sizeof(word_t);
+#ifdef DEBUG
+	printf("DEBUG save_to_db() %s will save to %s\n", (char *) data.data, db_name);
+#endif
 	
 	ret = dbp->put(dbp, NULL, &key, &data, DB_OVERWRITE_DUP); 
 	print_db_error(ret);

@@ -44,7 +44,7 @@ word_t *query_from_network(char *word_str, word_t *w)
 	if(chunk.memory)
 		free(chunk.memory);
 
-	curl_global_cleanup();
+	//curl_global_cleanup();
 	return w;
 }
 
