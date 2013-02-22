@@ -20,10 +20,10 @@ qdict [word] [+]
 History
 -----
 version 0.02
-	could query phrases and its translation
+  could query phrases and its translation
 
 version 0.01
-	could query basic word translation from youdao dict web service.
+  could query basic word translation from youdao dict web service.
 
 
 
