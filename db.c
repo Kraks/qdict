@@ -57,17 +57,24 @@ int is_in_db(char *word_str, char *db_name)
 	key.size = strlen(word_str)+1;
 
 	ret = dbp->exists(dbp, NULL, &key, 0);
-	
-	printf("%d\n", ret);
+
+#ifdef DEBUG
+	printf("DEBUG: is_in_db() ret: %d\n", ret);
+#endif
+
 	if(dbp != NULL)
     	dbp->close(dbp, 0); 
 
 	if (ret == DB_NOTFOUND) {
-		printf("DEBUG: %s is NOT in %s\n", word_str, db_name);
+#ifdef DEBUG
+		printf("DEBUG: is_in_db() %s is NOT in %s\n", word_str, db_name);
+#endif
 		return FALSE;
 	}
 	else {
-		printf("DEBUG: %s is in %s\n", word_str, db_name);
+#ifdef DEBUG
+		printf("DEBUG: is_in_db() %s is in %s\n", word_str, db_name);
+#endif
 		return TRUE;
 	}
 }

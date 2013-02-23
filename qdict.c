@@ -63,13 +63,6 @@ void query(char *word_str, int save_to_wordbook)
 	if (save_to_wordbook)
 		save_to_db(w, DB_WORDBOOK);
 
-#ifdef DEBUG		
-	if (is_in_db(trimed_word, DB_WORDBOOK))
-		printf("DEBUG: query() %s is in %s\n", trimed_word, DB_WORDBOOK);
-	else 
-		printf("DEBUG: query() %s is NOT %s\n", trimed_word, DB_WORDBOOK);
-#endif
-
 	print_result(w);
 	
 	// XXX
