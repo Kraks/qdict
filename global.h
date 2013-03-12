@@ -15,7 +15,7 @@
 
 #define MAX_WORD_LENGTH 32
 #define MAX_PHONETIC_LENGTH 32
-#define MAX_TRANSLATION_LENGTH 128
+#define MAX_TRANSLATION_LENGTH 256
 
 typedef struct WORD {
 	char original[MAX_WORD_LENGTH];
