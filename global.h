@@ -32,3 +32,4 @@ word_t *clone_word_t(word_t *w);
 #define FALSE 0
 
 #define DEBUG
+#undef DEBUG
