@@ -89,9 +89,11 @@ static kstr makeRoomForKstr(kstr s, size_t addlen)
 void dumpKstr(kstr s)
 {
 	struct s_kstr *k = (void *) (s-(sizeof(struct s_kstr)));
+	printf("===========================\n");
 	printf("orignial string: %s\n", (char *) (k->buf));
 	printf("kstr len: %d\n", k->len);
 	printf("kstr free: %d\n", k->free);
+	printf("===========================\n");
 }
 
 #define DEBUG
