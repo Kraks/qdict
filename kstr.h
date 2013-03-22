@@ -10,13 +10,16 @@ struct s_kstr {
 
 typedef char *kstr;
 
-kstr __newKstr(const void *init, size_t initlen);
-kstr newEmptyKstr(void);
-kstr newKstr(const char *init);
-void updateKstrLen(kstr s);
-void clearKstr(kstr s);
-kstr dupKstr(const kstr s);
-void freeKstr(kstr s);
+kstr __kstrNew(const void *init, size_t initlen);
+kstr kstrNewEmpty(void);
+kstr kstrNew(const char *init);
+kstr __kstrCat(kstr s, void *t, size_t len);
+kstr kstrCatKstr(kstr s, kstr t);
+kstr kstrCatStr(kstr s, char *t);
+void kstrUpdateLen(kstr s);
+void kstrClear(kstr s);
+kstr kstrDup(const kstr s);
+void kstrFree(kstr s);
 int kstrlen(const kstr s);
-static kstr makeRoomForKstr(kstr s, size_t addlen);
+static kstr kstrMakeRoom(kstr s, size_t addlen);
 void dumpKstr(kstr s);

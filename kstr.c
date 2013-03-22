@@ -6,7 +6,7 @@
 #include <string.h>
 #include "kstr.h"
 
-kstr __newKstr(const void *init, size_t initlen)
+kstr __kstrNew(const void *init, size_t initlen)
 {
 	struct s_kstr *k;
 	k = malloc(sizeof(struct s_kstr) + initlen +1);
@@ -22,18 +22,45 @@ kstr __newKstr(const void *init, size_t initlen)
 	return (char *)k->buf;
 }
 
-kstr newEmptyKstr(void)
+kstr kstrNewEmpty(void)
 {
-	return __newKstr("", 0);
+	return __kstrNew("", 0);
 }
 
-kstr newKstr(const char *init)
+kstr kstrNew(const char *init)
 {
 	size_t initlen = (init == NULL) ? 0 : strlen(init);
-	return __newKstr(init, initlen);
+	return __kstrNew(init, initlen);
 }
 
-void updateKstrLen(kstr s)
+kstr __kstrCat(kstr s, void *t, size_t len)
+{
+	struct s_kstr *k;
+	size_t cur_len = kstrlen(s);
+
+	s = kstrMakeRoom(s, len);
+	if (s == NULL)
+		return NULL;
+
+	k = (void *) (s-(sizeof(struct s_kstr)));
+	memcpy(s+cur_len, t, len);
+	k->len = cur_len + len;
+	k->free = k->free - len;
+	s[cur_len + len] = '\0';
+	return s;
+}
+
+kstr kstrCatKstr(kstr s, kstr t)
+{
+	return __kstrCat(s, t, kstrlen(t));
+}
+
+kstr kstrCatStr(kstr s, char *t)
+{
+	return __kstrCat(s, t, strlen(t));
+}
+
+void kstrUpdateLen(kstr s)
 {
 	struct s_kstr *k = (void *) (s-(sizeof(struct s_kstr)));
 	int reallen = strlen(s);
@@ -41,7 +68,7 @@ void updateKstrLen(kstr s)
 	k->len = reallen;
 }
 
-void clearKstr(kstr s)
+void kstrClear(kstr s)
 {
 	struct s_kstr *k = (void *) (s-(sizeof(struct s_kstr)));
 	k->free += k->len;
@@ -49,12 +76,12 @@ void clearKstr(kstr s)
 	k->buf[0] = '\0';
 }
 
-kstr dupKstr(const kstr s)
+kstr kstrDup(const kstr s)
 {
-	return __newKstr(s, kstrlen(s));
+	return __kstrNew(s, kstrlen(s));
 }
 
-void freeKstr(kstr s)
+void kstrFree(kstr s)
 {
 	if (s == NULL)
 		return;
@@ -68,7 +95,7 @@ int kstrlen(const kstr s)
 }
 
 // WHY STATIC ?
-static kstr makeRoomForKstr(kstr s, size_t addlen) 
+static kstr kstrMakeRoom(kstr s, size_t addlen) 
 {
 	struct s_kstr *k, *newk, *t;
 	k = (void *) (s-(sizeof(struct s_kstr)));
@@ -101,8 +128,12 @@ void dumpKstr(kstr s)
 #ifdef DEBUG
 int main(int argc, char **argv)
 {
-	kstr s = newKstr("Hello World");
-	dumpKstr(s);
+	kstr s1 = kstrNew("Hello World");
+	kstr s2 = kstrNew("\nThis is just a string test");
+	dumpKstr(s1);
+	dumpKstr(s2);
+	s2 = kstrCatKstr(s1, s2);
+	dumpKstr(s2);
 	return 0;
 }
 #endif
