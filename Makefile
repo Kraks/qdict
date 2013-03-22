@@ -23,3 +23,7 @@ cleandb:
 
 statistic:
 	find -name "*.H" -or -name "*.cpp" -or -name "*.c" -or -name "*.h" | xargs wc -l
+
+
+kstrtest:
+	gcc -o kstr_test kstr.c
