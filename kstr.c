@@ -209,6 +209,20 @@ void kstrToUpper(kstr s)
 		s[j] = toupper(s[j]);
 }
 
+int kstrCmp(kstr a, kstr b)
+{
+	size_t l1, l2, minlen;
+	int cmp;
+
+	l1 = kstrlen(a);
+	l2 = kstrlen(b);
+	minlen = (l1 < l2) ? l1 : l2;
+	cmp = memcmp(a, b, minlen);
+	if (cmp == 0)
+		return l1-l2;
+	return cmp;
+}
+
 void dumpKstr(kstr s)
 {
 	struct s_kstr *k = (void *) (s-(sizeof(struct s_kstr)));
