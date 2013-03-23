@@ -107,10 +107,54 @@ static kstr kstrMakeRoom(kstr s, size_t addlen)
 		return s;
 
 	len = kstrlen(s);
-	newlen = (len+addlen) * 2;
+	newlen = (len+addlen) * 2; // XXX
 	newk = realloc(k, sizeof(struct s_kstr) + newlen + 1);
 	newk->free = newlen - len;
 	return newk->buf;
+}
+
+// Make a kstr have the lenght of 'len'
+kstr kstrGrow(kstr s, size_t len) 
+{
+	struct s_kstr *k = (void *) (s-(sizeof(struct s_kstr)));
+	size_t total_len, cur_len = k->len;
+
+	if (len <= cur_len)
+		return s;
+	s = kstrMakeRoom(s, len - cur_len);
+	if (s == NULL)
+		return NULL;
+	
+	k = (void *) (s-(sizeof(struct s_kstr)));
+	memset(s+cur_len, 0, (len-cur_len+1));
+	total_len = k->len + k->free;
+	k->len = len;
+	k->free = total_len - k->len;
+	return s;
+}
+
+kstr __kstrCpy(kstr s, char *t, size_t len)
+{
+	struct s_kstr *k = (void *) (s-(sizeof(struct s_kstr)));
+	size_t total_len = k->len + k->free;
+
+	if (total_len < len) {
+		s = kstrMakeRoom(s, len - k->len);
+		if (s == NULL)
+			return NULL;
+		k = (void *) (s-(sizeof(struct s_kstr)));
+		total_len = k->free + k->len;
+	}
+	memcpy(s, t, len);
+	s[len] = '\0';
+	k->len = len;
+	k->free = total_len - len;
+	return s;
+}
+
+kstr kstrCpy(kstr s, char *t)
+{
+	return __kstrCpy(s, t, strlen(t));
 }
 
 void dumpKstr(kstr s)
