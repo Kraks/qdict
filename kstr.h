@@ -27,7 +27,6 @@ kstr __kstrCpy(kstr s, char *t, size_t len);
 kstr kstrCpy(kstr s, char *t);
 kstr kstrCatVprintf(kstr s, const char *fmt, va_list ap);
 kstr kstrCatPrintf(kstr s, const char *fmt, ...);
-kstr kstrCatPrintf(kstr s, const char *fmt, ...);
 void kstrToUpper(kstr s);
 int kstrCmp(kstr a, kstr b);
 void dumpKstr(kstr s);
