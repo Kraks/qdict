@@ -195,6 +195,20 @@ kstr kstrCatPrintf(kstr s, const char *fmt, ...)
 	return t;
 }
 
+void kstrToLower(kstr s)
+{
+	int j, len = kstrlen(s);
+	for (j = 0; j < len; j++)
+		s[j] = tolower(s[j]);
+}
+
+void kstrToUpper(kstr s)
+{
+	int j, len = kstrlen(s);
+	for (j = 0; j < len; j++)
+		s[j] = toupper(s[j]);
+}
+
 void dumpKstr(kstr s)
 {
 	struct s_kstr *k = (void *) (s-(sizeof(struct s_kstr)));
