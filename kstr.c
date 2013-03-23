@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+#include <stdarg.h>
 #include "kstr.h"
 
 kstr __kstrNew(const void *init, size_t initlen)
@@ -155,6 +157,42 @@ kstr __kstrCpy(kstr s, char *t, size_t len)
 kstr kstrCpy(kstr s, char *t)
 {
 	return __kstrCpy(s, t, strlen(t));
+}
+
+kstr kstrCatVprintf(kstr s, const char *fmt, va_list ap)
+{
+	va_list cpy;
+	char *buf, *t;
+	size_t buflen = 16;
+
+	while (1) {
+		buf = malloc(buflen);
+		if (buf == NULL)
+			return NULL;
+
+		buf[buflen - 2] = '\0';
+		va_copy(cpy, ap);
+		vsnprintf(buf, buflen, fmt, cpy);
+		if (buf[buflen -2] != '\0') {
+			free(buf);
+			buflen *= 2;
+			continue;
+		}
+		break;
+	}
+	t = kstrCatStr(s, buf);
+	free(buf);
+	return t;
+}
+
+kstr kstrCatPrintf(kstr s, const char *fmt, ...)
+{
+	va_list ap;
+	char *t;
+	va_start(ap, fmt);
+	t = kstrCatVprintf(s, fmt, ap);
+	va_end(ap);
+	return t;
 }
 
 void dumpKstr(kstr s)
