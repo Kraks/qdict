@@ -234,7 +234,7 @@ void dumpKstr(kstr s)
 }
 
 #define DEBUG
-
+#undef DEBUG
 #ifdef DEBUG
 int main(int argc, char **argv)
 {
