@@ -3,12 +3,16 @@
  * Author: Kraks <kiss.kraks@gmail.com>
  */
 
+
 #undef NEW_VERSION
-#define DEBUG
 #ifdef NEW_VERSION
+
+#define DEBUG
 #include <stdio.h>
 #include "kstr.h"
 #include "global.h"
+
+#define BUFFER_SZ 255
 
 void praseArgs(int argc, char **argv)
 {
@@ -61,7 +65,27 @@ void query(kstr word, int saveToWordbook)
 
 void interactive(void)
 {
-
+	char buf[BUFFER_SZ];
+	kstr word;
+	printf(">> ");
+	
+	while (strcmp((buf = fgets(buf, BUFFER_SZ, stdin)), "exit")) {
+		word = kstrNew(buf);
+		kstrTrim(word);
+		// 词组中有多个空格如何查询？
+		//if (kstrKstr(word, WHITESPACE)) {
+		if (kstrKstr(word, "+") == lastPostion) {
+			// word[0: lastPostion-2] and save to wordbook
+			
+		}
+		else {
+			query(word, NOT_SAVE_TO_WORDBOOK);
+		}
+		printf(">> ");
+		memset(buf, 0, BUFFER_SZ);
+		kstrFree(word);
+	}
+	exit(0);
 }
 
 void printWordType(word_t w)
