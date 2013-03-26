@@ -37,7 +37,10 @@ void prase_args(int argc, char **argv)
 	}
 }
 
+void query(kstr word, int save_to_wordbook)
+{
 
+}
 
 #endif
 

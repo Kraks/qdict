@@ -33,3 +33,11 @@ word_t *clone_word_t(word_t *w);
 
 #define DEBUG
 #undef DEBUG
+
+#ifdef NEW_VERSION
+typedef struct {
+	kstr original;
+	kstr phonetic;
+	kstr translation;
+} word_t;
+#endif
