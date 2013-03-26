@@ -233,7 +233,8 @@ kstr kstrJoinWithStr(int count, char **array, char *separator)
 
 	for (i = 0; i < count; i++) {
 		k = kstrCatStr(k, array[i]);
-		k = kstrCatStr(k, separator);
+		if (i != count-1)
+			k = kstrCatStr(k, separator);
 	}
 
 	return k;
