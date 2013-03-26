@@ -249,6 +249,12 @@ void dumpKstr(kstr s)
 	printf("===========================\n");
 }
 
+void dumpKstr2(kstr s)
+{
+	printf("dumpKstrSrc:");
+	printf("%s", (char *) s);
+}
+
 #define DEBUG
 #ifdef DEBUG
 int main(int argc, char **argv)
@@ -262,6 +268,7 @@ int main(int argc, char **argv)
 	kstr s3;
 	s3 = kstrJoinWithStr(argc-1, argv+1, " ");
 	dumpKstr(s3);
+	dumpKstr2(s3);
 	return 0;
 }
 #endif
