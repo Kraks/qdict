@@ -93,7 +93,10 @@ void kstrFree(kstr s)
 
 int kstrlen(const kstr s)
 {
-	return strlen((char *) s);
+	struct s_kstr *k;
+	k = (void *) (s-(sizeof(struct s_kstr)));
+	return k->len;
+	//return strlen((char *) s);
 }
 
 // WHY STATIC ?
@@ -223,6 +226,19 @@ int kstrCmp(kstr a, kstr b)
 	return cmp;
 }
 
+kstr kstrJoinWithStr(int count, char **array, char *separator)
+{
+	kstr k = kstrNewEmpty();
+	int i;
+
+	for (i = 0; i < count; i++) {
+		k = kstrCatStr(k, array[i]);
+		k = kstrCatStr(k, separator);
+	}
+
+	return k;
+}
+
 void dumpKstr(kstr s)
 {
 	struct s_kstr *k = (void *) (s-(sizeof(struct s_kstr)));
@@ -234,7 +250,6 @@ void dumpKstr(kstr s)
 }
 
 #define DEBUG
-#undef DEBUG
 #ifdef DEBUG
 int main(int argc, char **argv)
 {
@@ -244,6 +259,9 @@ int main(int argc, char **argv)
 	dumpKstr(s2);
 	s2 = kstrCatKstr(s1, s2);
 	dumpKstr(s2);
+	kstr s3;
+	s3 = kstrJoinWithStr(argc-1, argv+1, " ");
+	dumpKstr(s3);
 	return 0;
 }
 #endif
