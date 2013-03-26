@@ -4,13 +4,13 @@
  */
 
 #undef NEW_VERSION
+#define DEBUG
 #ifdef NEW_VERSION
 #include <stdio.h>
 #include "kstr.h"
+#include "global.h"
 
-#define DEBUG
-
-void prase_args(int argc, char **argv)
+void praseArgs(int argc, char **argv)
 {
 	kstr buf = kstrNewEmpty();
 #ifdef DEBUG
@@ -26,10 +26,12 @@ void prase_args(int argc, char **argv)
 	}
 	else if (argc >= 2 && strcmp(argv[argc-1], "+")) {
 		buf = kstrJoinWithStr(argc, argv, WHITESPACE);
+		kstrTrim(buf);
 		query(buf, NOT_SAVE_TO_WORDBOOK);
 	}
 	else if (argc > 2 && !strcmp(argv[argc-1], "+")) {
 		buf = kstrJoinWithStr(argc-1, argv, WHITESPACE);
+		kstrTrim(buf);
 		query(buf, SAVE_TO_WORDBOOK);
 	}
 	else {
@@ -37,9 +39,52 @@ void prase_args(int argc, char **argv)
 	}
 }
 
-void query(kstr word, int save_to_wordbook)
+void query(kstr word, int saveToWordbook)
+{
+	word_t w;
+	initWordType(&w, word, NULL, NULL);
+	
+	if (isInDB(w, DB_CACHE)) {
+		queryInDB(w, DB_CACHE);
+	}
+	else {
+		queryFromNetwork(w);
+		saveToDB(w, DB_CACHE);
+	}
+
+	if (saveToWrdbook)
+		saveToDB(w, DB_WORDBOOK);
+
+	printWordType(w);
+	freeWordType(&w);
+}
+
+void interactive(void)
 {
 
+}
+
+void printWordType(word_t w)
+{
+	printKstr(w.original);
+	printf("\n");
+	printKstr(w.phonetic);
+	printf("\n");
+	printKstr(w.translation);
+}
+
+void initWordType(word_t *w, const char *o, const char *p, const char *t)
+{
+	w->original = kstrNew(o);
+	w->phonetic = kstrNew(p);
+	w->translation = kstrNew(t);
+}
+
+void freeWordType(word_t *w)
+{
+	kstrFree(w->original);
+	kstrFree(w->phonetic);
+	kstrFree(w->translation);
 }
 
 #endif
