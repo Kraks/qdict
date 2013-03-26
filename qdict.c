@@ -3,6 +3,47 @@
  * Author: Kraks <kiss.kraks@gmail.com>
  */
 
+#undef NEW_VERSION
+#ifdef NEW_VERSION
+#include <stdio.h>
+#include "kstr.h"
+
+#define DEBUG
+
+void prase_args(int argc, char **argv)
+{
+	kstr buf = kstrNewEmpty();
+#ifdef DEBUG
+	int i;
+	for (i = 0; i < argc; i++)
+		printf("DEBUG: parse_args(), argv[%d], %s\n", i, argv[i]);
+#endif
+	if (argc == 1) {
+		query(argv[0], NOT_SAVE_TO_WORDBOOK);
+	}
+	else if (argc == 2 && !strcmp(argv[1], "+")) {
+		query(argv[0], SAVE_TO_WORDBOOK);
+	}
+	else if (argc >= 2 && strcmp(argv[argc-1], "+")) {
+		buf = kstrJoinWithStr(argc, argv, WHITESPACE);
+		query(buf, NOT_SAVE_TO_WORDBOOK);
+	}
+	else if (argc > 2 && !strcmp(argv[argc-1], "+")) {
+		buf = kstrJoinWithStr(argc-1, argv, WHITESPACE);
+		query(buf, SAVE_TO_WORDBOOK);
+	}
+	else {
+		printf("--^_^--\n");
+	}
+}
+
+
+
+#endif
+
+#define USE_OLD_VERSION
+#ifdef USE_OLD_VERSION
+
 #include "global.h"
 #include "qdict.h"
 #include "utils.h"
@@ -172,3 +213,5 @@ int main(int argc, char **argv)
 		prase_args(argc-1, argv+1);
 	}
 }
+
+#endif
