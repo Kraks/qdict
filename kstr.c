@@ -240,6 +240,11 @@ kstr kstrJoinWithStr(int count, char **array, char *separator)
 	return k;
 }
 
+void printKstr(kstr s)
+{
+	printf("%s", (char *)s);
+}
+
 void dumpKstr(kstr s)
 {
 	struct s_kstr *k = (void *) (s-(sizeof(struct s_kstr)));

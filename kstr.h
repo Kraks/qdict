@@ -30,5 +30,6 @@ kstr kstrCatPrintf(kstr s, const char *fmt, ...);
 void kstrToUpper(kstr s);
 int kstrCmp(kstr a, kstr b);
 kstr kstrJoinWithStr(int count, char **array, char *separator);
+void printKstr(kstr s);
 void dumpKstr(kstr s);
 void dumpKstr2(kstr s);
