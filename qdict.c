@@ -81,7 +81,12 @@ void interactive(void)
 
 void printHelp(void)
 {
-	printf("");
+	printf(" usage: qdict [word] [+]\n");
+	printf(" the last [+] optional symbol means add the word to wordbook.\n");
+	printf(" other optional:\n");
+	printf(" -w, --wordbook       show the wordbook\n");
+	printf(" -i, --interactive    enter interactive mode to query\n");
+	printf(" -h, --help           print this help information\n");
 }
 
 void printWordType(word_t w)

@@ -54,6 +54,21 @@ char **split(int n, char *str)
 	return t;
 }
 
+char **__split(char *buf, int *count)
+{
+	int wsCount = 0;
+	int count = 0;
+	char **str;
+
+	for ( ; buf == 0x20; buf++);
+
+	for (i = 0; i < len; i++) {
+
+	}
+}
+
+
+
 char *join(int num, char **phrases, char *separator)
 {
 	int i, phrase_whole_len = 0;
