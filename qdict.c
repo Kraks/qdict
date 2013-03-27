@@ -79,6 +79,11 @@ void interactive(void)
 	exit(0);
 }
 
+void printHelp(void)
+{
+	printf("");
+}
+
 void printWordType(word_t w)
 {
 	printKstr(w.original);
