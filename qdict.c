@@ -66,24 +66,15 @@ void query(kstr word, int saveToWordbook)
 void interactive(void)
 {
 	char buf[BUFFER_SZ];
-	kstr word;
+	char **argv;
+	int argc;
 	printf(">> ");
 	
 	while (strcmp((buf = fgets(buf, BUFFER_SZ, stdin)), "exit")) {
-		word = kstrNew(buf);
-		kstrTrim(word);
-		// 词组中有多个空格如何查询？
-		//if (kstrKstr(word, WHITESPACE)) {
-		if (kstrKstr(word, "+") == lastPostion) {
-			// word[0: lastPostion-2] and save to wordbook
-			
-		}
-		else {
-			query(word, NOT_SAVE_TO_WORDBOOK);
-		}
+		argv = split(buf, &argc);
+		prase_args(argc, argv);
 		printf(">> ");
 		memset(buf, 0, BUFFER_SZ);
-		kstrFree(word);
 	}
 	exit(0);
 }
