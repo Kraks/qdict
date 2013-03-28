@@ -3,11 +3,8 @@
  * Author: Kraks <kiss.kraks@gmail.com>
  */
 
-
-#undef NEW_VERSION
-#ifdef NEW_VERSION
-
 #define DEBUG
+
 #include <stdio.h>
 #include "kstr.h"
 #include "global.h"
@@ -130,5 +127,4 @@ int main(int argc, char *argv)
 	return 0;
 }
 
-#endif
 
