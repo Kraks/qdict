@@ -20,7 +20,7 @@ void praseArgs(int argc, char **argv)
 #ifdef DEBUG
 	int i;
 	for (i = 0; i < argc; i++)
-		printf("DEBUG: parse_args(), argv[%d], %s\n", i, argv[i]);
+		printf("DEBUG: prase_args(), argv[%d], %s\n", i, argv[i]);
 #endif
 	if (argc == 1) {
 		query(argv[0], NOT_SAVE_TO_WORDBOOK);
@@ -79,9 +79,9 @@ void interactive(void)
 	exit(0);
 }
 
-void printHelp(void)
+void printHelp(const char *name)
 {
-	printf(" usage: qdict [word] [+]\n");
+	printf(" usage: %s [word] [+]\n", name);
 	printf(" the last [+] optional symbol means add the word to wordbook.\n");
 	printf(" other optional:\n");
 	printf(" -w, --wordbook       show the wordbook\n");
@@ -110,6 +110,25 @@ void freeWordType(word_t *w)
 	kstrFree(w->original);
 	kstrFree(w->phonetic);
 	kstrFree(w->translation);
+}
+
+int main(int argc, char *argv)
+{
+	if (argc == 1 || 
+		!strcmp(argv[1], "-h") ||
+		!strcmp(argv[1], "--help")) {
+		printHelp(argv[0]);
+	}
+	else if (!strcmp(argv[1], "-w") || !strcmp(argv[1], "--wordbook")) {
+		showWordbook();
+	}
+	else if (!strcmp(argv[1], "-i") || !strcmp(argv[1], "--interactive")) {
+		interactive();
+	}
+	else {
+		praseArgs(argc-1, argv+1);
+	}
+	return 0;
 }
 
 #endif
