@@ -28,7 +28,8 @@ char *trim(char *str)
 	return NULL;
 }
 
-char **_split(char *str, int *count)
+// split the str into a two-d array
+char **split(char *str, int *count)
 {
 	char **t;
 	int i = 0, j, n = 0;
@@ -78,14 +79,14 @@ char *process_cdata(char *cdata)
 	return dest;
 }
 
-#define DEBUG
+#undef DEBUG
 #ifdef DEBUG
 int main(int argc, char **argv)
 {
 	char buf[] = "Hello world the big C";
 	int count = 0, i = 0;
 	char **result;
-	result = _split(buf, &count);
+	result = split(buf, &count);
 	printf("count: %d\n", count);
 	for (i = 0; i < count; i++)
 		printf("%s", result[i]);

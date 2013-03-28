@@ -6,8 +6,9 @@
 #include "global.h"
 #include "db.h"
 #include "utils.h"
+#include "kstr.h"
 
-void show_wordbook()
+void showWordbook()
 {
 	DB *dbp;         
 	DBC *cur;  
@@ -19,14 +20,14 @@ void show_wordbook()
 	char *word_str = (char *) malloc(sizeof(char) * MAX_WORD_LENGTH);
 	
 	ret = db_create(&dbp, NULL, 0);
-	print_db_error(ret);
+	printErrorDB(ret);
 	flags = DB_CREATE;
 	ret = dbp->open(dbp, NULL, "wordbook.db", NULL, DB_BTREE, flags, 0); 
-	print_db_error(ret);
+	printErrorDB(ret);
 	ret = dbp->cursor(dbp, NULL, &cur, 0);
-	print_db_error(ret);
+	printErrorDB(ret);
 	
-	init_DBT(&key, &data);
+	initDBT(&key, &data);
 	
 	while((ret = cur->get(cur, &key, &data, DB_NEXT)) == 0)
 	{
@@ -39,7 +40,7 @@ void show_wordbook()
 	dbp->close(dbp, 0);
 }
 
-int is_in_db(char *word_str, char *db_name)
+int isInDB(char *word_str, char *db_name)
 {
 	DB *dbp;           
 	DBT key, data;
@@ -47,11 +48,11 @@ int is_in_db(char *word_str, char *db_name)
 	int ret;
 	
 	ret = db_create(&dbp, NULL, 0);
-	print_db_error(ret);
+	printErrorDB(ret);
 	flags = DB_CREATE;
 	ret = dbp->open(dbp, NULL, db_name, NULL, DB_BTREE, flags, 0); 
-	print_db_error(ret);
-	init_DBT(&key, &data);
+	printErrorDB(ret);
+	initDBT(&key, &data);
 	
 	key.data = word_str;
 	key.size = strlen(word_str)+1;
@@ -72,7 +73,7 @@ int is_in_db(char *word_str, char *db_name)
 	}
 }
 
-void query_in_db(char *word_str, word_t *w, char *db_name)
+void queryInDB(char *word_str, word_t *w, char *db_name)
 {
 	DB *dbp;           
 	DBT key, data;
@@ -80,11 +81,11 @@ void query_in_db(char *word_str, word_t *w, char *db_name)
 	int ret;
 	
 	ret = db_create(&dbp, NULL, 0);
-	print_db_error(ret);
+	printErrorDB(ret);
 	flags = DB_CREATE;
 	ret = dbp->open(dbp, NULL, db_name, NULL, DB_BTREE, flags, 0); 
-	print_db_error(ret);
-	init_DBT(&key, &data);
+	printErrorDB(ret);
+	initDBT(&key, &data);
 	
 	key.size = strlen(word_str)+1;
 	key.data = word_str;
@@ -101,7 +102,7 @@ void query_in_db(char *word_str, word_t *w, char *db_name)
     
 }
 
-void save_to_db(word_t *w, char *db_name)
+void saveToDB(word_t *w, char *db_name)
 {
 	DB *dbp;           
 	DBT key, data;
@@ -109,11 +110,11 @@ void save_to_db(word_t *w, char *db_name)
 	int ret;
 	
 	ret = db_create(&dbp, NULL, 0);
-	print_db_error(ret);
+	printErrorDB(ret);
 	flags = DB_CREATE;
 	ret = dbp->open(dbp, NULL, db_name, NULL, DB_BTREE, flags, 0); 
-	print_db_error(ret);
-	init_DBT(&key, &data);
+	printErrorDB(ret);
+	initDBT(&key, &data);
 	
 	key.data = w->original;
 	key.size = strlen(w->original)+1;
@@ -125,19 +126,19 @@ void save_to_db(word_t *w, char *db_name)
 #endif
 	
 	ret = dbp->put(dbp, NULL, &key, &data, DB_OVERWRITE_DUP); 
-	print_db_error(ret);
+	printErrorDB(ret);
 	
 	if(dbp != NULL)
     	dbp->close(dbp, 0);
 }
 
-void print_db_error(int ret)
+void printErrorDB(int ret)
 {
 	if(ret != 0)
 		printf("ERROR: %s\n",db_strerror(ret));
 }
 
-void init_DBT(DBT * key, DBT * data)
+void initDBT(DBT * key, DBT * data)
 {
 	memset(key, 0, sizeof(DBT));
 	memset(data, 0, sizeof(DBT));
