@@ -7,14 +7,14 @@
 #include "network.h"
 #include "utils.h"
 
-word_t *query_from_network(char *word_str, word_t *w)
+word_t *queryFromNetwork(char *word_str, word_t *w)
 {
 	CURL *curl_handle;
-	char *url = youdao_dict_url(word_str);
+	char *url = youdaoDictUrl(word_str);
 	struct MemoryStruct chunk;
 	
 #ifdef DEBUG
-	printf("DEBUG: query_from_network() url: %s\n", url);
+	printf("DEBUG: queryFromNetwork() url: %s\n", url);
 #endif
 
 	chunk.memory = malloc(1);
@@ -30,7 +30,7 @@ word_t *query_from_network(char *word_str, word_t *w)
 	curl_easy_cleanup(curl_handle);
 
 #ifdef DEBUG
-	printf("DEBUG: query_from_network() %lu bytes retrieved\n", (long)chunk.size);
+	printf("DEBUG: queryFromNetwork() %lu bytes retrieved\n", (long)chunk.size);
 	FILE *fp;
 	fp = fopen("_debug_.xml", "w");
 	if (fp) {
@@ -39,7 +39,7 @@ word_t *query_from_network(char *word_str, word_t *w)
 	}
 #endif
 	
-	w = resolve_youdao_xml((char *)chunk.memory, w);
+	w = resolveYoudaoXML((char *)chunk.memory, w);
 
 	if(chunk.memory)
 		free(chunk.memory);
@@ -48,7 +48,7 @@ word_t *query_from_network(char *word_str, word_t *w)
 	return w;
 }
 
-char *youdao_dict_url(char *word)
+char *youdaoDictUrl(char *word)
 {
 	char base[] = "http://dict.youdao.com/fsearch?q=";
 	char *url = malloc((strlen(base) + strlen(word) + 1) * sizeof(char));
@@ -58,7 +58,7 @@ char *youdao_dict_url(char *word)
 	return url;
 }
 
-word_t *resolve_youdao_xml(char *xml, word_t *w)
+word_t *resolveYoudaoXML(char *xml, word_t *w)
 {
 	mxml_node_t *tree;
 	mxml_node_t *node;
@@ -66,7 +66,7 @@ word_t *resolve_youdao_xml(char *xml, word_t *w)
 	if (w == NULL || xml == NULL)
 		return NULL;
 
-	tree = mxmlLoadString(NULL, xml, youdao_callback);
+	tree = mxmlLoadString(NULL, xml, youdaoCallbackFunction);
 	node = mxmlFindElement(tree, tree, "return-phrase", NULL, NULL, MXML_DESCEND);
 	
 	if (node) {
@@ -94,7 +94,7 @@ word_t *resolve_youdao_xml(char *xml, word_t *w)
 	return w;
 }
 
-mxml_type_t youdao_callback(mxml_node_t *node)
+mxml_type_t youdaoCallbackFunction(mxml_node_t *node)
 {
 	const char *type;
 	if (node != NULL) {
