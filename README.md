@@ -21,9 +21,9 @@ History
 -----
 version 0.1  
 new code construction  
-add local berkeley db cache  
-psersonal wordbook  
-fixed the phrases query function  
+add local berkeleyDB as cache  
+add psersonal wordbook  
+fixed bugs in phrases query function 
 
 version 0.02  
 could query phrases and its translation  
