@@ -28,27 +28,16 @@ char *trim(char *str)
 	return NULL;
 }
 
-char *k_strcat(char *dest, char *src)
-{
-	return strncat(dest, src, strlen(src));
-}
-
-char *k_strcpy(char *dest, char *src)
-{
-	return strncpy(dest, src, strlen(src));
-}
-
 char **_split(char *str, int *count)
 {
 	char **t;
 	int i = 0, j, n = 0;
-	t = (char **) malloc (sizeof(char) * 255);
-	memset(t, 0, 255);
-	printf("%s\n", str);
+	t = (char **) malloc (sizeof(char) * QDICT_BUFFER_SZ);
+	memset(t, 0, QDICT_BUFFER_SZ);
 	while(*str != '\0') {
 		if (*str != '\0' && *str != 0x20) {
-			t[i] = (char *) malloc(255 * sizeof(char));
-			memset(t[i], 0, 255);
+			t[i] = (char *) malloc(QDICT_BUFFER_SZ * sizeof(char));
+			memset(t[i], 0, QDICT_BUFFER_SZ);
 			for (j = 0; *str != '\0' && *str != 0x20; str++) {
 				t[i][j++] = *str;
 			}
@@ -57,6 +46,7 @@ char **_split(char *str, int *count)
 		}
 		str++;
 	}
+	*count = i;
 	return t;
 }
 
@@ -96,7 +86,8 @@ int main(int argc, char **argv)
 	int count = 0, i = 0;
 	char **result;
 	result = _split(buf, &count);
-	for (i = 0; i < 5; i++)
+	printf("count: %d\n", count);
+	for (i = 0; i < count; i++)
 		printf("%s", result[i]);
 	return 0;
 }

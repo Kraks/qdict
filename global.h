@@ -40,4 +40,8 @@ typedef struct {
 	kstr phonetic;
 	kstr translation;
 } word_t;
+
+
+#define QDICT_BUFFER_SZ
+
 #endif
