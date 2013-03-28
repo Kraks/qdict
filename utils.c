@@ -38,36 +38,27 @@ char *k_strcpy(char *dest, char *src)
 	return strncpy(dest, src, strlen(src));
 }
 
-char **split(int n, char *str)
+char **_split(char *str, int *count)
 {
 	char **t;
-	int i, j, len = strlen(str);
-	t = (char **) malloc ((len + 1) * sizeof(char));
-	for (i = 0; i < n; i++) { 
-		t[i] = (char *) malloc(MAX_WORD_LENGTH * sizeof(char));
-		for (j = 0; *str != '\0' && *str != 0x20; str++) {
-			t[i][j++] = *str;
+	int i = 0, j, n = 0;
+	t = (char **) malloc (sizeof(char) * 255);
+	memset(t, 0, 255);
+	printf("%s\n", str);
+	while(*str != '\0') {
+		if (*str != '\0' && *str != 0x20) {
+			t[i] = (char *) malloc(255 * sizeof(char));
+			memset(t[i], 0, 255);
+			for (j = 0; *str != '\0' && *str != 0x20; str++) {
+				t[i][j++] = *str;
+			}
+			t[i][j] = '\0';
+			i++;
 		}
-		t[i][j] = '\0';
 		str++;
 	}
 	return t;
 }
-
-char **__split(char *buf, int *count)
-{
-	int wsCount = 0;
-	int count = 0;
-	char **str;
-
-	for ( ; buf == 0x20; buf++);
-
-	for (i = 0; i < len; i++) {
-
-	}
-}
-
-
 
 char *join(int num, char **phrases, char *separator)
 {
@@ -96,3 +87,17 @@ char *process_cdata(char *cdata)
 	dest[j] = '\0';
 	return dest;
 }
+
+#define DEBUG
+#ifdef DEBUG
+int main(int argc, char **argv)
+{
+	char buf[] = "Hello world the big C";
+	int count = 0, i = 0;
+	char **result;
+	result = _split(buf, &count);
+	for (i = 0; i < 5; i++)
+		printf("%s", result[i]);
+	return 0;
+}
+#endif
