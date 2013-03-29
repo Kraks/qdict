@@ -259,6 +259,7 @@ void dumpKstr2(kstr s)
 {
 	printf("dumpKstrSrc:");
 	printf("%s", (char *) s);
+	printf("\n");
 }
 
 #define DEBUG
@@ -275,6 +276,18 @@ int main(int argc, char **argv)
 	s3 = kstrJoinWithStr(argc-1, argv+1, " ");
 	dumpKstr(s3);
 	dumpKstr2(s3);
+
+	struct {
+		kstr a;
+		kstr b;
+	} s;
+
+	printf("S size %d\n", sizeof(s));
+	s.a = kstrNew("aaacaaaaaaaaaa");
+	s.b = kstrNew("bbbcaaaaaaaaaa");
+
+	printf("S size %d\n", sizeof(s));
+	printf("S len %d\n", kstrlen(s.a)+kstrlen(s.b));
 	return 0;
 }
 #endif
