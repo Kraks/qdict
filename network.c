@@ -6,11 +6,13 @@
 #include "global.h"
 #include "network.h"
 #include "utils.h"
+#include "kstr.h"
 
-word_t *queryFromNetwork(char *word_str, word_t *w)
+word_t *queryFromNetwork(word_t w)
 {
 	CURL *curl_handle;
-	char *url = youdaoDictUrl(word_str);
+	kstr word_str = w.original;
+	kstr url = youdaoDictUrl(word_str);
 	struct MemoryStruct chunk;
 	
 #ifdef DEBUG
@@ -22,7 +24,7 @@ word_t *queryFromNetwork(char *word_str, word_t *w)
 	curl_global_init(CURL_GLOBAL_ALL);
 
 	curl_handle = curl_easy_init();
-	curl_easy_setopt(curl_handle, CURLOPT_URL, url);
+	curl_easy_setopt(curl_handle, CURLOPT_URL, (char *)url);
 	curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
 	curl_easy_setopt(curl_handle, CURLOPT_WRITEDATA, (void *)&chunk);
 	curl_easy_setopt(curl_handle, CURLOPT_USERAGENT, "libcurl-agent/1.0");
@@ -48,14 +50,11 @@ word_t *queryFromNetwork(char *word_str, word_t *w)
 	return w;
 }
 
-char *youdaoDictUrl(char *word)
+kstr youdaoDictUrl(kstr word)
 {
-	char base[] = "http://dict.youdao.com/fsearch?q=";
-	char *url = malloc((strlen(base) + strlen(word) + 1) * sizeof(char));
-	memset(url, 0, (strlen(base) + strlen(word) + 1));
-	strncpy(url, base, strlen(base));
-	strncat(url, word, strlen(word));
-	return url;
+	kstr base = kstrNew("http://dict.youdao.com/fsearch?q=");
+	base = kstrCatKstr(base, word);
+	return base;
 }
 
 word_t *resolveYoudaoXML(char *xml, word_t *w)
@@ -70,23 +69,23 @@ word_t *resolveYoudaoXML(char *xml, word_t *w)
 	node = mxmlFindElement(tree, tree, "return-phrase", NULL, NULL, MXML_DESCEND);
 	
 	if (node) {
-		k_strcpy(w->original, process_cdata(node->child->value.opaque));
+		kstrCatStr(w->original, process_cdata(node->child->value.opaque));
 	}
 	
 	node = mxmlFindElement(tree, tree, "phonetic-symbol", NULL, NULL, MXML_DESCEND);
 	if (node && node->child) {
 
-		k_strcat(w->phonetic, node->child->value.text.string);
+		kstrCatStr(w->phonetic, node->child->value.text.string);
 	}
 
 	node = mxmlFindElement(tree, tree, "content", NULL, NULL, MXML_DESCEND);
 	if (node) {
-		k_strcpy(w->translation, process_cdata(node->child->value.opaque));
+		kstrCatStr(w->translation, process_cdata(node->child->value.opaque));
 		while (node) {
 			node = mxmlFindElement(node, tree, "content", NULL, NULL, MXML_DESCEND);
 			if (node) {
-				k_strcat(w->translation, "\n");
-				k_strcat(w->translation, process_cdata(node->child->value.opaque));
+				kstrCatStr(w->translation, "\n");
+				kstrCatStr(w->translation, process_cdata(node->child->value.opaque));
 			}
 		}
 	}
