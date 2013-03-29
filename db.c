@@ -40,7 +40,7 @@ void showWordbook()
 	dbp->close(dbp, 0);
 }
 
-int isInDB(char *word_str, char *db_name)
+int isInDB(word_t w, char *db_name)
 {
 	DB *dbp;           
 	DBT key, data;
@@ -54,8 +54,9 @@ int isInDB(char *word_str, char *db_name)
 	printErrorDB(ret);
 	initDBT(&key, &data);
 	
-	key.data = word_str;
-	key.size = strlen(word_str)+1;
+	kstr oriWord = w.original;
+	key.data = oriWord;
+	key.size = kstrlen(oriWord);
 
 	ret = dbp->exists(dbp, NULL, &key, 0);
 	
@@ -64,16 +65,14 @@ int isInDB(char *word_str, char *db_name)
     	dbp->close(dbp, 0); 
 
 	if (ret == DB_NOTFOUND) {
-		printf("DEBUG: %s is NOT in %s\n", word_str, db_name);
 		return FALSE;
 	}
 	else {
-		printf("DEBUG: %s is in %s\n", word_str, db_name);
 		return TRUE;
 	}
 }
 
-void queryInDB(char *word_str, word_t *w, char *db_name)
+void queryInDB(word_t *w, char *db_name)
 {
 	DB *dbp;           
 	DBT key, data;
@@ -87,12 +86,13 @@ void queryInDB(char *word_str, word_t *w, char *db_name)
 	printErrorDB(ret);
 	initDBT(&key, &data);
 	
-	key.size = strlen(word_str)+1;
-	key.data = word_str;
+	kstr oriWord = w->original;
+	key.data = oriWord;
+	key.size = kstrlen(oriWord);
 	key.flags = DB_DBT_USERMEM;
-	
+
 	data.data = w;
-	data.ulen = sizeof(word_t); 
+	data.ulen = sizeof(word_t); //XXX
 	data.flags = DB_DBT_USERMEM;
 	
 	dbp->get(dbp, NULL, &key, &data, 0);
@@ -102,7 +102,7 @@ void queryInDB(char *word_str, word_t *w, char *db_name)
     
 }
 
-void saveToDB(word_t *w, char *db_name)
+void saveToDB(word_t w, char *db_name)
 {
 	DB *dbp;           
 	DBT key, data;
@@ -116,14 +116,12 @@ void saveToDB(word_t *w, char *db_name)
 	printErrorDB(ret);
 	initDBT(&key, &data);
 	
-	key.data = w->original;
-	key.size = strlen(w->original)+1;
+	kstr oriWord = w.original;
+	key.data = oriWord;
+	key.size = kstrlen(oriWord);
  
 	data.data = w;
-	data.size = sizeof(word_t);
-#ifdef DEBUG
-	printf("DEBUG: save_to_db() %s will save to %s\n", (char *) key.data, db_name);
-#endif
+	data.size = kstrlen(w.original) + kstrlen(w.phonetic) + kstrlen(w.translation);
 	
 	ret = dbp->put(dbp, NULL, &key, &data, DB_OVERWRITE_DUP); 
 	printErrorDB(ret);
