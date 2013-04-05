@@ -12,19 +12,24 @@ using namespace std;
 
 void praseArgs(int argc, char **argv)
 {
-	kstr buf = kstrNewEmpty();
+	string buf;
+	int flag;
+
 #ifdef DEBUG
 	int i;
 	for (i = 0; i < argc; i++)
 		printf("DEBUG: prase_args(), argv[%d], %s\n", i, argv[i]);
 #endif
+
 	if (argc == 1) {
-		query(argv[0], NOT_SAVE_TO_WORDBOOK);
+		buf.asign(argv[0]);
+		flag = NOT_SAVE_TO_WORDBOOK;
 	}
 	else if (argc == 2 && !strcmp(argv[1], "+")) {
-		query(argv[0], SAVE_TO_WORDBOOK);
+		buf.assign(argv[0]);
+		flag = SAVE_TO_WORDBOOK;
 	}
-	else if (argc >= 2 && strcmp(argv[argc-1], "+")) {
+	else if (argc >= 2 && strcmp(argv[argc-1], "+")) {	
 		buf = kstrJoinWithStr(argc, argv, WHITESPACE);
 		query(buf, NOT_SAVE_TO_WORDBOOK);
 	}
@@ -35,6 +40,7 @@ void praseArgs(int argc, char **argv)
 	else {
 		printf("--^_^--\n");
 	}
+	query(buf, flag);
 }
 
 void query(string word, int saveToWordbook)
