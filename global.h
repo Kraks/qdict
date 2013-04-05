@@ -36,12 +36,12 @@ word_t *clone_word_t(word_t *w);
 
 #ifdef NEW_VERSION
 typedef struct {
-	kstr original;
-	kstr phonetic;
-	kstr translation;
+	string original;
+	string phonetic;
+	string translation;
 } word_t;
 
 
-#define QDICT_BUFFER_SZ
+#define QDICT_BUFFER_SZ 255
 
 #endif
