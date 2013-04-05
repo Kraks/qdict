@@ -37,7 +37,7 @@ void praseArgs(int argc, char **argv)
 	}
 }
 
-void query(kstr word, int saveToWordbook)
+void query(string word, int saveToWordbook)
 {
 	word_t w;
 	initWordType(&w, word, NULL, NULL);
@@ -73,9 +73,9 @@ void interactive(void)
 	exit(0);
 }
 
-void printHelp(const char *name)
+void printHelp(const string programm_name)
 {
-	printf(" usage: %s [word] [+]\n", name);
+	printf(" usage: %s [word] [+]\n", program_name);
 	printf(" the last [+] optional symbol means add the word to wordbook.\n");
 	printf(" other optional:\n");
 	printf(" -w, --wordbook       show the wordbook\n");
@@ -92,11 +92,11 @@ void printWordType(word_t w)
 	printKstr(w.translation);
 }
 
-void initWordType(word_t *w, const char *o, const char *p, const char *t)
+void initWordType(word_t *w, string o, string p, string t)
 {
-	w->original = kstrNew(o);
-	w->phonetic = kstrNew(p);
-	w->translation = kstrNew(t);
+	w->original = o;
+	w->phonetic = p;
+	w->translation = t;
 }
 
 void freeWordType(word_t *w)
