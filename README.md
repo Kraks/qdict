@@ -5,6 +5,7 @@ A fast, simple English-Chinese dictionary.
 
 Note:
 This is the c++ code version only for testing.
+I may would rewrite the whole code in cpp, and then merge to master branch.
 
 History
 -----
