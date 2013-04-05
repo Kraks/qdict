@@ -30,15 +30,16 @@ void praseArgs(int argc, char **argv)
 		flag = SAVE_TO_WORDBOOK;
 	}
 	else if (argc >= 2 && strcmp(argv[argc-1], "+")) {	
-		buf = kstrJoinWithStr(argc, argv, WHITESPACE);
-		query(buf, NOT_SAVE_TO_WORDBOOK);
+		buf = kstrJoinWithStr(argc, argv, WHITESPACE); // XXX
+		flag = NOT_SAVE_TO_WORDBOOK;
 	}
 	else if (argc > 2 && !strcmp(argv[argc-1], "+")) {
-		buf = kstrJoinWithStr(argc-1, argv, WHITESPACE);
-		query(buf, SAVE_TO_WORDBOOK);
+		buf = kstrJoinWithStr(argc-1, argv, WHITESPACE); // XXX
+		flag = SAVE_TO_WORDBOOK;
 	}
 	else {
 		printf("--^_^--\n");
+		exit(0);
 	}
 	query(buf, flag);
 }
@@ -98,13 +99,14 @@ void printWordType(word_t w)
 	printKstr(w.translation);
 }
 
-void initWordType(word_t *w, string o, string p, string t)
+void initWordType(word_t &w, string o, string p, string t)
 {
-	w->original = o;
-	w->phonetic = p;
-	w->translation = t;
+	w.original = o;
+	w.phonetic = p;
+	w.translation = t;
 }
 
+// May not need
 void freeWordType(word_t *w)
 {
 	kstrFree(w->original);
