@@ -42,6 +42,6 @@ typedef struct {
 } word_t;
 
 
-#define QDICT_BUFFER_SZ
+#define QDICT_BUFFER_SZ 255
 
 #endif
