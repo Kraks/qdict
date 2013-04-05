@@ -77,6 +77,19 @@ void interactive(void)
 		printf(">> ");
 		memset(buf, 0, QDICT_BUFFER_SZ);
 	}
+	// XXX
+	string buf;
+	string argv[];
+	while (cin >> buf) {
+		if (buf.empty())
+			continue;
+		if (buf.compare("exit"))
+			exit(0);
+		argv = split(buf, &argc); // LIST
+		prase_args(argc, argv);
+		cout << ">>";
+		buf.clear();
+	}
 	exit(0);
 }
 
