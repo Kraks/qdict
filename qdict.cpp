@@ -1,14 +1,14 @@
 /*
- * Filename: qdict.c
+ * Filename: qdict.cpp
  * Author: Kraks <kiss.kraks@gmail.com>
  */
 
 #define DEBUG
 
-#include <stdio.h>
-#include "kstr.h"
-#include "global.h"
+#include <iostream>
+#include <string>
 
+using namespace std;
 
 void praseArgs(int argc, char **argv)
 {
