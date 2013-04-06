@@ -10,14 +10,14 @@
 
 void showWordbook()
 {
-	DB *dbp;         
+	DB *dbp;
 	DBC *cur;  
 	DBT key, data;
 	u_int32_t flags;  
 	int ret;
-	
-	word_t *w = (word_t *) malloc(sizeof(word_t));
-	char *word_str = (char *) malloc(sizeof(char) * MAX_WORD_LENGTH);
+	// ?
+	char *word_str;
+	word_t w = initWordType(*w, NULL, NULL, NULL);
 	
 	ret = db_create(&dbp, NULL, 0);
 	printErrorDB(ret);
@@ -32,7 +32,7 @@ void showWordbook()
 	while((ret = cur->get(cur, &key, &data, DB_NEXT)) == 0)
 	{
 		w = data.data;
-		print_result(w);
+		printWordType(w);
 		printf("\n");
 	}
 	

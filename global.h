@@ -13,35 +13,19 @@
 #include <mxml.h>
 #include <curl/curl.h>
 
-#define MAX_WORD_LENGTH 32
-#define MAX_PHONETIC_LENGTH 32
-#define MAX_TRANSLATION_LENGTH 128
-
-typedef struct WORD {
-	char original[MAX_WORD_LENGTH];
-	char phonetic[MAX_PHONETIC_LENGTH];
-	char translation[MAX_TRANSLATION_LENGTH];
-} word_t;
-
-word_t *init_word_t(word_t *w);
-void free_word_t(word_t *w);
-word_t *clone_word_t(word_t *w);
-#define WHITESPACE " "
-
-#define TRUE 1
-#define FALSE 0
-
-#define DEBUG
-#undef DEBUG
-
-#ifdef NEW_VERSION
 typedef struct {
 	kstr original;
 	kstr phonetic;
 	kstr translation;
 } word_t;
 
+void printWordType(word_t w);
+void initWordType(word_t *w, const char *o, const char *p, const char *t);
+void freeWordType(word_t *w);
 
-#define QDICT_BUFFER_SZ
+#define QDICT_BUFFER_SZ 255
+#define WHITESPACE " "
 
-#endif
+#define TRUE 1
+#define FALSE 0
+
