@@ -1,17 +1,17 @@
 qdict:main.o utils.o network.o db.o
 	gcc -o qdict main.o utils.o network.o db.o -g -I/usr/local/include -L/usr/local/lib -lcurl -D_THREAD_SAFE -D_REENTRANT -I/usr/local/include -L/usr/local/lib -lmxml -ldb -lpthread -Wall
 
-main.o:qdict.c qdict.h
+main.o:qdict.cpp qdict.h
 	gcc -c qdict.c -o main.o
 
-utils.o:utils.c utils.h
+utils.o:utils.cpp utils.h
 	gcc -c utils.c -o utils.o
 	
 
-network.o:network.c network.h
+network.o:network.cpp network.h
 	gcc -c network.c -o network.o
 
-db.o:db.c db.h
+db.o:db.cpp db.h
 	gcc -c db.c -o db.o
 
 clean:
