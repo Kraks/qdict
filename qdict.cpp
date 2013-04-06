@@ -7,33 +7,28 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
-void praseArgs(int argc, char **argv)
+void praseArgs(vector<string> v)
 {
 	string buf;
 	int flag;
-
-#ifdef DEBUG
-	int i;
-	for (i = 0; i < argc; i++)
-		printf("DEBUG: prase_args(), argv[%d], %s\n", i, argv[i]);
-#endif
-
-	if (argc == 1) {
-		buf.asign(argv[0]);
+	int size = v.size();
+	if (size == 1) {
+		buf.asign(v[0]);
 		flag = NOT_SAVE_TO_WORDBOOK;
 	}
-	else if (argc == 2 && !strcmp(argv[1], "+")) {
-		buf.assign(argv[0]);
+	else if (size == 2 && !v[1].compare("+")) {
+		buf.assign(v[0]);
 		flag = SAVE_TO_WORDBOOK;
 	}
-	else if (argc >= 2 && strcmp(argv[argc-1], "+")) {	
+	else if (size >= 2 && v[v.size()-1].compare("+")) {	
 		buf = kstrJoinWithStr(argc, argv, WHITESPACE); // XXX
 		flag = NOT_SAVE_TO_WORDBOOK;
 	}
-	else if (argc > 2 && !strcmp(argv[argc-1], "+")) {
+	else if (size > 2 && !v[v.size()-1].compare("+")) {
 		buf = kstrJoinWithStr(argc-1, argv, WHITESPACE); // XXX
 		flag = SAVE_TO_WORDBOOK;
 	}
@@ -66,23 +61,21 @@ void query(string word, int saveToWordbook)
 
 void interactive(void)
 {
-	char buf[QDICT_BUFFER_SZ];
-	char **argv;
-	int argc;
-	printf(">> ");
-
-	// XXX
 	string buf;
-	string argv[];
-	while (cin >> buf) {
-		if (buf.empty())
+	while (1) {
+		cout << ">> ";
+		getline(cin, buf);
+		if (buf.empty()) {
+			cout << ">> ";
 			continue;
-		if (buf.compare("exit"))
+		}
+		if (!buf.compare("exit")) {
+			cout << "Now exit" << endl;
 			exit(0);
-		argv = split(buf, &argc); // LIST
-		prase_args(argc, argv);
-		cout << ">>";
-		buf.clear();
+		}
+		// split
+		// praseArgs
+		buf.erase();
 	}
 	exit(0);
 }
@@ -135,7 +128,8 @@ int main(int argc, char *argv)
 		interactive();
 	}
 	else {
-		praseArgs(argc-1, argv+1);
+		vector<string> v(argv+1, argv+argc);
+		praseArgs(v);
 	}
 	return 0;
 }
