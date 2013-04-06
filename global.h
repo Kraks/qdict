@@ -23,9 +23,9 @@ void printWordType(word_t w);
 void initWordType(word_t *w, const char *o, const char *p, const char *t);
 void freeWordType(word_t *w);
 
-#define QDICT_BUFFER_SZ 255
 #define WHITESPACE " "
 
 #define TRUE 1
 #define FALSE 0
+#define QDICT_BUFFER_SZ 255
 

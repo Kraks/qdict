@@ -26,12 +26,10 @@ void praseArgs(int argc, char **argv)
 	}
 	else if (argc >= 2 && strcmp(argv[argc-1], "+")) {
 		buf = kstrJoinWithStr(argc, argv, WHITESPACE);
-		//kstrTrim(buf);
 		query(buf, NOT_SAVE_TO_WORDBOOK);
 	}
 	else if (argc > 2 && !strcmp(argv[argc-1], "+")) {
 		buf = kstrJoinWithStr(argc-1, argv, WHITESPACE);
-		//kstrTrim(buf);
 		query(buf, SAVE_TO_WORDBOOK);
 	}
 	else {
