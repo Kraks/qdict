@@ -20,16 +20,16 @@ void praseArgs(vector<string> v)
 		buf.asign(v[0]);
 		flag = NOT_SAVE_TO_WORDBOOK;
 	}
-	else if (size == 2 && !v[1].compare("+")) {
+	else if (size == 2 && v[1] == "+") {
 		buf.assign(v[0]);
 		flag = SAVE_TO_WORDBOOK;
 	}
-	else if (size >= 2 && v[v.size()-1].compare("+")) {	
-		buf = kstrJoinWithStr(argc, argv, WHITESPACE); // XXX
+	else if (size >= 2 && v[v.size()-1] != "+") {
+		buf = join(v, v.begin(), v.end());
 		flag = NOT_SAVE_TO_WORDBOOK;
 	}
-	else if (size > 2 && !v[v.size()-1].compare("+")) {
-		buf = kstrJoinWithStr(argc-1, argv, WHITESPACE); // XXX
+	else if (size > 2 && v[v.size()-1] == "+") {
+		buf = join(v, v.begin(), v.end()-1);
 		flag = SAVE_TO_WORDBOOK;
 	}
 	else {
@@ -37,6 +37,16 @@ void praseArgs(vector<string> v)
 		exit(0);
 	}
 	query(buf, flag);
+}
+
+string join(vector<string> v, vector<string>::iterator begin, vector<string>::iterator end)
+{
+	string buf;
+	for (vector<string>::iterator it = begin; it != end; it++) {
+		buf += " ";
+		buf += *it;
+	}
+	return buf;
 }
 
 void query(string word, int saveToWordbook)
@@ -66,15 +76,20 @@ void interactive(void)
 		cout << ">> ";
 		getline(cin, buf);
 		if (buf.empty()) {
-			cout << ">> ";
 			continue;
 		}
 		if (!buf.compare("exit")) {
 			cout << "Now exit" << endl;
 			exit(0);
 		}
-		// split
-		// praseArgs
+		trim(buf);
+		if (whitespace count >= 1) {
+			split
+			praseArgs
+		}
+		else {
+			query(buf, NOT_SAVE_TO_WORDBOOK);
+		}
 		buf.erase();
 	}
 	exit(0);
