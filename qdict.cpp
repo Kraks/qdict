@@ -70,13 +70,7 @@ void interactive(void)
 	char **argv;
 	int argc;
 	printf(">> ");
-	
-	while (strcmp((buf = fgets(buf, QDICT_BUFFER_SZ, stdin)), "exit")) {
-		argv = split(buf, &argc);
-		prase_args(argc, argv);
-		printf(">> ");
-		memset(buf, 0, QDICT_BUFFER_SZ);
-	}
+
 	// XXX
 	string buf;
 	string argv[];
