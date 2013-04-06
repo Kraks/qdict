@@ -5,6 +5,7 @@
 
 #include "utils.h"
 #include "global.h"
+
 int get_ws_count(char *str)
 {
 	int i, n = 0, str_len = strlen(str);
@@ -68,6 +69,7 @@ char *join(int num, char **phrases, char *separator)
 	return p;
 }
 
+
 char *process_cdata(char *cdata)
 {
 	char *dest = malloc((strlen(cdata) - 9) * sizeof(char));
@@ -77,6 +79,18 @@ char *process_cdata(char *cdata)
 		dest[j++] = cdata[i];
 	dest[j] = '\0';
 	return dest;
+}
+
+#define CPP_VERSION
+
+string join(vector<string> v, vector<string>::iterator begin, vector<string>::iterator end)
+{
+	string buf;
+	for (vector<string>::iterator it = begin; it != end; it++) {
+		buf += " ";
+		buf += *it;
+	}
+	return buf;
 }
 
 #undef DEBUG

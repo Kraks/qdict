@@ -39,16 +39,6 @@ void praseArgs(vector<string> v)
 	query(buf, flag);
 }
 
-string join(vector<string> v, vector<string>::iterator begin, vector<string>::iterator end)
-{
-	string buf;
-	for (vector<string>::iterator it = begin; it != end; it++) {
-		buf += " ";
-		buf += *it;
-	}
-	return buf;
-}
-
 void query(string word, int saveToWordbook)
 {
 	word_t w;
