@@ -74,7 +74,7 @@ void interactive(void)
 			exit(0);
 		}
 		trim(buf);
-		if (whitespace count >= 1) {
+		if (whitespaceCount(buf) >= 1) {
 			v = split(buf, ' ');
 			praseArgs(v);
 		}
