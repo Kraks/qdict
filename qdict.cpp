@@ -41,7 +41,7 @@ void praseArgs(vector<string> v)
 
 void query(string word, int saveToWordbook)
 {
-	word_t w;
+	t_word_string w;
 	initWordType(w, word, NULL, NULL);
 	
 	if (isInDB(w, DB_CACHE)) {
@@ -55,8 +55,7 @@ void query(string word, int saveToWordbook)
 	if (saveToWrdbook)
 		saveToDB(w, DB_WORDBOOK);
 
-	printWordType(w);
-	freeWordType(&w);
+	printWord(w);
 }
 
 void interactive(void)
@@ -96,16 +95,14 @@ void printHelp(const string programm_name)
 	printf(" -h, --help           print this help information\n");
 }
 
-void printWordType(word_t w)
+void printWord(t_word_string w)
 {
-	printKstr(w.original);
-	printf("\n");
-	printKstr(w.phonetic);
-	printf("\n");
-	printKstr(w.translation);
+	cout << w.original << endl;
+	cout << w.phonetic << endl;
+	cout << w.translation << endl;
 }
 
-void initWordType(word_t &w, string o, string p, string t)
+void initWordType(t_word_string &w, string o, string p, string t)
 {
 	w.original = o;
 	w.phonetic = p;
@@ -113,7 +110,7 @@ void initWordType(word_t &w, string o, string p, string t)
 }
 
 // May not need
-void freeWordType(word_t *w)
+void freeWordType(t_word_string *w)
 {
 	kstrFree(w->original);
 	kstrFree(w->phonetic);
