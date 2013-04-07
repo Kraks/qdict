@@ -39,8 +39,13 @@ typedef struct {
 	string original;
 	string phonetic;
 	string translation;
-} word_t;
+} t_word_string;
 
+typedef struct {
+	char original[128];
+	char phonetic[128];
+	char translation[1024];
+} t_word_c_str;
 
 #define QDICT_BUFFER_SZ 255
 
