@@ -6,6 +6,9 @@
 #include "utils.h"
 #include "global.h"
 
+#define OLD_C_CODE
+#undef OLD_C_CODE
+#ifdef OLD_C_CODE
 int get_ws_count(char *str)
 {
 	int i, n = 0, str_len = strlen(str);
@@ -81,8 +84,10 @@ char *process_cdata(char *cdata)
 	return dest;
 }
 
-#ifndef CPP_VERSION
+#endif
+
 #define CPP_VERSION
+#ifdef CPP_VERSION
 
 string join(vector<string> v, vector<string>::iterator begin, vector<string>::iterator end)
 {
