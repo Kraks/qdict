@@ -7,10 +7,10 @@
 #include "network.h"
 #include "utils.h"
 
-word_t *queryFromNetwork(char *word_str, word_t *w)
+t_word_string *queryFromNetwork(string word, t_word_string &w)
 {
 	CURL *curl_handle;
-	char *url = youdaoDictUrl(word_str);
+	string url = youdaoDictUrl(word);
 	struct MemoryStruct chunk;
 	
 #ifdef DEBUG
@@ -55,7 +55,7 @@ string youdaoDictUrl(string word)
 	return url;
 }
 
-word_t *resolveYoudaoXML(char *xml, word_t *w)
+t_word_string *resolveYoudaoXML(char *xml, t_word_string *w)
 {
 	mxml_node_t *tree;
 	mxml_node_t *node;
