@@ -7,7 +7,7 @@
 #include <string>
 #include <db_cxx.h>
 
-void packString(t_word_srting &s, t_word_c_str *c)
+void packString(t_word_string &s, t_word_c_str *c)
 {
 	std::strcpy(c->original, s.original.c_str());
 	std::strcpy(c->phonetic, s.phonetic.c_str());
@@ -18,41 +18,49 @@ void showWordbook()
 {
 }
 
-int isInDB(word_t w, char *db_name)
+int isInDB(t_word_string w, char *db_name)
 {
 }
 
-void queryInDB(word_t *w, char *db_name)
+t_word_c_str queryInDB(string q, char *db_name)
 {
 	Db db(NULL, 0);
 	u_int32_t oFlags = DB_CREATE;
 	Dbt key, data;
-	key.set_data(w->original);
-	key.set_size(w->original.size());
-	data.set_data(w);
-	//data.set_ulen();
-	data.set_flags(DB_DBT_USERMEM); // XXX
 	int ret;
+	t_word_c_str t;
+
+	key.set_data(q);
+	key.set_size(q.size());
+
+	data.set_data(&t);
+	data.set_ulen(sizeof(t));
+	data.set_flags(DB_DBT_USERMEM); 
 
 	try {
 		ret = db.open(NULL, db_name, NULL, DB_BTREE, oFlags, 0);
 		printDBError(ret);
 		ret = db.get(NULL, &key, &data, 0);
+		printDBError(ret);
 	} catch(DbException &e) {
 		cout << "DbException" << endl;
 	} catch(std::exception &e) {
 		cout << "std::exception" << endl;
 	}
 	db.close(0);
+	return (t_word_c_str) t;
 }
 
-void saveToDB(word_t w, char *db_name)
+void saveToDB(t_word_string w, char *db_name)
 {
 	Db db(NULL, 0);
 	u_int32_t oFlags = DB_CREATE;
-	Dbt key(&w.original, w.original.size());
-	Dbt data(&w, sizeof(w));
+	t_word_c_str t;
 	int ret;
+
+	packString(w, &t);
+	Dbt key(&w.original, w.original.size());
+	Dbt data(&t, sizeof(t));
 
 	try {
 		ret = db.open(NULL, db_name, NULL, DB_BTREE, oFlags, 0);
