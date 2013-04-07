@@ -15,7 +15,7 @@ void praseArgs(vector<string> v)
 {
 	string buf;
 	int flag;
-	int size = v.size();
+	vector<string>::size_type size = v.size();
 	if (size == 1) {
 		buf.asign(v[0]);
 		flag = NOT_SAVE_TO_WORDBOOK;
@@ -42,7 +42,7 @@ void praseArgs(vector<string> v)
 void query(string word, int saveToWordbook)
 {
 	word_t w;
-	initWordType(&w, word, NULL, NULL);
+	initWordType(w, word, NULL, NULL);
 	
 	if (isInDB(w, DB_CACHE)) {
 		queryInDB(w, DB_CACHE);

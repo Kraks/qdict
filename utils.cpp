@@ -81,6 +81,7 @@ char *process_cdata(char *cdata)
 	return dest;
 }
 
+#ifndef CPP_VERSION
 #define CPP_VERSION
 
 string join(vector<string> v, vector<string>::iterator begin, vector<string>::iterator end)
@@ -92,6 +93,33 @@ string join(vector<string> v, vector<string>::iterator begin, vector<string>::it
 	}
 	return buf;
 }
+
+vector<string> split(string s, char delim, int rep=0)
+{
+	vector<string> v;
+	//if (!v.empty())
+	//	v.clear();
+	string work = s;
+	string buf = "";
+	int i = 0;
+	while(i < work.length()) {
+		if (work[i] != delim)
+			buf+=work[i];
+		else if (rep == 1) {
+			v.push_back(buf);
+			buf = "";
+		}
+		else if (buf.length() > 0) {
+			v.push_back(buf);
+			buf = "";
+		}
+		i++;
+	}
+	if (!buf.empty())
+		v.push_back(buf);
+	return v;
+}
+#endif
 
 #undef DEBUG
 #ifdef DEBUG
