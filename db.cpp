@@ -16,66 +16,10 @@ void packString(t_word_srting &s, t_word_c_str *c)
 
 void showWordbook()
 {
-	DB *dbp;         
-	DBC *cur;  
-	DBT key, data;
-	u_int32_t flags;  
-	int ret;
-	
-	word_t *w = (word_t *) malloc(sizeof(word_t));
-	char *word_str = (char *) malloc(sizeof(char) * MAX_WORD_LENGTH);
-	
-	ret = db_create(&dbp, NULL, 0);
-	printDBError(ret);
-	flags = DB_CREATE;
-	ret = dbp->open(dbp, NULL, "wordbook.db", NULL, DB_BTREE, flags, 0); 
-	printDBError(ret);
-	ret = dbp->cursor(dbp, NULL, &cur, 0);
-	printDBError(ret);
-	
-	initDBT(&key, &data);
-	
-	while((ret = cur->get(cur, &key, &data, DB_NEXT)) == 0)
-	{
-		w = data.data;
-		print_result(w);
-		printf("\n");
-	}
-	
-	cur->close(cur);
-	dbp->close(dbp, 0);
 }
 
 int isInDB(word_t w, char *db_name)
 {
-	DB *dbp;           
-	DBT key, data;
-	u_int32_t flags;  
-	int ret;
-	
-	ret = db_create(&dbp, NULL, 0);
-	printDBError(ret);
-	flags = DB_CREATE;
-	ret = dbp->open(dbp, NULL, db_name, NULL, DB_BTREE, flags, 0); 
-	printDBError(ret);
-	initDBT(&key, &data);
-	
-	kstr oriWord = w.original;
-	key.data = oriWord;
-	key.size = kstrlen(oriWord);
-
-	ret = dbp->exists(dbp, NULL, &key, 0);
-	
-	printf("%d\n", ret);
-	if(dbp != NULL)
-    	dbp->close(dbp, 0); 
-
-	if (ret == DB_NOTFOUND) {
-		return FALSE;
-	}
-	else {
-		return TRUE;
-	}
 }
 
 void queryInDB(word_t *w, char *db_name)
@@ -100,33 +44,6 @@ void queryInDB(word_t *w, char *db_name)
 		cout << "std::exception" << endl;
 	}
 	db.close(0);
-	// old c version
-	DB *dbp;           
-	DBT key, data;
-	u_int32_t flags;  
-	int ret;
-	
-	ret = db_create(&dbp, NULL, 0);
-	printDBError(ret);
-	flags = DB_CREATE;
-	ret = dbp->open(dbp, NULL, db_name, NULL, DB_BTREE, flags, 0); 
-	printDBError(ret);
-	initDBT(&key, &data);
-	
-	kstr oriWord = w->original;
-	key.data = oriWord;
-	key.size = kstrlen(oriWord);
-	key.flags = DB_DBT_USERMEM;
-
-	data.data = w;
-	data.ulen = sizeof(word_t); //XXX
-	data.flags = DB_DBT_USERMEM;
-	
-	dbp->get(dbp, NULL, &key, &data, 0);
-	
-	if(dbp != NULL)
-    	dbp->close(dbp, 0);
-    
 }
 
 void saveToDB(word_t w, char *db_name)
@@ -156,8 +73,3 @@ void printDBError(int ret)
 		printf("ERROR: %s\n",db_strerror(ret));
 }
 
-void initDBT(DBT * key, DBT * data)
-{
-	memset(key, 0, sizeof(DBT));
-	memset(data, 0, sizeof(DBT));
-}
