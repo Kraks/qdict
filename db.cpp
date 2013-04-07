@@ -18,8 +18,30 @@ void showWordbook()
 {
 }
 
-int isInDB(t_word_string w, char *db_name)
+bool isInDB(string w, char *db_name)
 {
+	Db db(NULL, 0);
+	u_int32_t oFlags = DB_CREATE;
+	Dbt key;
+	int ret;
+
+	key.set_data(&w);
+	key.set_size(w.size());
+
+	try {
+		ret = db.open(NULL, db_name, NULL, DB_BTREE, oFlags, 0);
+		printDBError(ret);
+		ret = db.exists(NULL, &key, 0);
+		printDBError(ret);
+	} catch(DbException &e) {
+		cout << "DbException" << endl;
+	} catch(std::exception &e) {
+		cout << "std::exception" << endl;
+	}
+	db.close(0);
+	if (ret == DB_NOTFOUND)
+		return false;
+	return true;
 }
 
 t_word_c_str queryInDB(string q, char *db_name)
@@ -30,7 +52,7 @@ t_word_c_str queryInDB(string q, char *db_name)
 	int ret;
 	t_word_c_str t;
 
-	key.set_data(q);
+	key.set_data(&q);
 	key.set_size(q.size());
 
 	data.set_data(&t);
