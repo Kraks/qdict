@@ -7,6 +7,13 @@
 #include <string>
 #include <db_cxx.h>
 
+void packString(t_word_srting &s, t_word_c_str *c)
+{
+	std::strcpy(c->original, s.original.c_str());
+	std::strcpy(c->phonetic, s.phonetic.c_str());
+	std::strcpy(c->translation, s.translation.c_str());
+}
+
 void showWordbook()
 {
 	DB *dbp;         
@@ -92,7 +99,7 @@ void queryInDB(word_t *w, char *db_name)
 	} catch(std::exception &e) {
 		cout << "std::exception" << endl;
 	}
-	db.close();
+	db.close(0);
 	// old c version
 	DB *dbp;           
 	DBT key, data;
@@ -140,7 +147,7 @@ void saveToDB(word_t w, char *db_name)
 	} catch(std::exception &e) {
 		cout << "std::exception" << endl;
 	}
-	db.close();
+	db.close(0);
 }
 
 void printDBError(int ret)
