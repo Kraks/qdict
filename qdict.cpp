@@ -62,6 +62,7 @@ void query(string word, int saveToWordbook)
 void interactive(void)
 {
 	string buf;
+	vector<string> v;
 	while (1) {
 		cout << ">> ";
 		getline(cin, buf);
@@ -74,8 +75,8 @@ void interactive(void)
 		}
 		trim(buf);
 		if (whitespace count >= 1) {
-			split
-			praseArgs
+			v = split(buf, ' ');
+			praseArgs(v);
 		}
 		else {
 			query(buf, NOT_SAVE_TO_WORDBOOK);
