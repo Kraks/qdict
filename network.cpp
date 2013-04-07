@@ -48,13 +48,10 @@ word_t *queryFromNetwork(char *word_str, word_t *w)
 	return w;
 }
 
-char *youdaoDictUrl(char *word)
+string youdaoDictUrl(string word)
 {
-	char base[] = "http://dict.youdao.com/fsearch?q=";
-	char *url = malloc((strlen(base) + strlen(word) + 1) * sizeof(char));
-	memset(url, 0, (strlen(base) + strlen(word) + 1));
-	strncpy(url, base, strlen(base));
-	strncat(url, word, strlen(word));
+	string url("http://dict.youdao.com/fsearch?q=");
+	url+=word;
 	return url;
 }
 
