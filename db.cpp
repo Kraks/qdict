@@ -8,15 +8,47 @@
 #include <cstring>
 #include <db_cxx.h>
 
-void packString(t_word_string &s, t_word_c_str *c)
+void packtoCstr(t_word_string &s, t_word_c_str *c)
 {
 	std::strcpy(c->original, s.original.c_str());
 	std::strcpy(c->phonetic, s.phonetic.c_str());
 	std::strcpy(c->translation, s.translation.c_str());
 }
 
+void unpacktoString(t_word_string &s, t_word_c_str *c)
+{
+	s.original.assign(c->original);
+	s.phonetic.assign(c->phonetic);
+	s.translation.assign(c->translation);
+}
+
 void showWordbook()
 {
+	Db db(NULL, 0);
+	Dbc *cur;
+	u_int32_t oFlags = DB_CREATE;
+	Dbt key;
+	int ret;
+	t_word_c_str t;
+	t_word_string w;
+
+	try {
+		ret = db.open(NULL, "wordbook.db", NULL, DB_BTREE, oFlags, 0);
+		ret = db.cursor(NULL, &cur, 0);
+		while ((ret = cur->get(&key, &data, DB_NEXT)) == 0) {
+			t = (t_word_c_str)data.data;
+			unpacktoString(w, *t);
+			printWord(w);
+			cout << endl;
+		}
+	} catch(DbException &e) {
+		cout << "DbException" << endl;
+	} catch(std::exception &e) {
+		cout << "std::exception" << endl;
+	}
+	if (cur != NULL)
+		cur->close();
+	db.close(0);
 }
 
 bool isInDB(string w, char *db_name)
@@ -77,7 +109,7 @@ void saveToDB(t_word_string w, char *db_name)
 	t_word_c_str t;
 	int ret;
 
-	packString(w, &t);
+	packtoCstr(w, &t);
 	Dbt key(&w.original, w.original.size());
 	Dbt data(&t, sizeof(t));
 
