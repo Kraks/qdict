@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <string>
+#include <cstring>
 #include <db_cxx.h>
 
 void packString(t_word_string &s, t_word_c_str *c)
@@ -30,9 +31,7 @@ bool isInDB(string w, char *db_name)
 
 	try {
 		ret = db.open(NULL, db_name, NULL, DB_BTREE, oFlags, 0);
-		printDBError(ret);
 		ret = db.exists(NULL, &key, 0);
-		printDBError(ret);
 	} catch(DbException &e) {
 		cout << "DbException" << endl;
 	} catch(std::exception &e) {
@@ -61,9 +60,7 @@ t_word_c_str queryInDB(string q, char *db_name)
 
 	try {
 		ret = db.open(NULL, db_name, NULL, DB_BTREE, oFlags, 0);
-		printDBError(ret);
 		ret = db.get(NULL, &key, &data, 0);
-		printDBError(ret);
 	} catch(DbException &e) {
 		cout << "DbException" << endl;
 	} catch(std::exception &e) {
@@ -86,9 +83,7 @@ void saveToDB(t_word_string w, char *db_name)
 
 	try {
 		ret = db.open(NULL, db_name, NULL, DB_BTREE, oFlags, 0);
-		printDBError(ret);
 		ret = db.put(NULL, &key, &data, DB_OVERWRITE_DUP);
-		printDBError(ret);
 	} catch(DbException &e) {
 		cout << "DbException" << endl;
 	} catch(std::exception &e) {
@@ -100,6 +95,6 @@ void saveToDB(t_word_string w, char *db_name)
 void printDBError(int ret)
 {
 	if(ret != 0)
-		printf("ERROR: %s\n",db_strerror(ret));
+		printf("ERROR: %s\n",DB::err(ret));
 }
 
