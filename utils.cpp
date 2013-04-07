@@ -119,6 +119,16 @@ vector<string> split(string s, char delim, int rep=0)
 		v.push_back(buf);
 	return v;
 }
+
+int whitespaceCount(string s)
+{
+	int count = 0;
+	for (string::size_type ix = 0; ix != s.size(); ix++)
+		if (s[ix] == " ")
+			count++;
+	return count;
+}
+
 #endif
 
 #undef DEBUG
