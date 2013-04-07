@@ -3,10 +3,9 @@
  * Author: Kraks <kiss.kraks@gmail.com>
  */
 
-#include "global.h"
-#include "db.h"
-#include "utils.h"
-#include "kstr.h"
+#include <iostream>
+#include <string>
+#include <db_cxx.h>
 
 void showWordbook()
 {
@@ -20,12 +19,12 @@ void showWordbook()
 	char *word_str = (char *) malloc(sizeof(char) * MAX_WORD_LENGTH);
 	
 	ret = db_create(&dbp, NULL, 0);
-	printErrorDB(ret);
+	printDBError(ret);
 	flags = DB_CREATE;
 	ret = dbp->open(dbp, NULL, "wordbook.db", NULL, DB_BTREE, flags, 0); 
-	printErrorDB(ret);
+	printDBError(ret);
 	ret = dbp->cursor(dbp, NULL, &cur, 0);
-	printErrorDB(ret);
+	printDBError(ret);
 	
 	initDBT(&key, &data);
 	
@@ -48,10 +47,10 @@ int isInDB(word_t w, char *db_name)
 	int ret;
 	
 	ret = db_create(&dbp, NULL, 0);
-	printErrorDB(ret);
+	printDBError(ret);
 	flags = DB_CREATE;
 	ret = dbp->open(dbp, NULL, db_name, NULL, DB_BTREE, flags, 0); 
-	printErrorDB(ret);
+	printDBError(ret);
 	initDBT(&key, &data);
 	
 	kstr oriWord = w.original;
@@ -74,16 +73,37 @@ int isInDB(word_t w, char *db_name)
 
 void queryInDB(word_t *w, char *db_name)
 {
+	Db db(NULL, 0);
+	u_int32_t oFlags = DB_CREATE;
+	Dbt key, data;
+	key.set_data(w->original);
+	key.set_size(w->original.size());
+	data.set_data(w);
+	//data.set_ulen();
+	data.set_flags(DB_DBT_USERMEM); // XXX
+	int ret;
+
+	try {
+		ret = db.open(NULL, db_name, NULL, DB_BTREE, oFlags, 0);
+		printDBError(ret);
+		ret = db.get(NULL, &key, &data, 0);
+	} catch(DbException &e) {
+		cout << "DbException" << endl;
+	} catch(std::exception &e) {
+		cout << "std::exception" << endl;
+	}
+	db.close();
+	// old c version
 	DB *dbp;           
 	DBT key, data;
 	u_int32_t flags;  
 	int ret;
 	
 	ret = db_create(&dbp, NULL, 0);
-	printErrorDB(ret);
+	printDBError(ret);
 	flags = DB_CREATE;
 	ret = dbp->open(dbp, NULL, db_name, NULL, DB_BTREE, flags, 0); 
-	printErrorDB(ret);
+	printDBError(ret);
 	initDBT(&key, &data);
 	
 	kstr oriWord = w->original;
@@ -104,33 +124,26 @@ void queryInDB(word_t *w, char *db_name)
 
 void saveToDB(word_t w, char *db_name)
 {
-	DB *dbp;           
-	DBT key, data;
-	u_int32_t flags;  
+	Db db(NULL, 0);
+	u_int32_t oFlags = DB_CREATE;
+	Dbt key(&w.original, w.original.size());
+	Dbt data(&w, sizeof(w));
 	int ret;
-	
-	ret = db_create(&dbp, NULL, 0);
-	printErrorDB(ret);
-	flags = DB_CREATE;
-	ret = dbp->open(dbp, NULL, db_name, NULL, DB_BTREE, flags, 0); 
-	printErrorDB(ret);
-	initDBT(&key, &data);
-	
-	kstr oriWord = w.original;
-	key.data = oriWord;
-	key.size = kstrlen(oriWord);
- 
-	data.data = w;
-	data.size = kstrlen(w.original) + kstrlen(w.phonetic) + kstrlen(w.translation);
-	
-	ret = dbp->put(dbp, NULL, &key, &data, DB_OVERWRITE_DUP); 
-	printErrorDB(ret);
-	
-	if(dbp != NULL)
-    	dbp->close(dbp, 0);
+
+	try {
+		ret = db.open(NULL, db_name, NULL, DB_BTREE, oFlags, 0);
+		printDBError(ret);
+		ret = db.put(NULL, &key, &data, DB_OVERWRITE_DUP);
+		printDBError(ret);
+	} catch(DbException &e) {
+		cout << "DbException" << endl;
+	} catch(std::exception &e) {
+		cout << "std::exception" << endl;
+	}
+	db.close();
 }
 
-void printErrorDB(int ret)
+void printDBError(int ret)
 {
 	if(ret != 0)
 		printf("ERROR: %s\n",db_strerror(ret));
