@@ -12,6 +12,9 @@
 #include <db_cxx.h>
 #include <mxml.h>
 #include <curl/curl.h>
+#include <string>
+
+using namespace std;
 
 #define MAX_WORD_LENGTH 32
 #define MAX_PHONETIC_LENGTH 32

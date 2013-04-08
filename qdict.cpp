@@ -8,6 +8,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "global.h"
 #include "qdict.h"
 #include "db.h"
 #include "utils.h"
