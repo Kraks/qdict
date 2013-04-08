@@ -1,7 +1,8 @@
-/*
+/******^-^
  * Filename: utils.h
  * Author: Kraks <kiss.kraks@gmail.com>
- */
+ *
+ ***/
 
 #include "global.h"
 

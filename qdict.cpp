@@ -1,7 +1,8 @@
-/*
+/******^-^
  * Filename: qdict.cpp
  * Author: Kraks <kiss.kraks@gmail.com>
- */
+ *
+ ***/
 
 #define DEBUG
 
@@ -11,8 +12,6 @@
 #include "db.h"
 #include "utils.h"
 #include "network.h"
-
-using namespace std;
 
 void praseArgs(vector<string> v)
 {

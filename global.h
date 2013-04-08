@@ -1,7 +1,8 @@
-/*
+/******^-^
  * Filename: global.h
  * Author: Kraks <kiss.kraks@gmail.com>
- */
+ *
+ ***/
 
 #ifndef GLOBAL_H
 #define GLOBAL_H

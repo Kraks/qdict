@@ -1,7 +1,8 @@
-/*
+/******^-^
  * Filename: utils.cpp
  * Author: Kraks <kiss.kraks@gmail.com>
- */
+ *
+ ***/
 
 #include "utils.h"
 

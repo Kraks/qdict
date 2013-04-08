@@ -1,7 +1,8 @@
-/*
+/******^-^
  * Filename: db.cpp
  * Author: Kraks <kiss.kraks@gmail.com>
- */
+ *
+ ***/
 
 #include "global.h"
 #include "qdict.h"

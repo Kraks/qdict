@@ -1,7 +1,8 @@
-/*
+/******^-^
  * Filename: network.cpp
  * Author: Kraks <kiss.kraks@gmail.com>
- */
+ *
+ ***/
 
 #include "global.h"
 #include "network.h"
