@@ -39,8 +39,8 @@ void showWordbook()
 		ret = db.open(NULL, "wordbook.db", NULL, DB_BTREE, oFlags, 0);
 		ret = db.cursor(NULL, &cur, 0);
 		while ((ret = cur->get(&key, &data, DB_NEXT)) == 0) {
-			t = *(t_word_c_str)data.data;
-			unpacktoString(w, *t);
+			t = *(t_word_c_str *) data.get_data();
+			unpacktoString(w, &t);
 			printWord(w);
 			cout << endl;
 		}
@@ -103,7 +103,7 @@ t_word_string queryInDB(string q, const char *db_name)
 		cout << "std::exception" << endl;
 	}
 	db.close(0);
-	unpacktoString(w, &(t_word_c_str)t);
+	unpacktoString(w, &t);
 	return w;
 }
 
