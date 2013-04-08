@@ -1,5 +1,7 @@
 CC = g++
 
+all:qdict
+
 qdict:main.o utils.o network.o db.o
 	$(CC) -o qdict main.o utils.o network.o db.o -g -I/usr/local/include -L/usr/local/lib -lcurl -D_THREAD_SAFE -D_REENTRANT -I/usr/local/include -L/usr/local/lib -lmxml -ldb_cxx -lpthread -Wall
 
