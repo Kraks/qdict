@@ -21,7 +21,7 @@ void praseArgs(vector<string> v)
 	int flag;
 	vector<string>::size_type size = v.size();
 	if (size == 1) {
-		buf.asign(v[0]);
+		buf.assign(v[0]);
 		flag = NOT_SAVE_TO_WORDBOOK;
 	}
 	else if (size == 2 && v[1] == "+") {
@@ -48,11 +48,11 @@ void query(string word, int saveToWordbook)
 	t_word_string w;
 	initWordType(w, word, NULL, NULL);
 	
-	if (isInDB(w, DB_CACHE)) {
-		queryInDB(w, DB_CACHE);
+	if (isInDB(w.original, DB_CACHE)) {
+		w = queryInDB(w.original, DB_CACHE);
 	}
 	else {
-		queryFromNetwork(w);
+		w = queryFromNetwork(w);
 		saveToDB(w, DB_CACHE);
 	}
 

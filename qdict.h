@@ -10,9 +10,9 @@
 #define DB_CACHE "dict.db"
 
 
-void praseArgs(vector<string> v)
-void query(string word, int saveToWordbook)
-void interactive(void)
-void printHelp(const string programm_name)
-void printWord(t_word_string w)
-void initWordType(t_word_string &w, string o, string p, string t)
+void praseArgs(vector<string> v);
+void query(string word, int saveToWordbook);
+void interactive(void);
+void printHelp(const string programm_name);
+void printWord(t_word_string w);
+void initWordType(t_word_string &w, string o, string p, string t);

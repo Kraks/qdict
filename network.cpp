@@ -7,7 +7,7 @@
 #include "network.h"
 #include "utils.h"
 
-t_word_string *queryFromNetwork(string word, t_word_string &w)
+t_word_string queryFromNetwork(string word, t_word_string &w)
 {
 	CURL *curl_handle;
 	string url = youdaoDictUrl(word);

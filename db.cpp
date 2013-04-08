@@ -51,7 +51,7 @@ void showWordbook()
 	db.close(0);
 }
 
-bool isInDB(string w, char *db_name)
+bool isInDB(string w, const char *db_name)
 {
 	Db db(NULL, 0);
 	u_int32_t oFlags = DB_CREATE;
@@ -75,7 +75,7 @@ bool isInDB(string w, char *db_name)
 	return true;
 }
 
-t_word_c_str queryInDB(string q, char *db_name)
+t_word_c_str queryInDB(string q, const char *db_name)
 {
 	Db db(NULL, 0);
 	u_int32_t oFlags = DB_CREATE;
@@ -102,7 +102,7 @@ t_word_c_str queryInDB(string q, char *db_name)
 	return (t_word_c_str) t;
 }
 
-void saveToDB(t_word_string w, char *db_name)
+void saveToDB(t_word_string w, const char *db_name)
 {
 	Db db(NULL, 0);
 	u_int32_t oFlags = DB_CREATE;
