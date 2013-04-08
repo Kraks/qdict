@@ -44,7 +44,7 @@ void praseArgs(vector<string> v)
 		exit(0);
 	}
 #ifdef DEBUG
-	cout << "DEBUG praseArgs: " << buf << endl;
+	cout << "DEBUG: praseArgs " << buf << endl;
 #endif
 	query(buf, flag);
 }
@@ -54,6 +54,10 @@ void query(string word, int saveToWordbook)
 	t_word_string w;
 	initWordType(w, word, "", "");
 	
+#ifdef DEBUG
+		cout << "DEBUG: query in " << DB_CACHE << endl;
+#endif
+
 	if (isInDB(w.original, DB_CACHE)) {
 		w = queryInDB(w.original, DB_CACHE);
 	}

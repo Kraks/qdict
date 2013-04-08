@@ -10,6 +10,7 @@
 
 #include "qdict.h"
 #include "db.h"
+#define DEBUG
 
 void packtoCstr(t_word_string &s, t_word_c_str *c)
 {
@@ -73,6 +74,9 @@ bool isInDB(string w, const char *db_name)
 		cout << "std::exception" << endl;
 	}
 	db.close(0);
+#ifdef DEBUG
+	cout << "DEBUG: isInDB " << ret << endl;
+#endif
 	if (ret == DB_NOTFOUND)
 		return false;
 	return true;
