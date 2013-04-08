@@ -8,6 +8,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "qdict.h"
+#include "db.h"
+#include "utils.h"
 
 using namespace std;
 

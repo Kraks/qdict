@@ -1,5 +1,5 @@
 /*
- * Filename: db.c
+ * Filename: db.cpp
  * Author: Kraks <kiss.kraks@gmail.com>
  */
 

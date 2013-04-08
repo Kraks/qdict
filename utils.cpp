@@ -1,5 +1,5 @@
 /*
- * Filename: utils.c
+ * Filename: utils.cpp
  * Author: Kraks <kiss.kraks@gmail.com>
  */
 
@@ -132,6 +132,17 @@ int whitespaceCount(string s)
 		if (s[ix] == " ")
 			count++;
 	return count;
+}
+
+char *process_cdata(char *cdata)
+{
+	char *dest = malloc((strlen(cdata) - 9) * sizeof(char));
+	memset(dest, 0, strlen(cdata)-9);
+	int i, j = 0; 
+	for (i = 8; i < strlen(cdata)-2; i++)
+		dest[j++] = cdata[i];
+	dest[j] = '\0';
+	return dest;
 }
 
 #endif

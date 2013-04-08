@@ -1,5 +1,5 @@
 /*
- * Filename: network.c
+ * Filename: network.cpp
  * Author: Kraks <kiss.kraks@gmail.com>
  */
 
