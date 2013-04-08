@@ -8,7 +8,7 @@ struct MemoryStruct {
   size_t size;
 };
 
-t_word_string *queryFromNetwork(string word, t_word_string &w);
+t_word_string queryFromNetwork(string word, t_word_string &w);
 string youdaoDictUrl(string word);
 t_word_string resolveYoudaoXML(char *xml, t_word_string &w);
 mxml_type_t youdaoCallbackFunction(mxml_node_t *node);

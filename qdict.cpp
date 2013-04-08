@@ -12,6 +12,7 @@
 #include "qdict.h"
 #include "db.h"
 #include "utils.h"
+#include "network.h"
 
 using namespace std;
 
@@ -52,11 +53,11 @@ void query(string word, int saveToWordbook)
 		w = queryInDB(w.original, DB_CACHE);
 	}
 	else {
-		w = queryFromNetwork(w);
+		w = queryFromNetwork(word, w);
 		saveToDB(w, DB_CACHE);
 	}
 
-	if (saveToWrdbook)
+	if (saveToWordbook)
 		saveToDB(w, DB_WORDBOOK);
 
 	printWord(w);
@@ -76,7 +77,7 @@ void interactive(void)
 			cout << "Now exit" << endl;
 			exit(0);
 		}
-		trim(buf);
+		//trim(buf);
 		if (whitespaceCount(buf) >= 1) {
 			v = split(buf, ' ');
 			praseArgs(v);
@@ -89,7 +90,7 @@ void interactive(void)
 	exit(0);
 }
 
-void printHelp(const string programm_name)
+void printHelp(const string program_name)
 {
 	printf(" usage: %s [word] [+]\n", program_name);
 	printf(" the last [+] optional symbol means add the word to wordbook.\n");
@@ -111,14 +112,6 @@ void initWordType(t_word_string &w, string o, string p, string t)
 	w.original = o;
 	w.phonetic = p;
 	w.translation = t;
-}
-
-// May not need
-void freeWordType(t_word_string *w)
-{
-	kstrFree(w->original);
-	kstrFree(w->phonetic);
-	kstrFree(w->translation);
 }
 
 int main(int argc, char *argv)

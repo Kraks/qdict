@@ -75,13 +75,14 @@ bool isInDB(string w, const char *db_name)
 	return true;
 }
 
-t_word_c_str queryInDB(string q, const char *db_name)
+t_word_string queryInDB(string q, const char *db_name)
 {
 	Db db(NULL, 0);
 	u_int32_t oFlags = DB_CREATE;
 	Dbt key, data;
 	int ret;
 	t_word_c_str t;
+	t_word_string w;
 
 	key.set_data(&q);
 	key.set_size(q.size());
@@ -99,7 +100,8 @@ t_word_c_str queryInDB(string q, const char *db_name)
 		cout << "std::exception" << endl;
 	}
 	db.close(0);
-	return (t_word_c_str) t;
+	unpacktoString(w, &(t_word_c_str)t);
+	return w;
 }
 
 void saveToDB(t_word_string w, const char *db_name)
