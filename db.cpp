@@ -3,16 +3,19 @@
  * Author: Kraks <kiss.kraks@gmail.com>
  */
 
-#include <iostream>
-#include <string>
-#include <cstring>
-#include <db_cxx.h>
+#ifndef GLOBAL_H
+#define GLOBAL_H
+#include "global.h"
+#endif
+
+#include "qdict.h"
+#include "db.h"
 
 void packtoCstr(t_word_string &s, t_word_c_str *c)
 {
-	std::strcpy(c->original, s.original.c_str());
-	std::strcpy(c->phonetic, s.phonetic.c_str());
-	std::strcpy(c->translation, s.translation.c_str());
+	strcpy(c->original, s.original.c_str());
+	strcpy(c->phonetic, s.phonetic.c_str());
+	strcpy(c->translation, s.translation.c_str());
 }
 
 void unpacktoString(t_word_string &s, t_word_c_str *c)
@@ -27,7 +30,7 @@ void showWordbook()
 	Db db(NULL, 0);
 	Dbc *cur;
 	u_int32_t oFlags = DB_CREATE;
-	Dbt key;
+	Dbt key, data;
 	int ret;
 	t_word_c_str t;
 	t_word_string w;
@@ -36,7 +39,7 @@ void showWordbook()
 		ret = db.open(NULL, "wordbook.db", NULL, DB_BTREE, oFlags, 0);
 		ret = db.cursor(NULL, &cur, 0);
 		while ((ret = cur->get(&key, &data, DB_NEXT)) == 0) {
-			t = (t_word_c_str)data.data;
+			t = *(t_word_c_str)data.data;
 			unpacktoString(w, *t);
 			printWord(w);
 			cout << endl;
@@ -125,10 +128,10 @@ void saveToDB(t_word_string w, const char *db_name)
 	}
 	db.close(0);
 }
-
+/*
 void printDBError(int ret)
 {
 	if(ret != 0)
 		printf("ERROR: %s\n",DB::err(ret));
 }
-
+*/
