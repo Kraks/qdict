@@ -3,6 +3,9 @@
  * Author: Kraks <kiss.kraks@gmail.com>
  */
 
+#ifndef GLOBAL_H
+#define GLOBAL_H
+
 #include <iostream>
 #include <string>
 #include <cstring>
@@ -34,3 +37,4 @@ typedef struct {
 	char translation[1024];
 } t_word_c_str;
 
+#endif

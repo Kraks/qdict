@@ -3,7 +3,9 @@
  * Author: Kraks <kiss.kraks@gmail.com>
  */
 
+#include "global.h"
 #include "network.h"
+#include "utils.h"
 
 t_word_string queryFromNetwork(string word, t_word_string &w)
 {

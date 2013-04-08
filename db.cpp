@@ -3,11 +3,7 @@
  * Author: Kraks <kiss.kraks@gmail.com>
  */
 
-#ifndef GLOBAL_H
-#define GLOBAL_H
 #include "global.h"
-#endif
-
 #include "qdict.h"
 #include "db.h"
 #define DEBUG
