@@ -1,18 +1,20 @@
+CC = g++
+
 qdict:main.o utils.o network.o db.o
-	gcc -o qdict main.o utils.o network.o db.o -g -I/usr/local/include -L/usr/local/lib -lcurl -D_THREAD_SAFE -D_REENTRANT -I/usr/local/include -L/usr/local/lib -lmxml -ldb -lpthread -Wall
+	$(CC) -o qdict main.o utils.o network.o db.o -g -I/usr/local/include -L/usr/local/lib -lcurl -D_THREAD_SAFE -D_REENTRANT -I/usr/local/include -L/usr/local/lib -lmxml -ldb_cxx -lpthread -Wall
 
 main.o:qdict.cpp qdict.h
-	gcc -c qdict.c -o main.o
+	$(CC) -c qdict.cpp -o main.o
 
 utils.o:utils.cpp utils.h
-	gcc -c utils.c -o utils.o
+	$(CC) -c utils.cpp -o utils.o
 	
 
 network.o:network.cpp network.h
-	gcc -c network.c -o network.o
+	$(CC) -c network.cpp -o network.o
 
 db.o:db.cpp db.h
-	gcc -c db.c -o db.o
+	$(CC) -c db.cpp -o db.o
 
 clean:
 	rm -r -f *~
@@ -24,8 +26,3 @@ cleandb:
 statistic:
 	find -name "*.H" -or -name "*.cpp" -or -name "*.c" -or -name "*.h" | xargs wc -l
 
-utilstest:
-	gcc -o utils_test utils.c
-
-kstrtest:
-	gcc -o kstr_test kstr.c
