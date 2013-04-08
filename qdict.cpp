@@ -5,10 +5,11 @@
 
 #define DEBUG
 
-#include <iostream>
-#include <string>
-#include <vector>
+#ifndef GLOBAL_H
+#define GLOBAL_H
 #include "global.h"
+#endif
+
 #include "qdict.h"
 #include "db.h"
 #include "utils.h"
@@ -79,7 +80,7 @@ void interactive(void)
 		}
 		//trim(buf);
 		if (whitespaceCount(buf) >= 1) {
-			v = split(buf, ' ');
+			v = split(buf, ' ', 0);
 			praseArgs(v);
 		}
 		else {
@@ -92,7 +93,7 @@ void interactive(void)
 
 void printHelp(const string program_name)
 {
-	printf(" usage: %s [word] [+]\n", program_name);
+	printf(" usage: %s [word] [+]\n", program_name.c_str());
 	printf(" the last [+] optional symbol means add the word to wordbook.\n");
 	printf(" other optional:\n");
 	printf(" -w, --wordbook       show the wordbook\n");
@@ -114,7 +115,7 @@ void initWordType(t_word_string &w, string o, string p, string t)
 	w.translation = t;
 }
 
-int main(int argc, char *argv)
+int main(int argc, char **argv)
 {
 	if (argc == 1 || 
 		!strcmp(argv[1], "-h") ||

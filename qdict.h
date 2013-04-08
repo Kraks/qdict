@@ -9,7 +9,6 @@
 #define DB_WORDBOOK "wordbook.db"
 #define DB_CACHE "dict.db"
 
-
 void praseArgs(vector<string> v);
 void query(string word, int saveToWordbook);
 void interactive(void);

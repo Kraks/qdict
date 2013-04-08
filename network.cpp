@@ -3,9 +3,7 @@
  * Author: Kraks <kiss.kraks@gmail.com>
  */
 
-#include "global.h"
 #include "network.h"
-#include "utils.h"
 
 t_word_string queryFromNetwork(string word, t_word_string &w)
 {
@@ -17,7 +15,7 @@ t_word_string queryFromNetwork(string word, t_word_string &w)
 	printf("DEBUG: queryFromNetwork() url: %s\n", url);
 #endif
 
-	chunk.memory = malloc(1);
+	chunk.memory = (char *)malloc(1);
 	chunk.size = 0; 
 	curl_global_init(CURL_GLOBAL_ALL);
 
@@ -61,7 +59,7 @@ t_word_string resolveYoudaoXML(char *xml, t_word_string &w)
 	mxml_node_t *node;
 	
 	if (xml == NULL)
-		return NULL;
+		cout << "ERROR XML NULL" << endl;
 
 	tree = mxmlLoadString(NULL, xml, youdaoCallbackFunction);
 	node = mxmlFindElement(tree, tree, "return-phrase", NULL, NULL, MXML_DESCEND);
@@ -112,7 +110,7 @@ WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)
 	size_t realsize = size * nmemb;
 	struct MemoryStruct *mem = (struct MemoryStruct *)userp;
 
-	mem->memory = realloc(mem->memory, mem->size + realsize + 1);
+	mem->memory = (char *)realloc(mem->memory, mem->size + realsize + 1);
 	if (mem->memory == NULL) {
 	/* out of memory! */ 
 	printf("Error: not enough memory (realloc returned NULL)\n");

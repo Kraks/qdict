@@ -3,16 +3,16 @@
  * Author: Kraks <kiss.kraks@gmail.com>
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <iostream>
+#include <string>
+#include <vector>
+#include <cstdlib>
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/stat.h>
 #include <db_cxx.h>
 #include <mxml.h>
 #include <curl/curl.h>
-#include <string>
 
 using namespace std;
 

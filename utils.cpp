@@ -4,7 +4,6 @@
  */
 
 #include "utils.h"
-#include "global.h"
 
 #define CPP_VERSION
 #ifdef CPP_VERSION
@@ -19,7 +18,7 @@ string join(vector<string> v, vector<string>::iterator begin, vector<string>::it
 	return buf;
 }
 
-vector<string> split(string s, char delim, int rep=0)
+vector<string> split(string s, char delim, int rep)
 {
 	vector<string> v;
 	//if (!v.empty())
@@ -49,14 +48,14 @@ int whitespaceCount(string s)
 {
 	int count = 0;
 	for (string::size_type ix = 0; ix != s.size(); ix++)
-		if (s[ix] == " ")
+		if (s[ix] == ' ')
 			count++;
 	return count;
 }
 
 char *process_cdata(char *cdata)
 {
-	char *dest = malloc((strlen(cdata) - 9) * sizeof(char));
+	char *dest = (char *)malloc((strlen(cdata) - 9) * sizeof(char));
 	memset(dest, 0, strlen(cdata)-9);
 	int i, j = 0; 
 	for (i = 8; i < strlen(cdata)-2; i++)

@@ -3,6 +3,14 @@
  * Author: Kraks <kiss.kraks@gmail.com>
  */
 
+#ifndef GLOBAL_H
+#define GLOBAL_H
+#include "global.h"
+#endif
+#include "utils.h"
+
+using namespace std;
+
 struct MemoryStruct {
   char *memory;
   size_t size;
