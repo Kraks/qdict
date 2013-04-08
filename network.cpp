@@ -22,7 +22,7 @@ t_word_string *queryFromNetwork(string word, t_word_string &w)
 	curl_global_init(CURL_GLOBAL_ALL);
 
 	curl_handle = curl_easy_init();
-	curl_easy_setopt(curl_handle, CURLOPT_URL, url);
+	curl_easy_setopt(curl_handle, CURLOPT_URL, url.c_str());
 	curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
 	curl_easy_setopt(curl_handle, CURLOPT_WRITEDATA, (void *)&chunk);
 	curl_easy_setopt(curl_handle, CURLOPT_USERAGENT, "libcurl-agent/1.0");
@@ -55,35 +55,35 @@ string youdaoDictUrl(string word)
 	return url;
 }
 
-t_word_string *resolveYoudaoXML(char *xml, t_word_string *w)
+t_word_string resolveYoudaoXML(char *xml, t_word_string &w)
 {
 	mxml_node_t *tree;
 	mxml_node_t *node;
 	
-	if (w == NULL || xml == NULL)
+	if (xml == NULL)
 		return NULL;
 
 	tree = mxmlLoadString(NULL, xml, youdaoCallbackFunction);
 	node = mxmlFindElement(tree, tree, "return-phrase", NULL, NULL, MXML_DESCEND);
 	
 	if (node) {
-		k_strcpy(w->original, process_cdata(node->child->value.opaque));
+		w.original = process_cdata(node->child->value.opaque);
 	}
 	
 	node = mxmlFindElement(tree, tree, "phonetic-symbol", NULL, NULL, MXML_DESCEND);
 	if (node && node->child) {
 
-		k_strcat(w->phonetic, node->child->value.text.string);
+		w.phonetic = node->child->value.text.string;
 	}
 
 	node = mxmlFindElement(tree, tree, "content", NULL, NULL, MXML_DESCEND);
 	if (node) {
-		k_strcpy(w->translation, process_cdata(node->child->value.opaque));
+		w.translation = process_cdata(node->child->value.opaque);
 		while (node) {
 			node = mxmlFindElement(node, tree, "content", NULL, NULL, MXML_DESCEND);
 			if (node) {
-				k_strcat(w->translation, "\n");
-				k_strcat(w->translation, process_cdata(node->child->value.opaque));
+				w.translation += "\n";
+				w.translation += process_cdata(node->child->value.opaque);
 			}
 		}
 	}
