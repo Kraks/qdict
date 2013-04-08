@@ -22,6 +22,7 @@ void praseArgs(vector<string> v)
 	string buf;
 	int flag;
 	vector<string>::size_type size = v.size();
+
 	if (size == 1) {
 		buf.assign(v[0]);
 		flag = NOT_SAVE_TO_WORDBOOK;
@@ -42,13 +43,16 @@ void praseArgs(vector<string> v)
 		printf("--^_^--\n");
 		exit(0);
 	}
+#ifdef DEBUG
+	cout << "DEBUG praseArgs: " << buf << endl;
+#endif
 	query(buf, flag);
 }
 
 void query(string word, int saveToWordbook)
 {
 	t_word_string w;
-	initWordType(w, word, NULL, NULL);
+	initWordType(w, word, "", "");
 	
 	if (isInDB(w.original, DB_CACHE)) {
 		w = queryInDB(w.original, DB_CACHE);
@@ -130,6 +134,10 @@ int main(int argc, char **argv)
 	}
 	else {
 		vector<string> v(argv+1, argv+argc);
+#ifdef DEBUG
+		for (vector<string>::iterator it = v.begin(); it != v.end(); it++)
+			cout << *it << endl;
+#endif
 		praseArgs(v);
 	}
 	return 0;
