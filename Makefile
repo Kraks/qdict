@@ -5,17 +5,17 @@ all:qdict
 qdict:main.o utils.o network.o db.o
 	$(CC) -o qdict main.o utils.o network.o db.o -g -I/usr/local/include -L/usr/local/lib -lcurl -D_THREAD_SAFE -D_REENTRANT -I/usr/local/include -L/usr/local/lib -lmxml -ldb_cxx -lpthread -Wall
 
-main.o:qdict.cpp qdict.h
+main.o:qdict.cpp qdict.h global.h
 	$(CC) -c qdict.cpp -o main.o
 
-utils.o:utils.cpp utils.h
+utils.o:utils.cpp utils.h global.h
 	$(CC) -c utils.cpp -o utils.o
 	
 
-network.o:network.cpp network.h
+network.o:network.cpp network.h global.h
 	$(CC) -c network.cpp -o network.o
 
-db.o:db.cpp db.h
+db.o:db.cpp db.h global.h
 	$(CC) -c db.cpp -o db.o
 
 clean:

@@ -7,7 +7,6 @@
 #include "global.h"
 #include "qdict.h"
 #include "db.h"
-#define DEBUG
 
 void packtoCstr(t_word_string &s, t_word_c_str *c)
 {
@@ -60,7 +59,10 @@ bool isInDB(string w, const char *db_name)
 	int ret;
 
 	key.set_data(&w);
-	key.set_size(w.size());
+	key.set_size(w.length());
+#ifdef DEBUG
+	cout << "DEBUG: isInDB key " << w << " " << w.length() << endl;
+#endif
 
 	try {
 		ret = db.open(NULL, db_name, NULL, DB_BTREE, oFlags, 0);
@@ -71,8 +73,9 @@ bool isInDB(string w, const char *db_name)
 		cout << "std::exception" << endl;
 	}
 	db.close(0);
+
 #ifdef DEBUG
-	cout << "DEBUG: isInDB " << ret << endl;
+	cout << "DEBUG: isInDB ret " << ret << endl;
 #endif
 	if (ret == DB_NOTFOUND)
 		return false;
@@ -89,11 +92,14 @@ t_word_string queryInDB(string q, const char *db_name)
 	t_word_string w;
 
 	key.set_data(&q);
-	key.set_size(q.size());
+	key.set_size(q.length());
 
 	data.set_data(&t);
 	data.set_ulen(sizeof(t));
 	data.set_flags(DB_DBT_USERMEM); 
+#ifdef DEBUG
+	cout << "DEBUG: queryInDB key " << q << " " << q.length() << endl;
+#endif
 
 	try {
 		ret = db.open(NULL, db_name, NULL, DB_BTREE, oFlags, 0);
@@ -116,8 +122,14 @@ void saveToDB(t_word_string w, const char *db_name)
 	int ret;
 
 	packtoCstr(w, &t);
-	Dbt key(&w.original, w.original.size());
+	Dbt key(&w.original, w.original.length());
 	Dbt data(&t, sizeof(t));
+
+#ifdef DEBUG
+	cout << "DEBUG: saveToDB key " << w.original << " " << w.original.length() << endl;
+	cout << "DEBUG: saveToDB data " << endl;
+	cout << t.original << " " << t.phonetic << " " << t.translation << endl;
+#endif
 
 	try {
 		ret = db.open(NULL, db_name, NULL, DB_BTREE, oFlags, 0);

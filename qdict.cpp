@@ -4,8 +4,6 @@
  *
  ***/
 
-#define DEBUG
-
 #include "global.h"
 
 #include "qdict.h"
@@ -107,6 +105,9 @@ void printHelp(const string program_name)
 
 void printWord(t_word_string w)
 {
+#ifdef DEBUG
+	cout << "DEBUG printWord " << endl;
+#endif
 	cout << w.original << endl;
 	cout << w.phonetic << endl;
 	cout << w.translation << endl;

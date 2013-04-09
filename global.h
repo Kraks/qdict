@@ -38,4 +38,6 @@ typedef struct {
 	char translation[1024];
 } t_word_c_str;
 
+#define DEBUG
+
 #endif
