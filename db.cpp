@@ -57,11 +57,14 @@ bool isInDB(string w, const char *db_name)
 	u_int32_t oFlags = DB_CREATE;
 	Dbt key;
 	int ret;
+	char *ckey = new char[w.length()+1];
 
-	key.set_data(&w);
-	key.set_size(w.length());
+	strcpy(ckey, w.c_str());
+	key.set_data(ckey);
+	key.set_size(w.length()+1);
+
 #ifdef DEBUG
-	cout << "DEBUG: isInDB key " << w << " " << w.length() << endl;
+	cout << "DEBUG: isInDB key " << w << " " << w.length()+1 << endl;
 #endif
 
 	try {
@@ -90,15 +93,17 @@ t_word_string queryInDB(string q, const char *db_name)
 	int ret;
 	t_word_c_str t;
 	t_word_string w;
+	char *ckey = new char[q.length()+1];
 
-	key.set_data(&q);
-	key.set_size(q.length());
+	strcpy(ckey, q.c_str());
+	key.set_data(ckey);
+	key.set_size(q.length()+1);
 
 	data.set_data(&t);
 	data.set_ulen(sizeof(t));
 	data.set_flags(DB_DBT_USERMEM); 
 #ifdef DEBUG
-	cout << "DEBUG: queryInDB key " << q << " " << q.length() << endl;
+	cout << "DEBUG: queryInDB key " << q << " " << q.length()+1 << endl;
 #endif
 
 	try {
@@ -120,14 +125,17 @@ void saveToDB(t_word_string w, const char *db_name)
 	u_int32_t oFlags = DB_CREATE;
 	t_word_c_str t;
 	int ret;
+	char *ckey = new char[w.original.length()+1];
 
+	strcpy(ckey, w.original.c_str());
 	packtoCstr(w, &t);
-	Dbt key(&w.original, w.original.length());
+	
+	Dbt key(ckey, w.original.length()+1);
 	Dbt data(&t, sizeof(t));
 
 #ifdef DEBUG
-	cout << "DEBUG: saveToDB key " << w.original << " " << w.original.length() << endl;
-	cout << "DEBUG: saveToDB data " << endl;
+	cout << "DEBUG: saveToDB key " << db_name << " " << w.original << " " << w.original.length()+1 << endl;
+	cout << "DEBUG: saveToDB data "  << db_name << endl;
 	cout << t.original << " " << t.phonetic << " " << t.translation << endl;
 #endif
 
