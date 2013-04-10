@@ -5,7 +5,7 @@
  ***/
 
 #include "utils.h"
-
+#include <locale>
 #define CPP_VERSION
 #ifdef CPP_VERSION
 
@@ -52,6 +52,15 @@ int whitespaceCount(string s)
 		if (s[ix] == ' ')
 			count++;
 	return count;
+}
+
+void stringTolower(string &s)
+{
+	locale loc;
+	for (size_t i = 0; i < s.length(); i++) {
+		if (isupper(s[i]))
+			s[i] = tolower(s[i]);
+	}
 }
 
 char *process_cdata(char *cdata)

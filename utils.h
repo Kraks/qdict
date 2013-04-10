@@ -10,3 +10,4 @@ string join(vector<string> v, vector<string>::iterator begin, vector<string>::it
 vector<string> split(string s, char delim, int rep);
 int whitespaceCount(string s);
 char *process_cdata(char *cdata);
+void stringTolower(string &s);
