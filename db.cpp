@@ -7,6 +7,7 @@
 #include "global.h"
 #include "qdict.h"
 #include "db.h"
+#include "utils.h"
 
 void packtoCstr(t_word_string &s, t_word_c_str *c)
 {
@@ -126,7 +127,8 @@ void saveToDB(t_word_string w, const char *db_name)
 	t_word_c_str t;
 	int ret;
 	char *ckey = new char[w.original.length()+1];
-
+	
+	stringTolower(w.original);
 	strcpy(ckey, w.original.c_str());
 	packtoCstr(w, &t);
 	

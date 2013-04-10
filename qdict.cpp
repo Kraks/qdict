@@ -45,6 +45,7 @@ void praseArgs(vector<string> v)
 
 void query(string word, int saveToWordbook)
 {
+	stringTolower(word);
 	t_word_string w;
 	initWordType(w, word, "", "");
 	
