@@ -9,6 +9,9 @@
 #include "db.h"
 #include "utils.h"
 
+
+#if 0
+
 void packtoCstr(t_word_string &s, t_word_c_str *c)
 {
 	strcpy(c->original, s.original.c_str());
@@ -159,15 +162,17 @@ void printDBError(int ret)
 		printf("ERROR: %s\n",DB::err(ret));
 }
 */
+#endif
 
-#if 
+#define NEW_CPP_DB_CLASS
+#ifdef NEW_CPP_DB_CLASS
 class myDB
 {
 public:
 	myDB(const char *db_name);
 	~myDB();
 	bool exist(string w) const;
-	void get(string w);
+	t_word_string get(string w);
 	void put(t_word_string w);
 private:
 	Db *db;
@@ -180,6 +185,36 @@ myDB::myDB(const char *db_name)
 	db = new Db(NULL, 0);
 	u_int32_t o_flags = DB_CREATE;
 	db->open(NULL, db_name, NULL, DB_BTREE, o_flags, 0);
+}
+
+bool myDB::exist(string w)
+{
+	Dbt key;
+	char *ckey = new char[w.length()+1];
+
+	strcpy(ckey, w.c_str());
+	key.set_data(ckey);
+	key.set_size(w.length()+1);
+
+#ifdef DEBUG
+	cout << "DEBUG: exist key " << w << " " << w.length()+1 << endl;
+#endif
+
+	try {
+		db->exists(NULL, &key, 0);
+	} catch(DbException &e) {
+		cout << "DbException" << endl;
+	} catch(std::exception &e) {
+		cout << "std::exception" << endl;
+	}
+	db.close(0);
+
+#ifdef DEBUG
+	cout << "DEBUG: exist ret " << ret << endl;
+#endif
+	if (ret == DB_NOTFOUND)
+		return false;
+	return true;
 }
 
 t_word_string myDB::get(string w)
@@ -204,6 +239,47 @@ t_word_string myDB::get(string w)
 	}
 	unpacktoString(res, &c);
 	return w;
+}
+
+void myDB::put(t_word_string w)
+{
+	t_word_c_str t;
+	char *ckey = new char[w.original.length()+1];
+	
+	stringTolower(w.original);
+	strcpy(ckey, w.original.c_str());
+	packtoCstr(w, &t);
+	
+	Dbt key(ckey, w.original.length()+1);
+	Dbt data(&t, sizeof(t));
+
+#ifdef DEBUG
+	cout << "DEBUG: put key " << db_name << " " << w.original << " " << w.original.length()+1 << endl;
+	cout << "DEBUG: put data "  << db_name << endl;
+	cout << t.original << " " << t.phonetic << " " << t.translation << endl;
+#endif
+
+	try {
+		db->put(NULL, &key, &data, DB_OVERWRITE_DUP);
+	} catch(DbException &e) {
+		cout << "DbException" << endl;
+	} catch(std::exception &e) {
+		cout << "std::exception" << endl;
+	}
+}
+
+void myDB::packtoCstr(t_word_string &s, t_word_c_str *c)
+{
+	strcpy(c->original, s.original.c_str());
+	strcpy(c->phonetic, s.phonetic.c_str());
+	strcpy(c->translation, s.translation.c_str());
+}
+
+void myDB::unpacktoString(t_word_string &s, t_word_c_str *c)
+{
+	s.original.assign(c->original);
+	s.phonetic.assign(c->phonetic);
+	s.translation.assign(c->translation);
 }
 
 #endif
