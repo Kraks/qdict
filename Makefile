@@ -28,3 +28,5 @@ cleandb:
 statistic:
 	find -name "*.H" -or -name "*.cpp" -or -name "*.c" -or -name "*.h" | xargs wc -l
 
+dbtest:
+	g++ db.cpp -ldb_cxx utils.o -o db_test

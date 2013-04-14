@@ -48,21 +48,23 @@ void query(string word, int saveToWordbook)
 	stringTolower(word);
 	t_word_string w;
 	initWordType(w, word, "", "");
-	
+	myDB cache(DB_CACHE);
+	myDB wordbook(DB_WORDBOOK);
+
 #ifdef DEBUG
 		cout << "DEBUG: query in " << DB_CACHE << endl;
 #endif
 
-	if (isInDB(w.original, DB_CACHE)) {
-		w = queryInDB(w.original, DB_CACHE);
+	if (cache.exist(w.original)) {
+		w = cache.get(w.original);
 	}
 	else {
 		w = queryFromNetwork(word, w);
-		saveToDB(w, DB_CACHE);
+		cache.put(w);
 	}
 
 	if (saveToWordbook)
-		saveToDB(w, DB_WORDBOOK);
+		wordbook.put(w);
 
 	printWord(w);
 }
@@ -129,7 +131,7 @@ int main(int argc, char **argv)
 		printHelp(argv[0]);
 	}
 	else if (!strcmp(argv[1], "-w") || !strcmp(argv[1], "--wordbook")) {
-		showWordbook();
+		//showWordbook();
 	}
 	else if (!strcmp(argv[1], "-i") || !strcmp(argv[1], "--interactive")) {
 		interactive();

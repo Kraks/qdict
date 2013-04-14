@@ -166,19 +166,6 @@ void printDBError(int ret)
 
 #define NEW_CPP_DB_CLASS
 #ifdef NEW_CPP_DB_CLASS
-class myDB
-{
-public:
-	myDB(const char *db_name);
-	~myDB();
-	bool exist(string w) const;
-	t_word_string get(string w);
-	void put(t_word_string w);
-private:
-	Db *db;
-	void unpacktoString(t_word_string &s, t_word_c_str *c);
-	void packtoCstr(t_word_string &s, t_word_c_str *c);
-}
 
 myDB::myDB(const char *db_name)
 {
@@ -187,8 +174,14 @@ myDB::myDB(const char *db_name)
 	db->open(NULL, db_name, NULL, DB_BTREE, o_flags, 0);
 }
 
-bool myDB::exist(string w)
+myDB::~myDB()
 {
+	db->close(0);
+}
+
+bool myDB::exist(string w) const
+{
+	int ret;
 	Dbt key;
 	char *ckey = new char[w.length()+1];
 
@@ -201,14 +194,12 @@ bool myDB::exist(string w)
 #endif
 
 	try {
-		db->exists(NULL, &key, 0);
+		ret = db->exists(NULL, &key, 0);
 	} catch(DbException &e) {
 		cout << "DbException" << endl;
 	} catch(std::exception &e) {
 		cout << "std::exception" << endl;
 	}
-	db.close(0);
-
 #ifdef DEBUG
 	cout << "DEBUG: exist ret " << ret << endl;
 #endif
@@ -238,7 +229,7 @@ t_word_string myDB::get(string w)
 		cout << "std::exception" << endl;
 	}
 	unpacktoString(res, &c);
-	return w;
+	return res;
 }
 
 void myDB::put(t_word_string w)
@@ -254,8 +245,6 @@ void myDB::put(t_word_string w)
 	Dbt data(&t, sizeof(t));
 
 #ifdef DEBUG
-	cout << "DEBUG: put key " << db_name << " " << w.original << " " << w.original.length()+1 << endl;
-	cout << "DEBUG: put data "  << db_name << endl;
 	cout << t.original << " " << t.phonetic << " " << t.translation << endl;
 #endif
 
@@ -281,5 +270,18 @@ void myDB::unpacktoString(t_word_string &s, t_word_c_str *c)
 	s.phonetic.assign(c->phonetic);
 	s.translation.assign(c->translation);
 }
+
+#ifdef DB_TEST
+int main(int argc, char **argv)
+{
+	string word("good");
+	t_word_string t;
+	myDB db("dict.db");
+	if (db.exist(word))
+		t = db.get(word);
+	cout << t.original << t.phonetic << t.translation << endl;
+	return 0;
+}
+#endif
 
 #endif
