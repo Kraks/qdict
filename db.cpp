@@ -151,6 +151,7 @@ void saveToDB(t_word_string w, const char *db_name)
 	}
 	db.close(0);
 }
+
 /*
 void printDBError(int ret)
 {
@@ -158,3 +159,51 @@ void printDBError(int ret)
 		printf("ERROR: %s\n",DB::err(ret));
 }
 */
+
+#if 
+class myDB
+{
+public:
+	myDB(const char *db_name);
+	~myDB();
+	bool exist(string w) const;
+	void get(string w);
+	void put(t_word_string w);
+private:
+	Db *db;
+	void unpacktoString(t_word_string &s, t_word_c_str *c);
+	void packtoCstr(t_word_string &s, t_word_c_str *c);
+}
+
+myDB::myDB(const char *db_name)
+{
+	db = new Db(NULL, 0);
+	u_int32_t o_flags = DB_CREATE;
+	db->open(NULL, db_name, NULL, DB_BTREE, o_flags, 0);
+}
+
+t_word_string myDB::get(string w)
+{
+	t_word_string res;
+	t_word_c_str c;
+	char *ckey = new char[w.length()+1];
+	strcpy(ckey, w.c_str());
+	Dbt key, data;
+	key.set_data(ckey);
+	key.set_size(w.length()+1);
+
+	data.set_data(&c);
+	data.set_ulen(sizeof(c));
+	data.set_flags(DB_DBT_USERMEM); 
+	try {
+		db->get(NULL, &key, &data, 0);
+	} catch(DbException &e) {
+		cout << "DbException" << endl;
+	} catch(std::exception &e) {
+		cout << "std::exception" << endl;
+	}
+	unpacktoString(res, &c);
+	return w;
+}
+
+#endif
