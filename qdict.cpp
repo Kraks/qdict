@@ -69,6 +69,23 @@ void query(string word, int saveToWordbook)
 	printWord(w);
 }
 
+void showDict(string db_name)
+{
+	if (db_name == DB_CACHE) {
+		myDB cache(DB_CACHE);
+		cache.getByFilter("all");
+	}
+	else (db_name == DB_WORDBOOK) {
+		myDB wordbook(DB_WORDBOOK);
+		wordbook.getByFilter("all");
+	}
+}
+
+void showWordBook()
+{
+	showDict(DB_WORDBOOK);
+}
+
 void interactive(void)
 {
 	string buf;
@@ -131,7 +148,10 @@ int main(int argc, char **argv)
 		printHelp(argv[0]);
 	}
 	else if (!strcmp(argv[1], "-w") || !strcmp(argv[1], "--wordbook")) {
-		//showWordbook();
+		showWordBook();
+	}
+	else if (!strcmp(argv[1], "-d") || !strcmp(argv[1], "--dict")) {
+		showDict(DB_CACHE);
 	}
 	else if (!strcmp(argv[1], "-i") || !strcmp(argv[1], "--interactive")) {
 		interactive();
