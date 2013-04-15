@@ -157,6 +157,9 @@ int main(int argc, char **argv)
 	else if (!strcmp(argv[1], "-i") || !strcmp(argv[1], "--interactive")) {
 		interactive();
 	}
+	else if ((argv[1][0] == '-') || (argv[1][0] == '-' && argv[1][1] == '-')) {
+		printHelp(argv[0]);
+	}
 	else {
 		vector<string> v(argv+1, argv+argc);
 #ifdef DEBUG
