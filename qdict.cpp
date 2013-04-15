@@ -119,6 +119,7 @@ void printHelp(const string program_name)
 	printf(" the last [+] optional symbol means add the word to wordbook.\n");
 	printf(" other optional:\n");
 	printf(" -w, --wordbook       show the wordbook\n");
+	printf(" -d, --dict           show all the cache word\n");
 	printf(" -i, --interactive    enter interactive mode to query\n");
 	printf(" -h, --help           print this help information\n");
 }
