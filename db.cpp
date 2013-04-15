@@ -11,36 +11,6 @@
 
 
 #if 0
-
-void showWordbook()
-{
-	Db db(NULL, 0);
-	Dbc *cur;
-	u_int32_t oFlags = DB_CREATE;
-	Dbt key, data;
-	int ret;
-	t_word_c_str t;
-	t_word_string w;
-
-	try {
-		ret = db.open(NULL, "wordbook.db", NULL, DB_BTREE, oFlags, 0);
-		ret = db.cursor(NULL, &cur, 0);
-		while ((ret = cur->get(&key, &data, DB_NEXT)) == 0) {
-			t = *(t_word_c_str *) data.get_data();
-			unpacktoString(w, &t);
-			printWord(w);
-			cout << endl;
-		}
-	} catch(DbException &e) {
-		cout << "DbException" << endl;
-	} catch(std::exception &e) {
-		cout << "std::exception" << endl;
-	}
-	if (cur != NULL)
-		cur->close();
-	db.close(0);
-}
-
 /*
 void printDBError(int ret)
 {
