@@ -158,6 +158,38 @@ void myDB::unpacktoString(t_word_string &s, t_word_c_str *c)
 	s.translation.assign(c->translation);
 }
 
+void myDB::getByCount(const int count)
+{
+	
+}
+
+void myDB::getByCount(const string filter)
+{
+	if ("all" == filter) {
+		Dbc *cur;
+		Dbt key, data;
+		int ret;
+		t_word_c_str t;
+		t_word_string w;
+
+		try {
+			ret = db->cursor(NULL, &cur, 0);
+			while ((ret = cur->get(&key, &data, DB_NEXT)) == 0) {
+				t = *(t_word_c_str *) data.get_data();
+				unpacktoString(w, &t);
+				printWord(w);
+				cout << endl;
+			}
+		} catch(DbException &e) {
+			cout << "DbException" << endl;
+		} catch(std::exception &e) {
+			cout << "std::exception" << endl;
+		}
+		if (cur != NULL)
+			cur->close();
+	}
+}
+
 #ifdef DB_TEST
 int main(int argc, char **argv)
 {

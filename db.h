@@ -12,6 +12,8 @@ public:
 	bool exist(string w) const;
 	t_word_string get(string w);
 	void put(t_word_string w);
+	void getByCount(const string filter);
+	void getByCount(const int count);
 private:
 	Db *db;
 	void unpacktoString(t_word_string &s, t_word_c_str *c);
