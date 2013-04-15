@@ -1,6 +1,8 @@
-/* Kraks' String Library
+/******^-^
+ * Filename: kstr.h
  * Author: Kraks <kiss.kraks@gmail.com>
- */
+ *
+ ***/
 
 struct s_kstr {
 	int len;

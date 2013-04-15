@@ -1,21 +1,11 @@
 qdict
 =====
 
-version 0.1
-
 A fast, simple English-Chinese dictionary.
 
-Need network and Youdao dictionary web service for query, and then will save the translation to local db.
-
-Use Berkeley DB, libcurl and mini-XML library.
-
-Usage
------
-qdict [word] [+]  
-add [+] at the end of query content, will add the translation into wordbook  
--i, --interactive  
--w, --wordbook  
--h, --help  
+Note:
+This is the c++ code version only for testing.
+I may would rewrite the whole code in cpp, and then merge to master branch.
 
 History
 -----

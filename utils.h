@@ -1,12 +1,12 @@
-/*
+/******^-^
  * Filename: utils.h
  * Author: Kraks <kiss.kraks@gmail.com>
- */
+ *
+ ***/
+#include "global.h"
 
-int get_ws_count(char *str);
-char *trim(char *str);
-char *join(int num, char **phrases, char *separator);
+string join(vector<string> v, vector<string>::iterator begin, vector<string>::iterator end);
+vector<string> split(string s, char delim, int rep);
+int whitespaceCount(string s);
 char *process_cdata(char *cdata);
-
-// new version
-char **split(char *str, int *count)
+void stringTolower(string &s);

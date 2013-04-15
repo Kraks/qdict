@@ -1,30 +1,30 @@
-/*
- * Filename: network.c
+/******^-^
+ * Filename: network.cpp
  * Author: Kraks <kiss.kraks@gmail.com>
- */
+ *
+ ***/
 
 #include "global.h"
 #include "network.h"
 #include "utils.h"
 #include "kstr.h"
 
-word_t *queryFromNetwork(word_t w)
+t_word_string queryFromNetwork(string word, t_word_string &w)
 {
 	CURL *curl_handle;
-	kstr word_str = w.original;
-	kstr url = youdaoDictUrl(word_str);
+	string url = youdaoDictUrl(word);
 	struct MemoryStruct chunk;
 	
 #ifdef DEBUG
-	printf("DEBUG: queryFromNetwork() url: %s\n", url);
+	cout << "DEBUG: queryFromNetwork url" << url << endl;
 #endif
 
-	chunk.memory = malloc(1);
+	chunk.memory = (char *)malloc(1);
 	chunk.size = 0; 
 	curl_global_init(CURL_GLOBAL_ALL);
 
 	curl_handle = curl_easy_init();
-	curl_easy_setopt(curl_handle, CURLOPT_URL, (char *)url);
+	curl_easy_setopt(curl_handle, CURLOPT_URL, url.c_str());
 	curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
 	curl_easy_setopt(curl_handle, CURLOPT_WRITEDATA, (void *)&chunk);
 	curl_easy_setopt(curl_handle, CURLOPT_USERAGENT, "libcurl-agent/1.0");
@@ -50,42 +50,42 @@ word_t *queryFromNetwork(word_t w)
 	return w;
 }
 
-kstr youdaoDictUrl(kstr word)
+string youdaoDictUrl(string word)
 {
-	kstr base = kstrNew("http://dict.youdao.com/fsearch?q=");
-	base = kstrCatKstr(base, word);
-	return base;
+	string url("http://dict.youdao.com/fsearch?q=");
+	url+=word;
+	return url;
 }
 
-word_t *resolveYoudaoXML(char *xml, word_t *w)
+t_word_string resolveYoudaoXML(char *xml, t_word_string &w)
 {
 	mxml_node_t *tree;
 	mxml_node_t *node;
 	
-	if (w == NULL || xml == NULL)
-		return NULL;
+	if (xml == NULL)
+		cout << "ERROR XML NULL" << endl;
 
 	tree = mxmlLoadString(NULL, xml, youdaoCallbackFunction);
 	node = mxmlFindElement(tree, tree, "return-phrase", NULL, NULL, MXML_DESCEND);
 	
 	if (node) {
-		kstrCatStr(w->original, process_cdata(node->child->value.opaque));
+		w.original = process_cdata(node->child->value.opaque);
 	}
 	
 	node = mxmlFindElement(tree, tree, "phonetic-symbol", NULL, NULL, MXML_DESCEND);
 	if (node && node->child) {
 
-		kstrCatStr(w->phonetic, node->child->value.text.string);
+		w.phonetic = node->child->value.text.string;
 	}
 
 	node = mxmlFindElement(tree, tree, "content", NULL, NULL, MXML_DESCEND);
 	if (node) {
-		kstrCatStr(w->translation, process_cdata(node->child->value.opaque));
+		w.translation = process_cdata(node->child->value.opaque);
 		while (node) {
 			node = mxmlFindElement(node, tree, "content", NULL, NULL, MXML_DESCEND);
 			if (node) {
-				kstrCatStr(w->translation, "\n");
-				kstrCatStr(w->translation, process_cdata(node->child->value.opaque));
+				w.translation += "\n";
+				w.translation += process_cdata(node->child->value.opaque);
 			}
 		}
 	}
@@ -114,7 +114,7 @@ WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)
 	size_t realsize = size * nmemb;
 	struct MemoryStruct *mem = (struct MemoryStruct *)userp;
 
-	mem->memory = realloc(mem->memory, mem->size + realsize + 1);
+	mem->memory = (char *)realloc(mem->memory, mem->size + realsize + 1);
 	if (mem->memory == NULL) {
 	/* out of memory! */ 
 	printf("Error: not enough memory (realloc returned NULL)\n");
