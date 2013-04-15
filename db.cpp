@@ -163,7 +163,7 @@ void myDB::getByCount(const int count)
 	
 }
 
-void myDB::getByCount(const string filter)
+void myDB::getByFilter(const string filter)
 {
 	if ("all" == filter) {
 		Dbc *cur;

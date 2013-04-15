@@ -12,7 +12,7 @@ public:
 	bool exist(string w) const;
 	t_word_string get(string w);
 	void put(t_word_string w);
-	void getByCount(const string filter);
+	void getByFilter(const string filter);
 	void getByCount(const int count);
 private:
 	Db *db;
