@@ -10,6 +10,7 @@ public:
 	myDB(const char *db_name);
 	~myDB();
 	bool exist(string w) const;
+	t_word_string operator()(string w);
 	t_word_string get(string w);
 	void put(t_word_string w);
 	void getByFilter(const string filter);

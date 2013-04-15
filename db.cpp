@@ -64,6 +64,31 @@ bool myDB::exist(string w) const
 	return true;
 }
 
+t_word_string myDB::operator()(string w)
+{
+	t_word_string res;
+	t_word_c_str c;
+	char *ckey = new char[w.length()+1];
+	strcpy(ckey, w.c_str());
+	Dbt key, data;
+	key.set_data(ckey);
+	key.set_size(w.length()+1);
+
+	data.set_data(&c);
+	data.set_ulen(sizeof(c));
+	data.set_flags(DB_DBT_USERMEM); 
+	try {
+		db->get(NULL, &key, &data, 0);
+	} catch(DbException &e) {
+		cout << "DbException" << endl;
+	} catch(std::exception &e) {
+		cout << "std::exception" << endl;
+	}
+	unpacktoString(res, &c);
+	return res;
+}
+
+
 t_word_string myDB::get(string w)
 {
 	t_word_string res;

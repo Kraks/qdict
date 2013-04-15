@@ -56,7 +56,8 @@ void query(string word, int saveToWordbook)
 #endif
 
 	if (cache.exist(w.original)) {
-		w = cache.get(w.original);
+		//w = cache.get(w.original);
+		w = cache(w.original);
 	}
 	else {
 		w = queryFromNetwork(word, w);
@@ -65,7 +66,6 @@ void query(string word, int saveToWordbook)
 
 	if (saveToWordbook)
 		wordbook.put(w);
-
 	printWord(w);
 }
 
