@@ -75,7 +75,7 @@ void showDict(string db_name)
 		myDB cache(DB_CACHE);
 		cache.getByFilter("all");
 	}
-	else (db_name == DB_WORDBOOK) {
+	else if (db_name == DB_WORDBOOK) {
 		myDB wordbook(DB_WORDBOOK);
 		wordbook.getByFilter("all");
 	}
