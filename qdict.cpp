@@ -14,6 +14,7 @@
 void praseArgs(vector<string> v)
 {
 	string buf;
+	string space(" ");
 	int flag;
 	vector<string>::size_type size = v.size();
 
@@ -26,11 +27,11 @@ void praseArgs(vector<string> v)
 		flag = SAVE_TO_WORDBOOK;
 	}
 	else if (size >= 2 && v[v.size()-1] != "+") {
-		buf = join(v, v.begin(), v.end());
+		buf = join(v, v.begin(), v.end(), space);
 		flag = NOT_SAVE_TO_WORDBOOK;
 	}
 	else if (size > 2 && v[v.size()-1] == "+") {
-		buf = join(v, v.begin(), v.end()-1);
+		buf = join(v, v.begin(), v.end()-1, space);
 		flag = SAVE_TO_WORDBOOK;
 	}
 	else {

@@ -9,11 +9,11 @@
 #define CPP_VERSION
 #ifdef CPP_VERSION
 
-string join(vector<string> v, vector<string>::iterator begin, vector<string>::iterator end)
+string join(vector<string> v, vector<string>::iterator begin, vector<string>::iterator end, string connector)
 {
 	string buf;
 	for (vector<string>::iterator it = begin; it != end; it++) {
-		buf += " ";
+		buf += connector;
 		buf += *it;
 	}
 	return buf;
