@@ -29,3 +29,6 @@ statistic:
 
 dbtest:
 	g++ db.cpp -ldb_cxx utils.o -o db_test
+
+utilstest:
+	g++ utils.cpp -o utils_test
