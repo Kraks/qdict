@@ -10,11 +10,12 @@ public:
 	myDB(const char *db_name);
 	~myDB();
 	bool exist(string w) const;
-	t_word_string operator()(string w);
-	t_word_string get(string w);
 	void put(t_word_string w);
 	void getByFilter(const string filter);
 	void getByCount(const int count);
+	size_t count();
+	t_word_string operator()(string w);
+	t_word_string get(string w);
 private:
 	Db *db;
 	t_word_string __get(string w);

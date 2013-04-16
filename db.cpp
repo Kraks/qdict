@@ -171,6 +171,28 @@ void myDB::getByFilter(const string filter)
 	}
 }
 
+size_t myDB::count()
+{
+	Dbc *cur;
+	Dbt key, data;
+	int ret;
+	size_t count;
+
+	try {
+		ret = db->cursor(NULL, &cur, 0);
+		while ((ret = cur->get(&key, &data, DB_NEXT)) == 0) {
+			count++;
+		}
+	} catch(DbException &e) {
+		cout << "DbException" << endl;
+	} catch(std::exception &e) {
+		cout << "std::exception" << endl;
+	}
+	if (cur != NULL)
+		cur->close();
+	return count;
+}
+
 #ifdef DB_TEST
 int main(int argc, char **argv)
 {
