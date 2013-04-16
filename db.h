@@ -17,6 +17,7 @@ public:
 	void getByCount(const int count);
 private:
 	Db *db;
+	t_word_string __get(string w);
 	void unpacktoString(t_word_string &s, t_word_c_str *c);
 	void packtoCstr(t_word_string &s, t_word_c_str *c);
 };
