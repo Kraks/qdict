@@ -10,3 +10,4 @@ vector<string> split(string s, char delim, int rep);
 int whitespaceCount(string s);
 char *process_cdata(char *cdata);
 void stringTolower(string &s);
+void dumpVector(vector<string> v);

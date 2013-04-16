@@ -19,6 +19,7 @@ string join(vector<string> v, vector<string>::iterator begin, vector<string>::it
 	return buf;
 }
 
+
 vector<string> split(string s, char delim, int rep)
 {
 	vector<string> v;
@@ -72,6 +73,16 @@ char *process_cdata(char *cdata)
 		dest[j++] = cdata[i];
 	dest[j] = '\0';
 	return dest;
+}
+
+
+//template<typename T>
+void dumpVector(vector<string> t)
+{
+	for (vector<string>::iterator it = t.begin(); it != t.end(); it++) {
+		cout << *it;
+		cout << endl;
+	}
 }
 
 #endif
@@ -158,8 +169,10 @@ char *process_cdata(char *cdata)
 
 #undef DEBUG
 #ifdef DEBUG
+// JUST TEST CODE
 int main(int argc, char **argv)
 {
+	/*
 	char buf[] = "Hello world the big C";
 	int count = 0, i = 0;
 	char **result;
@@ -167,6 +180,11 @@ int main(int argc, char **argv)
 	printf("count: %d\n", count);
 	for (i = 0; i < count; i++)
 		printf("%s", result[i]);
+	*/
+	vector<string> s;
+	s.push_back("Hello");
+	s.push_back("Good");
+	dumpVector(s);
 	return 0;
 }
 #endif
