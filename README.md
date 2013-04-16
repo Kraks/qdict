@@ -1,14 +1,14 @@
 qdict
 =====
 
-A CLI Chinese-English dictionary.
-Fast, and easy to use.
+A CLI Chinese-English dictionary. 
+Fast, and easy to use. 
 
 Usage
 -----
-usage: ./qdict [word] [+]
-the last [+] optional symbol means add the word and its translation to wordbook.
-other optional:
+usage: ./qdict [word] [+] 
+the last [+] optional symbol means add the word and its translation to wordbook. 
+other optional: 
 -w, --wordbook       show the wordbook
 -d, --dict           show all the cache word
 -i, --interactive    enter interactive mode to query
