@@ -129,9 +129,12 @@ void printWord(t_word_string w)
 #ifdef DEBUG
 	cout << "DEBUG printWord " << endl;
 #endif
-	cout << w.original << endl;
-	cout << w.phonetic << endl;
-	cout << w.translation << endl;
+	if (w.original != "")
+		cout << w.original << endl;
+	if (w.phonetic != "")
+		cout << w.phonetic << endl;
+	if (w.translation != "")
+		cout << w.translation << endl;
 }
 
 void initWordType(t_word_string &w, string o, string p, string t)

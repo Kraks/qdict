@@ -11,7 +11,6 @@ main.o:qdict.cpp qdict.h global.h
 utils.o:utils.cpp utils.h global.h
 	$(CC) -c utils.cpp -o utils.o
 	
-
 network.o:network.cpp network.h global.h
 	$(CC) -c network.cpp -o network.o
 
