@@ -70,15 +70,25 @@ void query(string word, int saveToWordbook)
 	printWord(w);
 }
 
+void queryRobot()
+{
+	
+}
+
 void showDict(string db_name)
 {
+	size_t count;
 	if (db_name == DB_CACHE) {
 		myDB cache(DB_CACHE);
 		cache.getByFilter("all");
+		count = cache.count();
+		cout << "Total " << count << " words" << endl;
 	}
 	else if (db_name == DB_WORDBOOK) {
 		myDB wordbook(DB_WORDBOOK);
 		wordbook.getByFilter("all");
+		count = wordbook.count();
+		cout << "Total " << count << " words" << endl;
 	}
 }
 
