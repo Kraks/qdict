@@ -1,11 +1,18 @@
 qdict
 =====
 
-A fast, simple English-Chinese dictionary.
+A CLI Chinese-English dictionary.
+Fast, and easy to use.
 
-Note:
-This is the c++ code version only for testing.
-I may would rewrite the whole code in cpp, and then merge to master branch.
+Usage
+-----
+usage: ./qdict [word] [+]
+ the last [+] optional symbol means add the word and its translation to wordbook.
+other optional:
+ -w, --wordbook       show the wordbook
+ -d, --dict           show all the cache word
+ -i, --interactive    enter interactive mode to query
+ -h, --help           print this help information
 
 History
 -----
