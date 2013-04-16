@@ -13,8 +13,8 @@ string join(vector<string> v, vector<string>::iterator begin, vector<string>::it
 {
 	string buf;
 	for (vector<string>::iterator it = begin; it != end; it++) {
-		buf += connector;
 		buf += *it;
+		buf += connector;
 	}
 	return buf;
 }
