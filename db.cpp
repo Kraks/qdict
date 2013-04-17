@@ -64,15 +64,15 @@ bool myDB::exist(string w) const
 	return true;
 }
 
-t_word_string myDB::operator()(string w)
+t_word_string myDB::operator()(string key)
 {
-	return __get(w);
+	return __get(key);
 }
 
 
-t_word_string myDB::get(string w)
+t_word_string myDB::get(string key)
 {
-	return __get(w);
+	return __get(key);
 }
 
 t_word_string myDB::__get(string w)
