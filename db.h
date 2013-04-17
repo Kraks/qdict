@@ -13,6 +13,7 @@ public:
 	void put(t_word_string w);
 	void getByFilter(const string filter);
 	void getByCount(const int count);
+	void del(string w);
 	size_t count();
 	t_word_string operator()(string w);
 	t_word_string get(string w);

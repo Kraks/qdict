@@ -125,18 +125,29 @@ void myDB::put(t_word_string w)
 	}
 }
 
-void myDB::packtoCstr(t_word_string &s, t_word_c_str *c)
+void myDB::del(string w)
 {
-	strcpy(c->original, s.original.c_str());
-	strcpy(c->phonetic, s.phonetic.c_str());
-	strcpy(c->translation, s.translation.c_str());
-}
+	char *ckey = new char[w.length()+1];
+	strcpy(ckey, w.c_str());
+	int ret;
+	Dbt key;
+	key.set_data(ckey);
+	key.set_size(w.length()+1);
 
-void myDB::unpacktoString(t_word_string &s, t_word_c_str *c)
-{
-	s.original.assign(c->original);
-	s.phonetic.assign(c->phonetic);
-	s.translation.assign(c->translation);
+	try {
+		ret = db->del(NULL, &key, 0);
+		if (ret == 0) {
+			cout << "del " << w << " successfully" << endl;
+		} else {
+#ifdef DEBUG
+			cout << "DEBUG: db del error" << endl;
+#endif
+		}
+	} catch(DbException &e) {
+		cout << "DbException" << endl;
+	} catch(std::exception &e) {
+		cout << "std::exception" << endl;
+	}
 }
 
 void myDB::getByCount(const int count)
@@ -191,6 +202,20 @@ size_t myDB::count()
 	if (cur != NULL)
 		cur->close();
 	return count;
+}
+
+void myDB::packtoCstr(t_word_string &s, t_word_c_str *c)
+{
+	strcpy(c->original, s.original.c_str());
+	strcpy(c->phonetic, s.phonetic.c_str());
+	strcpy(c->translation, s.translation.c_str());
+}
+
+void myDB::unpacktoString(t_word_string &s, t_word_c_str *c)
+{
+	s.original.assign(c->original);
+	s.phonetic.assign(c->phonetic);
+	s.translation.assign(c->translation);
 }
 
 #ifdef DB_TEST
