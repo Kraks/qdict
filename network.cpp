@@ -66,18 +66,21 @@ t_word_string resolveYoudaoXML(char *xml, t_word_string &w)
 		cout << "ERROR XML NULL" << endl;
 
 	tree = mxmlLoadString(NULL, xml, youdaoCallbackFunction);
+
+	// original word or phrase
 	node = mxmlFindElement(tree, tree, "return-phrase", NULL, NULL, MXML_DESCEND);
-	
 	if (node) {
 		w.original = process_cdata(node->child->value.opaque);
 	}
 	
+	// phonetic symbol
 	node = mxmlFindElement(tree, tree, "phonetic-symbol", NULL, NULL, MXML_DESCEND);
 	if (node && node->child) {
 
 		w.phonetic = node->child->value.text.string;
 	}
-
+	
+	// tranlation
 	node = mxmlFindElement(tree, tree, "content", NULL, NULL, MXML_DESCEND);
 	if (node) {
 		w.translation = process_cdata(node->child->value.opaque);
