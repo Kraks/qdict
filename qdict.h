@@ -16,3 +16,4 @@ void interactive(void);
 void printHelp(const string programm_name);
 void printWord(t_word_string w);
 void initWordType(t_word_string &w, string o, string p, string t);
+bool checkNull(t_word_string w);

@@ -62,7 +62,12 @@ void query(string word, int saveToWordbook)
 	}
 	else {
 		w = queryFromNetwork(word, w);
-		cache.put(w);
+		if (!checkNull(w)) {
+#ifdef DEBUG
+			cout << "DEBUG query result not null" << endl;
+#endif
+			cache.put(w);
+		}
 	}
 
 	if (saveToWordbook)
@@ -146,6 +151,14 @@ void printWord(t_word_string w)
 		cout << w.phonetic << endl;
 	if (w.translation != "")
 		cout << w.translation << endl;
+}
+
+bool checkNull(t_word_string w)
+{
+	if (w.original == "")
+		return true;
+	if (w.translation == "")
+		return true;
 }
 
 void initWordType(t_word_string &w, string o, string p, string t)
