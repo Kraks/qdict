@@ -64,15 +64,19 @@ void query(string word, int saveToWordbook)
 		w = queryFromNetwork(word, w);
 		if (!checkNull(w)) {
 #ifdef DEBUG
-			cout << "DEBUG query result not null" << endl;
+			cout << "DEBUG: query result not null" << endl;
 #endif
 			cache.put(w);
+			printWord(w);
+		} else {
+#ifdef DEBUG
+			cout << "DEBUG: query result null" << endl;
+#endif
 		}
 	}
 
 	if (saveToWordbook)
 		wordbook.put(w);
-	printWord(w);
 }
 
 void queryRobot()
