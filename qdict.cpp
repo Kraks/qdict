@@ -26,6 +26,11 @@ void praseArgs(vector<string> v)
 		buf.assign(v[0]);
 		flag = SAVE_TO_WORDBOOK;
 	}
+	else if (size == 2 && v[1] == "-") {
+		buf.assign(v[0]);
+		delWord(buf);
+		return ;
+	}
 	else if (size >= 2 && v[v.size()-1] != "+") {
 		buf = join(v, v.begin(), v.end(), space);
 		flag = NOT_SAVE_TO_WORDBOOK;
@@ -33,6 +38,11 @@ void praseArgs(vector<string> v)
 	else if (size > 2 && v[v.size()-1] == "+") {
 		buf = join(v, v.begin(), v.end()-1, space);
 		flag = SAVE_TO_WORDBOOK;
+	}
+	else if (size > 2 && v[v.size()-1] == "-") {
+		buf = join(v, v.begin(), v.end()-1, space);
+		delWord(buf);
+		return ;
 	}
 	else {
 		printf("--^_^--\n");
@@ -77,6 +87,15 @@ void query(string word, int saveToWordbook)
 
 	if (saveToWordbook)
 		wordbook.put(w);
+}
+
+void delWord(string w)
+{
+	myDB cache(DB_CACHE);
+#ifdef DEBUG
+	cout << "DEBUG: delWord del " << w << endl;
+#endif
+	cache.del(w);
 }
 
 void queryRobot()
