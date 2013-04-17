@@ -78,15 +78,14 @@ void query(string word, int saveToWordbook)
 #endif
 			cache.put(w);
 			printWord(w);
+			if (saveToWordbook)
+				wordbook.put(w);
 		} else {
 #ifdef DEBUG
 			cout << "DEBUG: query result null" << endl;
 #endif
 		}
 	}
-
-	if (saveToWordbook)
-		wordbook.put(w);
 }
 
 void delWord(string w)
