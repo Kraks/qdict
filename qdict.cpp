@@ -154,8 +154,10 @@ void interactive(void)
 
 void printHelp(const string program_name)
 {
-	printf(" usage: %s [word] [+]\n", program_name.c_str());
+	printf(" usage: %s [word] [+] [-]\n", program_name.c_str());
 	printf(" the last [+] optional symbol means add the word to wordbook.\n");
+	printf(" the last [-] optional symbol means del the word from cache dict\n");
+	printf(" the [+] [-] are confict\n");
 	printf(" other optional:\n");
 	printf(" -w, --wordbook       show the wordbook\n");
 	printf(" -d, --dict           show all the cache word\n");
