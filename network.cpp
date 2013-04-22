@@ -16,7 +16,7 @@ t_word_string queryFromNetwork(string word, t_word_string &w)
 	struct MemoryStruct chunk;
 	
 #ifdef DEBUG
-	cout << "DEBUG: queryFromNetwork url" << url << endl;
+	cout << "DEBUG: queryFromNetwork url " << url << endl;
 #endif
 
 	chunk.memory = (char *)malloc(1);
