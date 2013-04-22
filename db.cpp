@@ -52,9 +52,9 @@ bool myDB::exist(string w) const
 	try {
 		ret = db->exists(NULL, &key, 0);
 	} catch(DbException &e) {
-		cout << "DbException" << endl;
+		cout << "DbException in exist()" << endl;
 	} catch(std::exception &e) {
-		cout << "std::exception" << endl;
+		cout << "std::exception in exist()" << endl;
 	}
 #ifdef DEBUG
 	cout << "DEBUG: exist ret " << ret << endl;
@@ -91,9 +91,9 @@ t_word_string myDB::__get(string w)
 	try {
 		db->get(NULL, &key, &data, 0);
 	} catch(DbException &e) {
-		cout << "DbException" << endl;
+		cout << "DbException in __get()" << endl;
 	} catch(std::exception &e) {
-		cout << "std::exception" << endl;
+		cout << "std::exception in __get()" << endl;
 	}
 	unpacktoString(res, &c);
 	return res;
@@ -119,9 +119,9 @@ void myDB::put(t_word_string w)
 	try {
 		db->put(NULL, &key, &data, DB_OVERWRITE_DUP);
 	} catch(DbException &e) {
-		cout << "DbException" << endl;
+		cout << "DbException in put()" << endl;
 	} catch(std::exception &e) {
-		cout << "std::exception" << endl;
+		cout << "std::exception in put()" << endl;
 	}
 }
 
@@ -144,9 +144,9 @@ void myDB::del(string w)
 #endif
 		}
 	} catch(DbException &e) {
-		cout << "DbException" << endl;
+		cout << "DbException in del()" << endl;
 	} catch(std::exception &e) {
-		cout << "std::exception" << endl;
+		cout << "std::exception in del()" << endl;
 	}
 }
 
@@ -173,9 +173,9 @@ void myDB::getByFilter(const string filter)
 				cout << endl;
 			}
 		} catch(DbException &e) {
-			cout << "DbException" << endl;
+			cout << "DbException in getByFilter()" << endl;
 		} catch(std::exception &e) {
-			cout << "std::exception" << endl;
+			cout << "std::exception in getByFilter()" << endl;
 		}
 		if (cur != NULL)
 			cur->close();
@@ -195,9 +195,9 @@ size_t myDB::count()
 			count++;
 		}
 	} catch(DbException &e) {
-		cout << "DbException" << endl;
+		cout << "DbException in count()" << endl;
 	} catch(std::exception &e) {
-		cout << "std::exception" << endl;
+		cout << "std::exception in count()" << endl;
 	}
 	if (cur != NULL)
 		cur->close();
