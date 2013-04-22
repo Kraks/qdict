@@ -60,6 +60,7 @@ void query(string word, int saveToWordbook)
 	cout << "=====BEGIN=====\n";
 	cout << "DEBUG: query word " << word << endl;
 #endif
+	// TODO need trim punctuation mark
 	stringTolower(word);
 	t_word_string w;
 	initWordType(w, word, "", "");
@@ -73,6 +74,9 @@ void query(string word, int saveToWordbook)
 	if (cache.exist(w.original)) {
 		//w = cache.get(w.original);
 		w = cache(w.original);
+		printWord(w);
+		if (saveToWordbook)
+			wordbook.put(w);
 	}
 	else {
 		w = queryFromNetwork(word, w);
