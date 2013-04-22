@@ -56,6 +56,10 @@ void praseArgs(vector<string> v)
 
 void query(string word, int saveToWordbook)
 {
+#ifdef DEBUG
+	cout << "=====BEGIN=====\n";
+	cout << "DEBUG: query word " << word << endl;
+#endif
 	stringTolower(word);
 	t_word_string w;
 	initWordType(w, word, "", "");
@@ -103,11 +107,14 @@ void queryRobot(char *filename)
 	ifstream f(filename);
 	string s;
 	vector<string> v;
+	int count = 0;
 
 	//while(getline(fin, s)) {
 	while (f >> s) {
 		query(s, NOT_SAVE_TO_WORDBOOK);
+		count++;
 	}
+	cout << "Total query " << count << " words\n";
 }
 
 void showDict(string db_name)
@@ -183,6 +190,9 @@ void printWord(t_word_string w)
 		cout << w.phonetic << endl;
 	if (w.translation != "")
 		cout << w.translation << endl;
+#ifdef DEBUG
+	cout << "=====END====" << endl;
+#endif
 }
 
 bool checkNull(t_word_string w)
@@ -213,7 +223,7 @@ int main(int argc, char **argv)
 	else if (!strcmp(argv[1], "-d") || !strcmp(argv[1], "--dict")) {
 		showDict(DB_CACHE);
 	}
-	else if (!strcmp(argv[1], "-R")) {
+	else if (!strcmp(argv[1], "-R") && argv[2]!=NULL) {
 		queryRobot(argv[2]);
 	}
 	else if (!strcmp(argv[1], "-i") || !strcmp(argv[1], "--interactive")) {
