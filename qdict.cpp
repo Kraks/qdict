@@ -97,9 +97,17 @@ void delWord(string w)
 	cache.del(w);
 }
 
-void queryRobot()
+#include <fstream>
+void queryRobot(char *filename)
 {
-	
+	ifstream f(filename);
+	string s;
+	vector<string> v;
+
+	//while(getline(fin, s)) {
+	while (f >> s) {
+		query(s, NOT_SAVE_TO_WORDBOOK);
+	}
 }
 
 void showDict(string db_name)
@@ -204,6 +212,9 @@ int main(int argc, char **argv)
 	}
 	else if (!strcmp(argv[1], "-d") || !strcmp(argv[1], "--dict")) {
 		showDict(DB_CACHE);
+	}
+	else if (!strcmp(argv[1], "-R")) {
+		queryRobot(argv[2]);
 	}
 	else if (!strcmp(argv[1], "-i") || !strcmp(argv[1], "--interactive")) {
 		interactive();
