@@ -58,7 +58,7 @@ int whitespaceCount(string s)
 void trimPunctuation(string &s)
 {
 	size_t i = s.length()-1;
-	cout << s[i] << endl;
+	//cout << s[i] << endl;
 	if (s[i] == ',' || s[i] == '.' || s[i] == '?' || s[i] == '!') {
 		s = s.substr(0, i);
 	}

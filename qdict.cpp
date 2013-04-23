@@ -10,6 +10,7 @@
 #include "db.h"
 #include "utils.h"
 #include "network.h"
+#include <fstream>
 
 void praseArgs(vector<string> v)
 {
@@ -105,17 +106,39 @@ void delWord(string w)
 	cache.del(w);
 }
 
-#include <fstream>
 void queryRobot(char *filename)
 {
 	ifstream f(filename);
 	string s;
-	vector<string> v;
+	t_word_string w;
+	myDB cache(DB_CACHE);
 	int count = 0;
 
 	//while(getline(fin, s)) {
 	while (f >> s) {
-		query(s, NOT_SAVE_TO_WORDBOOK);
+#ifdef DEBUG
+		cout << "=====BEGIN=====\n";
+#endif
+		stringTolower(s);
+		trimPunctuation(s);
+#ifdef DEBUG
+		cout << "DEBUG: query word '" << s << "'" << endl;
+#endif
+		initWordType(w, s, "", "");
+		if (cache.exist(w.original)) {
+			w = cache(w.original);
+			printWord(w);
+		}
+		else {
+			w = queryFromNetwork(s, w);
+			if (!checkNull(w)) {
+				cache.put(w);
+				printWord(w);
+			} else {
+				cout << "queryRobot result null" << endl;
+			}
+		}
+
 		count++;
 	}
 	cout << "Total query " << count << " words\n";
@@ -195,7 +218,7 @@ void printWord(t_word_string w)
 	if (w.translation != "")
 		cout << w.translation << endl;
 #ifdef DEBUG
-	cout << "=====END====" << endl;
+	cout << "=====END=====" << endl;
 #endif
 }
 
