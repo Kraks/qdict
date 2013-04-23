@@ -125,6 +125,11 @@ void myDB::put(t_word_string w)
 	}
 }
 
+void myDB::sync()
+{
+	db->sync(0);
+}
+
 void myDB::del(string w)
 {
 	char *ckey = new char[w.length()+1];

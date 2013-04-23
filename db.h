@@ -14,6 +14,7 @@ public:
 	void getByFilter(const string filter);
 	void getByCount(const int count);
 	void del(string w);
+	void sync();
 	size_t count();
 	t_word_string operator()(string w);
 	t_word_string get(string w);
