@@ -95,6 +95,7 @@ void query(string word, int saveToWordbook)
 #endif
 		}
 	}
+
 }
 
 void delWord(string w)
@@ -140,6 +141,12 @@ void queryRobot(char *filename)
 		}
 
 		count++;
+		if (count % 100 == 0) {
+#ifdef DEBUG
+			cout << "count: " << count << endl;
+#endif
+			cache.sync();
+		}
 	}
 	cout << "Total query " << count << " words\n";
 }

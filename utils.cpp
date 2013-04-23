@@ -59,7 +59,7 @@ void trimPunctuation(string &s)
 {
 	size_t i = s.length()-1;
 	//cout << s[i] << endl;
-	if (s[i] == ',' || s[i] == '.' || s[i] == '?' || s[i] == '!' || s[i] == ']' ) {
+	if (s[i] == ',' || s[i] == '.' || s[i] == '?' || s[i] == '!' || s[i] == ']' || s[i] == ';') {
 		s = s.substr(0, i);
 	}
 	if (s[0] == '[') {
