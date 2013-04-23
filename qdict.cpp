@@ -135,18 +135,17 @@ void queryRobot(char *filename)
 			if (!checkNull(w)) {
 				cache.put(w);
 				printWord(w);
+				if (count % 500 == 0) {
+#ifdef DEBUG
+					cout << "count: " << count << endl;
+#endif
+					cache.sync();
+				}
 			} else {
 				cout << "queryRobot result null" << endl;
 			}
 		}
-
 		count++;
-		if (count % 100 == 0) {
-#ifdef DEBUG
-			cout << "count: " << count << endl;
-#endif
-			cache.sync();
-		}
 	}
 	cout << "Total query " << count << " words\n";
 }
