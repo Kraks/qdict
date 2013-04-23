@@ -11,3 +11,4 @@ int whitespaceCount(string s);
 char *process_cdata(char *cdata);
 void stringTolower(string &s);
 void dumpVector(vector<string> v);
+void trimPunctuation(string &s);
