@@ -59,8 +59,11 @@ void trimPunctuation(string &s)
 {
 	size_t i = s.length()-1;
 	//cout << s[i] << endl;
-	if (s[i] == ',' || s[i] == '.' || s[i] == '?' || s[i] == '!') {
+	if (s[i] == ',' || s[i] == '.' || s[i] == '?' || s[i] == '!' || s[i] == ']' ) {
 		s = s.substr(0, i);
+	}
+	if (s[0] == '[') {
+		s = s.substr(1, s.length());
 	}
 }
 
@@ -177,7 +180,6 @@ char *process_cdata(char *cdata)
 
 
 #undef DEBUG
-#define DEBUG
 #ifdef DEBUG
 // JUST TEST CODE
 int main(int argc, char **argv)
@@ -195,7 +197,7 @@ int main(int argc, char **argv)
 	s.push_back("Hello");
 	s.push_back("Good");
 	dumpVector(s);
-	string str("good?");
+	string str("[good]");
 	trimPunctuation(str);
 	cout << str << endl;
 	return 0;
