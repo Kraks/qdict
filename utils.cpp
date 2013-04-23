@@ -55,6 +55,15 @@ int whitespaceCount(string s)
 	return count;
 }
 
+void trimPunctuation(string &s)
+{
+	size_t i = s.length()-1;
+	cout << s[i] << endl;
+	if (s[i] == ',' || s[i] == '.' || s[i] == '?' || s[i] == '!') {
+		s = s.substr(0, i);
+	}
+}
+
 void stringTolower(string &s)
 {
 	locale loc;
@@ -168,6 +177,7 @@ char *process_cdata(char *cdata)
 
 
 #undef DEBUG
+#define DEBUG
 #ifdef DEBUG
 // JUST TEST CODE
 int main(int argc, char **argv)
@@ -185,6 +195,9 @@ int main(int argc, char **argv)
 	s.push_back("Hello");
 	s.push_back("Good");
 	dumpVector(s);
+	string str("good?");
+	trimPunctuation(str);
+	cout << str << endl;
 	return 0;
 }
 #endif
