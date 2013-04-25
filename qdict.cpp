@@ -29,7 +29,7 @@ void praseArgs(vector<string> v)
 	}
 	else if (size == 2 && v[1] == "-") {
 		buf.assign(v[0]);
-		delWord(buf);
+		delWord(DB_WORDBOOK, buf);
 		return ;
 	}
 	else if (size >= 2 && v[v.size()-1] != "+") {
@@ -42,7 +42,7 @@ void praseArgs(vector<string> v)
 	}
 	else if (size > 2 && v[v.size()-1] == "-") {
 		buf = join(v, v.begin(), v.end()-1, space);
-		delWord(buf);
+		delWord(DB_WORDBOOK, buf);
 		return ;
 	}
 	else {
@@ -98,13 +98,13 @@ void query(string word, int saveToWordbook)
 
 }
 
-void delWord(string w)
+void delWord(const char *dbName, string w)
 {
-	myDB cache(DB_CACHE);
+	myDB db(dbName);
 #ifdef DEBUG
 	cout << "DEBUG: delWord del " << w << endl;
 #endif
-	cache.del(w);
+	db.del(w);
 }
 
 void queryRobot(char *filename)
@@ -202,8 +202,8 @@ void interactive(void)
 void printHelp(const string program_name)
 {
 	printf(" usage: %s [word] [+] [-]\n", program_name.c_str());
-	printf(" the last [+] optional symbol means add the word to wordbook.\n");
-	printf(" the last [-] optional symbol means del the word from cache dict\n");
+	printf(" the [+] optional symbol means add the word to wordbook.\n");
+	printf(" the [-] optional symbol means del the word from wordbook.\n");
 	printf(" the [+] [-] are confict\n");
 	printf(" other optional:\n");
 	printf(" -w, --wordbook       show the wordbook\n");
