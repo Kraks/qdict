@@ -1,0 +1,15 @@
+version 0.1  
+2013-1
+new code construction  
+add local berkeleyDB as cache  
+add psersonal wordbook  
+fixed bugs in phrases query function 
+
+version 0.02
+2012-10
+could query phrases and its translation  
+local xml file cache
+
+version 0.01 
+2012-8
+could query basic word translation from youdao dict web service.
