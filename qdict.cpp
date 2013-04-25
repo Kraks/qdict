@@ -81,7 +81,6 @@ void query(string word, int saveToWordbook)
 	}
 	else {
 		w = queryFromNetwork(word, w);
-			printWord(w);
 		if (!checkNull(w)) {
 #ifdef DEBUG
 			cout << "DEBUG: query result not null" << endl;
