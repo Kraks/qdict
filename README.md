@@ -1,8 +1,9 @@
 qdict
 =====
 
-A CLI Chinese-English dictionary.  
-Fast, and easy to use.  
+This is my personal toy, a CLI English-Chinese dictionary.  
+Fast, and easy to use.   
+Contact: Kraks <kiss.kraks@gmail.com>  
 
 Usage
 -----
@@ -20,7 +21,7 @@ History
 -----
 version 0.2  
 rewrite most of code used c++   
-using `db_cxx`
+using `db_cxx`  
 add remove word record function from wordbook   
 fix bugs, more stable and fast  
 
