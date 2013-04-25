@@ -81,6 +81,7 @@ void query(string word, int saveToWordbook)
 	}
 	else {
 		w = queryFromNetwork(word, w);
+			printWord(w);
 		if (!checkNull(w)) {
 #ifdef DEBUG
 			cout << "DEBUG: query result not null" << endl;
@@ -228,12 +229,22 @@ void printWord(t_word_string w)
 #endif
 }
 
-bool checkNull(t_word_string w)
+bool checkNull(t_word_string &w)
 {
-	if (w.original == "")
+	if (w.original == "") {
+#ifdef DEBUG
+		cout << "original null" << endl;
+#endif
 		return true;
-	if (w.translation == "")
+	}
+	if (w.translation == "") {
+#ifdef DEBUG
+		cout << "translation null" << endl;
+#endif
 		return true;
+	}
+	else
+		return false;
 }
 
 void initWordType(t_word_string &w, string o, string p, string t)
