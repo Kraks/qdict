@@ -4,6 +4,10 @@
  *
  ***/
  
+/*
+Maybe won't use in this cpp version
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

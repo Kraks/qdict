@@ -4,6 +4,10 @@
  *
  ***/
 
+/*
+Maybe won't use in this cpp version
+*/
+
 struct s_kstr {
 	int len;
 	int free;
