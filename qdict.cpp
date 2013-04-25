@@ -150,7 +150,7 @@ void queryRobot(char *filename)
 	cout << "Total query " << count << " words\n";
 }
 
-void showDict(string db_name)
+void showDict(const char *db_name)
 {
 	size_t count;
 	if (db_name == DB_CACHE) {

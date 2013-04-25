@@ -192,7 +192,7 @@ size_t myDB::count()
 	Dbc *cur;
 	Dbt key, data;
 	int ret;
-	size_t count;
+	size_t count = 0;
 
 	try {
 		ret = db->cursor(NULL, &cur, 0);
