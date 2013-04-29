@@ -133,5 +133,6 @@ WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)
 
 vecrot<string> extractUrl(string startUrl)
 {
-	
+	//查找网页中所有链接，放入vector中
+
 }
