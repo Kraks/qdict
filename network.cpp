@@ -43,7 +43,9 @@ t_word_string queryFromNetwork(string word, t_word_string &w)
 	}
 	*/
 	
-	fstream f(word+".xml");
+	string filename = word;
+	filename += ".xml";
+	fstream f(filename.c_str());
 	if (f) {
 		f << (char *) chunk.memory;
 		f.close();
