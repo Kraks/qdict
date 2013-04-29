@@ -34,11 +34,19 @@ t_word_string queryFromNetwork(string word, t_word_string &w)
 #ifdef DEBUG
 	printf("DEBUG: queryFromNetwork() %lu bytes retrieved\n", (long)chunk.size);
 #endif
+	/*
 	FILE *fp;
 	fp = fopen("_debug_.xml", "w");
 	if (fp) {
 		fputs((char *)chunk.memory, fp);
 		fclose(fp);
+	}
+	*/
+	
+	fstream f(word+".xml");
+	if (f) {
+		f << (char *) chunk.memory;
+		f.close();
 	}
 	
 	w = resolveYoudaoXML((char *)chunk.memory, w);
