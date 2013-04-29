@@ -130,3 +130,8 @@ WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)
 
 	return realsize;
 }
+
+vecrot<string> extractUrl(string startUrl)
+{
+	
+}
